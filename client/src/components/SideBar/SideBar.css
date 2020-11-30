@@ -1,5 +1,6 @@
 .sideBar {
 	border: 1px solid blue;
+	margin: 10px;
 	width: 300px;
 	height: 500px;
 	font-size: 20px;
@@ -15,7 +16,8 @@
 	height: 50px;
 }
 .icon {
-	color: red;
+	margin: 30px;
+	color: rgb(219, 188, 188);
 }
 .nav {
 }

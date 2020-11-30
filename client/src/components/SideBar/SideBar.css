@@ -19,5 +19,18 @@
 	margin: 30px;
 	color: rgb(219, 188, 188);
 }
-.nav {
+.loginModal {
+	width: 500px;
+	height: 500px;
+	position: absolute;
+	left: 50%;
+	/* margin-left: 250px; */
+	border: 1px solid blue;
+}
+.signUpModal {
+	width: 500px;
+	height: 500px;
+	border: 1px solid blue;
+	margin-left: 50px;
+	position: absolute;
 }

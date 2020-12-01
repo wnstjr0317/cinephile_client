@@ -1,6 +1,17 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+
+// const SignUp = ({ signUpSwitch, modalSwitch, signUpModal }) => {
+// 	console.log('signUp: ', signUpSwitch);
+// 	return (
+// 		<div className="modal" style={modalSwitch(signUpSwitch)}>
+// 			<span onClick={signUpModal}> x</span>
+// 			<hr />
+// 			<button onClick={signUpModal}>회원가입</button>
+// 		</div>
+// 	);
+
 const SignUp = ({ signUpSwitch, modalSwitch }) => {
   console.log("signUp: ", signUpSwitch);
   const [email, setEmail] = useState("");
@@ -53,5 +64,6 @@ const SignUp = ({ signUpSwitch, modalSwitch }) => {
       <button className="signup__button" onClick={() => signUpHandler()}>SignUp</button>  
     </div>
   );
+
 };
 export default SignUp;

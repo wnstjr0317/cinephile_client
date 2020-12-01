@@ -35,9 +35,9 @@ const containerSideBar = () => {
 	}, [dispatch]);
 	return (
 		<>
-			<SideBar toggle={toggle} toggleSwitch={toggleSwitch} loginModal={loginModal} signUpModal={signUpModal} />
-			<SignIn modalSwitch={modalSwitch} loginSwitch={loginSwitch} />
-			<SignUp modalSwitch={modalSwitch} signUpSwitch={signUpSwitch} />
+			<SideBar toggle={toggle} toggleSwitch={toggleSwitch} signUpSwitch={signUpSwitch} loginSwitch={loginSwitch} loginModal={loginModal} signUpModal={signUpModal} />
+			<SignIn modalSwitch={modalSwitch} loginModal={loginModal} loginSwitch={loginSwitch} />
+			<SignUp modalSwitch={modalSwitch} signUpModal={signUpModal} signUpSwitch={signUpSwitch} />
 		</>
 	);
 };

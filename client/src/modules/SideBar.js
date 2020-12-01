@@ -24,7 +24,7 @@ const toggleInitialState = {
 	signUpSwitch: false,
 };
 
-const toggle = (state = toggleInitialState, action) => {
+const toggleReducer = (state = toggleInitialState, action) => {
 	switch (action.type) {
 		case SIDEBAR:
 			return Object.assign({}, state, {
@@ -43,4 +43,4 @@ const toggle = (state = toggleInitialState, action) => {
 	}
 };
 
-export default toggle;
+export default toggleReducer;

@@ -12,10 +12,10 @@ const SideBar = ({ toggleSwitch, signUpSwitch, loginSwitch, toggle, loginModal, 
 		<>
 			<FontAwesomeIcon icon={faUser} className="icon" onClick={toggle} />
 			<div className="sideBar" style={toggleEventHandler()}>
-				<div className="signIn" onClick={!signUpSwitch && loginSwitch === false && loginModal}>
+				<div className="signIn" onClick={() => !signUpSwitch && loginSwitch === false && loginModal()}>
 					로그인
 				</div>
-				<div className="signUp" onClick={!loginSwitch && signUpSwitch === false && signUpModal}>
+				<div className="signUp" onClick={() => !loginSwitch && signUpSwitch === false && signUpModal()}>
 					회원가입
 				</div>
 			</div>

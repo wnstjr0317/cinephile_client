@@ -9,28 +9,33 @@
 	margin-top: 50px;
 	border: 1px solid red;
 	height: 50px;
+	user-select: none;
 }
 
 .signUp {
 	border: 1px solid black;
 	height: 50px;
+	margin-top: 30px;
+	user-select: none;
 }
 .icon {
 	margin: 30px;
 	color: rgb(219, 188, 188);
 }
-.loginModal {
+.modal {
+	text-align: end;
+
 	width: 500px;
 	height: 500px;
 	position: absolute;
 	left: 50%;
-	/* margin-left: 250px; */
+	top: 50px;
+	margin-left: -100px;
 	border: 1px solid blue;
+	user-select: none;
 }
-.signUpModal {
-	width: 500px;
-	height: 500px;
-	border: 1px solid blue;
-	margin-left: 50px;
+button {
 	position: absolute;
+	bottom: 10px;
+	left: 45%;
 }

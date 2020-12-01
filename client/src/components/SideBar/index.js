@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const SideBar = ({ toggleSwitch, signUpSwitch, loginSwitch, toggle, loginModal, signUpModal }) => {
 	const toggleEventHandler = () => {
-		return toggleSwitch ? { transform: 'translateX(0px)', transition: 'all 3.5s' } : { transform: 'translateX(-500px)', transition: 'all 5s' };
+		return toggleSwitch ? { transform: 'translateX(0px)', transition: 'all 1.5s' } : { transform: 'translateX(-500px)', transition: 'all 2s' };
 	};
 
 	return (

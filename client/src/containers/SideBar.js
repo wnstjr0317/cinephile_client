@@ -129,4 +129,4 @@ const containerSideBar = () => {
 	);
 };
 
-export default containerSideBar;
+export default React.memo(containerSideBar);

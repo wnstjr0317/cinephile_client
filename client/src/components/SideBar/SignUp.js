@@ -16,6 +16,14 @@ const SignUp = ({
 	signUpPassword,
 	signUpEmail,
 }) => {
+	const inputReset = () => {
+		signUpPasswordInput('');
+		signUpEmailInput('');
+		signUpUsernameInput('');
+		signUpAgeSelect('10');
+		signUpSexSelect('male');
+		signUpModal();
+	};
 	const signUpHandler = () => {
 		// axios
 		// 	.post('/signup', {
@@ -37,15 +45,12 @@ const SignUp = ({
 		console.log('username: ', signUpUsername);
 		console.log('sex: ', signUpSex);
 		console.log('age: ', signUpAge);
-		signUpPasswordInput('');
-		signUpEmailInput('');
-		signUpUsernameInput('');
-		signUpModal();
+		inputReset();
 	};
 
 	return (
 		<div className="modal" style={modalSwitch(signUpSwitch)}>
-			<span onClick={signUpModal}> x</span>
+			<span onClick={inputReset}> x</span>
 			<hr />
 			<input className="email" value={signUpEmail} type="text" placeholder="email" onChange={(e) => signUpEmailInput(e.target.value)} />
 			<input className="password" value={signUpPassword} type="text" placeholder="password" onChange={(e) => signUpPasswordInput(e.target.value)} />

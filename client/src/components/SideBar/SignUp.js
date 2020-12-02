@@ -15,6 +15,7 @@ const SignUp = ({
 	signUpUsername,
 	signUpPassword,
 	signUpEmail,
+	signUpAjax,
 }) => {
 	const inputReset = () => {
 		signUpPasswordInput('');
@@ -25,21 +26,7 @@ const SignUp = ({
 		signUpModal();
 	};
 	const signUpHandler = () => {
-		// axios
-		// 	.post('/signup', {
-		// 		email: email,
-		// 		password: password,
-		// 		username: username,
-		// 		age: age,
-		// 		gender: gender,
-		// 	})
-		// 	.then((res) => {
-		// 		if (res.status === 200) {
-		// 			alert('회원 가입이 완료되었습니다.');
-		// 		} else if (res.status === 409) {
-		// 			alert('가입 정보를 다시 확인해 주세요.');
-		// 		}
-		// 	});
+		signUpAjax({ email: signUpEmail, password: signUpPassword, nickname: signUpUsername, sex: signUpSex, age: signUpAge });
 		console.log('email:', signUpEmail);
 		console.log('password: ', signUpPassword);
 		console.log('username: ', signUpUsername);

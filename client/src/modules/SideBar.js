@@ -2,6 +2,8 @@ export const SIDEBAR = 'SIDEBAR';
 export const LOGIN = 'LOGIN';
 export const SIGNUP = 'SIGNUP';
 
+//action
+
 export function toggleSwitchAction() {
 	return {
 		type: SIDEBAR,
@@ -17,6 +19,10 @@ export function signUpSwitchAction() {
 		type: SIGNUP,
 	};
 }
+
+//action function
+
+//ajax(middleWare)
 
 const toggleInitialState = {
 	toggleSwitch: true,
@@ -42,5 +48,7 @@ const toggleReducer = (state = toggleInitialState, action) => {
 			return state;
 	}
 };
+
+//reducer
 
 export default toggleReducer;

@@ -6,17 +6,21 @@
 .header {
 	position: absolute;
 	width: 1000px;
-	height: 200px;
+	height: 150px;
 	/* border: 1px solid blue; */
 	z-index: -999;
+	left: 12%;
 	text-align: center;
+	background: url(./Main_Logo.png) no-repeat;
+	background-position: center;
 }
 .main {
 	float: left;
-	padding-top: 100px;
-	width: 80%;
+	padding-left: 100px;
+	padding-top: 200px;
+	width: 90%;
 	height: 1000px;
 	text-align: center;
 	box-sizing: border-box;
-	border: 1px solid red;
+	/* border: 1px solid red; */
 }

@@ -1,7 +1,6 @@
 import React from 'react';
 import './SideBar.css';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const SideBar = ({ signOutAjax, toggleSwitch, signUpSwitch, loginSwitch, toggle, loginModal, signUpModal }) => {
 	const toggleEventHandler = () => {
@@ -17,7 +16,6 @@ const SideBar = ({ signOutAjax, toggleSwitch, signUpSwitch, loginSwitch, toggle,
 				≡
 			</div>
 			<div className="sideBar" style={toggleEventHandler()}>
-				<FontAwesomeIcon icon={faUser} className="icon" />
 				<span>chiione님 반갑습니다.</span>
 				<div className="signIn" onClick={() => !signUpSwitch && loginSwitch === false && loginModal()}>
 					로그인

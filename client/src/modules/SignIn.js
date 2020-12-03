@@ -20,8 +20,8 @@ export const loginPasswordAction = (loginPassword) => ({
 	type: LOGIN_PASSWORD,
 	loginPassword,
 });
-const signInPost = async (signInInfo) => await axios.post(`https://final.cinephile.kro.kr/users/login`, signInInfo);
-const signOutPost = async () => await axios.post(`https://final.cinephile.kro.kr/users/logout`);
+const signInPost = async (signInInfo) => await axios.post(`http://localhost:3000/users/login`, signInInfo);
+const signOutPost = async () => await axios.post(`http://localhost:3000/users/logout`);
 export const signInAjaxAction = (signInInfo) => (dispatch) => {
 	dispatch({ type: SIGNIN_POST_PENDING });
 	signInPost(signInInfo)

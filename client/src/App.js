@@ -5,13 +5,15 @@ import MovieList from "./components/MovieList";
 
 function App() {
 	return (
-    <div>
+   
 		<div className="wrapper">
+			<div className="header">사진</div>
 			<SideBar />
+
+			<div className="main">슬라이드
+        <MovieList />
     </div>
-			<div className="main">
-    <MovieList />
-    </div>
+
 		</div>
 	);
 }

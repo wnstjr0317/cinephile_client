@@ -8,7 +8,6 @@ function App() {
 		<div className="wrapper">
 			<div className="header"></div>
 			<SideBar />
-
 			<div className="main">
 				<MovieList />
 			</div>

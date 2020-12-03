@@ -1,25 +1,29 @@
 .sideBar {
-	border: 1px solid blue;
-	margin: 10px;
-	width: 300px;
-	height: 500px;
+	/* border: 1px solid blue; */
+	margin: 50px 10px 0 0;
+	height: 1000px;
 	font-size: 20px;
+}
+.sideBarToggle {
+	font-size: 30px;
+	font-weight: 100;
+	user-select: none;
 }
 .signIn {
 	margin-top: 50px;
-	border: 1px solid red;
+	/* border: 1px solid red; */
 	height: 50px;
 	user-select: none;
 }
 
 .signUp {
-	border: 1px solid black;
+	/* border: 1px solid black; */
 	height: 50px;
-	margin-top: 30px;
+	/* margin-top: 30px; */
 	user-select: none;
 }
 .icon {
-	margin: 30px;
+	margin: 20px 30px 0;
 	color: rgb(219, 188, 188);
 }
 .modal {
@@ -31,7 +35,7 @@
 	left: 50%;
 	top: 50px;
 	margin-left: -100px;
-	border: 1px solid blue;
+	/* border: 1px solid blue; */
 	user-select: none;
 }
 button {

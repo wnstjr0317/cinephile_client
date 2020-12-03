@@ -4,16 +4,16 @@ import SideBar from "./containers/SideBar";
 import MovieList from "./components/MovieList";
 
 function App() {
-  return (
+	return (
     <div>
-      <div className="sidebar">
-        <SideBar />
-      </div>
-      <div className="movielist">
-        <MovieList />
-      </div>
+		<div className="wrapper">
+			<SideBar />
     </div>
-  );
+			<div className="main">
+    <MovieList />
+    </div>
+		</div>
+	);
 }
 
 export default App;

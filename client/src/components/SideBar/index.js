@@ -10,7 +10,8 @@ const SideBar = ({ signOutAjax, toggleSwitch, signUpSwitch, loginSwitch, toggle,
 
 	return (
 		<>
-			<FontAwesomeIcon icon={faUser} className="icon" onClick={toggle} />
+		<FontAwesomeIcon icon={faUser} className="icon" onClick={toggle} />
+			
 			<div className="sideBar" style={toggleEventHandler()}>
 				<div className="signIn" onClick={() => !signUpSwitch && loginSwitch === false && loginModal()}>
 					로그인

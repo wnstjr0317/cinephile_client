@@ -3,11 +3,20 @@
 	display: flex;
 	max-width: 100%;
 }
+.header {
+	position: absolute;
+	width: 1000px;
+	height: 200px;
+	/* border: 1px solid blue; */
+	z-index: -999;
+	text-align: center;
+}
 .main {
 	float: left;
-
+	padding-top: 100px;
 	width: 80%;
 	height: 1000px;
+	text-align: center;
 	box-sizing: border-box;
 	border: 1px solid red;
 }

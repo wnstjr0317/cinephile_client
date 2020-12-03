@@ -5,8 +5,9 @@ import SideBar from './containers/SideBar';
 function App() {
 	return (
 		<div className="wrapper">
+			<div className="header">사진</div>
 			<SideBar />
-			<div className="main"></div>
+			<div className="main">슬라이드</div>
 		</div>
 	);
 }

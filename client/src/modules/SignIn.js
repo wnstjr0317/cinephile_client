@@ -45,6 +45,8 @@ export const signOutAjaxAction = () => (dispatch) => {
 				type: LOGOUT,
 				result: res.data,
 			});
+			document.cookie = 'cookie' + '=; expires=Thu, 01 Jan 1999 00:00:10 GMT;';
+			document.cookie = 'token' + '=; expires=Thu, 01 Jan 1999 00:00:10 GMT;';
 		})
 		.catch((error) => {
 			dispatch({

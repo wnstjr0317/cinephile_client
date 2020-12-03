@@ -3,7 +3,12 @@ import './App.css';
 import SideBar from './containers/SideBar';
 
 function App() {
-	return <SideBar />;
+	return (
+		<div className="wrapper">
+			<SideBar />
+			<div className="main"></div>
+		</div>
+	);
 }
 
 export default App;

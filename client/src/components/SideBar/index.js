@@ -5,13 +5,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const SideBar = ({ signOutAjax, toggleSwitch, signUpSwitch, loginSwitch, toggle, loginModal, signUpModal }) => {
 	const toggleEventHandler = () => {
-		return toggleSwitch ? { transform: 'translateX(0px)', transition: 'all 1.5s' } : { transform: 'translateX(-500px)', transition: 'all 2s' };
+		return toggleSwitch
+			? { transform: 'translateX(0px)', width: '25%', transition: 'all 3s', opacity: 1 }
+			: { transform: 'translateX(-500px)', width: '0%', opacity: 0, transition: 'all 3s', color: 'white' };
 	};
+	console.log(document.cookie);
 
 	return (
 		<>
-			<FontAwesomeIcon icon={faUser} className="icon" onClick={toggle} />
+			<div className="sideBarToggle" onClick={toggle}>
+				≡
+			</div>
 			<div className="sideBar" style={toggleEventHandler()}>
+				<FontAwesomeIcon icon={faUser} className="icon" />
+				<span>chiione님 반갑습니다.</span>
 				<div className="signIn" onClick={() => !signUpSwitch && loginSwitch === false && loginModal()}>
 					로그인
 				</div>

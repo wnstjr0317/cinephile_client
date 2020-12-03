@@ -88,6 +88,7 @@ input {
 	border-radius: 10px;
 	outline: none;
 	position: relative;
+	transform: translate(80px, 0px);
 	margin: 5px;
 	display: block;
 }

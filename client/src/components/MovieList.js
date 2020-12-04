@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios';
 import Movie from './Movie';
 import './MovieList.css';
 import { posters } from './posters/posters';
 
-const MovieList = () => {
+const MovieList = ({ movieGetAjax }) => {
     const [movies, setMovies] = useState([]);
     const getMovieList = () => {
         setMovies(posters)
     }
-    // const getMovieList = async () => {
-    //     const response = await axios.get('https://final.cinephile.kro.kr/movies')
-    //     setMovies(response)
+    // const getMovieList = () => {
+    //     movieGetAjax()
     // }
 
     useEffect(() => {

@@ -4,18 +4,16 @@ import SideBar from "./containers/SideBar";
 import MovieList from "./components/MovieList";
 
 function App() {
-	return (
-   
-		<div className="wrapper">
-			<div className="header">사진</div>
-			<SideBar />
+  return (
+    <div className="wrapper">
+      <div className="header"></div>
+      <SideBar />
 
-			<div className="main">슬라이드
+      <div className="main">
         <MovieList />
+      </div>
     </div>
-
-		</div>
-	);
+  );
 }
 
 export default App;

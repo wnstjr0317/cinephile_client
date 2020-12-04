@@ -17,13 +17,13 @@ const SideBar = ({ signOutAjax, toggleSwitch, signUpSwitch, loginSwitch, toggle,
 			</div>
 			<div className="sideBar" style={toggleEventHandler()}>
 				<span>chiione님 반갑습니다.</span>
-				<div className="signIn" onClick={() => !signUpSwitch && loginSwitch === false && loginModal()}>
+				<div style={{ color: "rgb(197, 200, 202)" }} className="signIn" onClick={() => !signUpSwitch && loginSwitch === false && loginModal()}>
 					로그인
 				</div>
-				<div className="signUp" onClick={() => !loginSwitch && signUpSwitch === false && signUpModal()}>
+				<div style={{ color: "rgb(197, 200, 202)" }} className="signUp" onClick={() => !loginSwitch && signUpSwitch === false && signUpModal()}>
 					회원가입
 				</div>
-				<div onClick={signOutAjax}>로그아웃</div>
+				<div style={{ color: "rgb(197, 200, 202)" }} onClick={signOutAjax}>로그아웃</div>
 			</div>
 		</>
 	);

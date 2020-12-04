@@ -128,7 +128,16 @@ const containerSideBar = () => {
 
 	return (
 		<>
-			<SideBar toggle={toggle} signOutAjax={signOutAjax} toggleSwitch={toggleSwitch} signUpSwitch={signUpSwitch} loginSwitch={loginSwitch} loginModal={loginModal} signUpModal={signUpModal} />
+			<SideBar
+				toggle={toggle}
+				signOutAjax={signOutAjax}
+				isLogOut={isLogOut}
+				toggleSwitch={toggleSwitch}
+				signUpSwitch={signUpSwitch}
+				loginSwitch={loginSwitch}
+				loginModal={loginModal}
+				signUpModal={signUpModal}
+			/>
 			<SignIn
 				signInAjax={signInAjax}
 				loginPasswordInput={loginPasswordInput}
@@ -138,6 +147,7 @@ const containerSideBar = () => {
 				modalSwitch={modalSwitch}
 				loginModal={loginModal}
 				loginSwitch={loginSwitch}
+				isLogin={isLogin}
 			/>
 			<SignUp
 				signUpEmail={signUpEmail}
@@ -154,6 +164,7 @@ const containerSideBar = () => {
 				signUpAgeSelect={signUpAgeSelect}
 				signUpAge={signUpAge}
 				signUpAjax={signUpAjax}
+				isSignUp={isSignUp}
 			/>
 		</>
 	);

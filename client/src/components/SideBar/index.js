@@ -4,8 +4,8 @@ import './SideBar.css';
 const SideBar = ({ signOutAjax, toggleSwitch, signUpSwitch, loginSwitch, toggle, loginModal, signUpModal }) => {
 	const toggleEventHandler = () => {
 		return toggleSwitch
-			? { transform: 'translateX(0px)', width: '25%', transition: 'all 3s', opacity: 1 }
-			: { transform: 'translateX(-500px)', width: '0%', opacity: 0, transition: 'all 3s', color: 'white' };
+			? { transform: 'translateX(0px)', width: '25%', transition: 'all 2.5s', opacity: 1 }
+			: { transform: 'translateX(-500px)', width: '0%', opacity: 0, transition: 'all 2s', color: 'white' };
 	};
 
 	const cookie = document.cookie.split(';').some((cookie) => cookie.includes('token') || cookie.includes('cookie'));

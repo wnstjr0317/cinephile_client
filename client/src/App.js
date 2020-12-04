@@ -1,17 +1,34 @@
 import logo from './logo.svg';
 import './App.css';
+import { Switch, Route } from 'react-router-dom';
 import SideBar from './containers/SideBar';
-import MovieList from './components/MovieList';
+import MovieList from './components/main/MovieList';
 
 function App() {
 	return (
-		<div className="wrapper">
-			<div className="header"></div>
-			<SideBar />
-			<div className="main">
-				<MovieList />
-			</div>
-		</div>
+		<Switch>
+			<Route
+				exact
+				path="/"
+				render={() => {
+					return (
+						<div className="wrapper">
+							<div className="header"></div>
+							<SideBar />
+							<div className="main">
+								<MovieList />
+							</div>
+						</div>
+					);
+				}}
+			/>
+			<Route
+				path="/movies/:id"
+				render={() => {
+					return <div>123</div>;
+				}}
+			/>
+		</Switch>
 	);
 }
 

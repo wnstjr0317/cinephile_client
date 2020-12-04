@@ -1,30 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import Movie from './Movie';
-import './MovieList.css';
-import { posters } from './posters';
+import React, { useEffect } from 'react';
+import './Main.css';
 
 const MovieList = () => {
-	const [movies, setMovies] = useState([]);
-	const getMovieList = () => {
-		setMovies(posters);
-	};
-	// const getMovieList = async () => {
-	//     const response = await axios.get('https://final.cinephile.kro.kr/movies')
-	//     setMovies(response)
-	// }
-
-	useEffect(() => {
-		getMovieList();
-	}, []);
-
-	return (
-		<div className="movie__list">
-			{movies.map((movie) => (
-				<Movie key={movie.id} movie={movie} />
-			))}
-		</div>
-	);
+	return <div className="movie__list">무비리스트</div>;
 };
 
 export default MovieList;

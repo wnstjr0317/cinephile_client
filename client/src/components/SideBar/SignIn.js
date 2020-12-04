@@ -27,8 +27,6 @@ const SignIn = ({ signInAjax, loginSwitch, modalSwitch, loginModal, loginPasswor
 			console.log('password: ', loginPassword);
 			inputReset();
 		}
-
-		// alert('회원 정보를 다시 확인해 주세요.');
 	};
 	return (
 		<div className="modal" style={modalSwitch(loginSwitch)}>

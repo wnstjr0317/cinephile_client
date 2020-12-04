@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const SignIn = ({ signInAjax, loginSwitch, modalSwitch, loginModal, loginPassword, loginEmail, loginEmailInput, loginPasswordInput }) => {
+const SignIn = ({ isLogin, signInAjax, loginSwitch, modalSwitch, loginModal, loginPassword, loginEmail, loginEmailInput, loginPasswordInput }) => {
 	const inputReset = () => {
 		loginEmailInput('');
 		loginPasswordInput('');
@@ -13,22 +13,26 @@ const SignIn = ({ signInAjax, loginSwitch, modalSwitch, loginModal, loginPasswor
 		password: '#ff8787',
 	});
 
-	useEffect(() => {}, [certificate.email, certificate.password]);
+	useEffect(() => {
+		console.log(certificate);
+
+		if (isLogin) {
+			alert('로그인 완료');
+			inputReset();
+		}
+	}, [certificate.email, certificate.password, isLogin]);
 	const singInHandler = (e) => {
 		e.preventDefault();
 		if (loginEmail.length < 12) {
 			alert('email');
-		} else if (loginPassword.length < 10) {
+		} else if (loginPassword.length < 8) {
 			alert('password');
 		} else {
-			alert('회원가입 완료');
 			signInAjax({ email: loginEmail, password: loginPassword });
+			console.log('signIn: ', isLogin);
 			console.log('email:', loginEmail);
 			console.log('password: ', loginPassword);
-			inputReset();
 		}
-
-		// alert('회원 정보를 다시 확인해 주세요.');
 	};
 	return (
 		<div className="modal" style={modalSwitch(loginSwitch)}>
@@ -72,10 +76,10 @@ const SignIn = ({ signInAjax, loginSwitch, modalSwitch, loginModal, loginPasswor
 				</button>
 			</form>
 			<button className="signin__button">
-				<a href={`https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=738ab2caacd62503182dcef1f05fb1dc&redirect_uri=http://localhost:3000/users/kakao`}>카카오톡 로그인</a>
+				<a href={`https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=738ab2caacd62503182dcef1f05fb1dc&redirect_uri=https://final.cinephile.kro.kr/users/kakao`}>카카오톡 로그인</a>
 			</button>
 			<button className="signin__button">
-				<a href={`http://localhost:3000/users/kakao/unlink`}>연결 끊기</a>
+				<a href={`https://final.cinephile.kro.kr/users/kakao/unlink`}>연결 끊기</a>
 			</button>
 		</div>
 	);

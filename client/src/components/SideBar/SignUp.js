@@ -17,6 +17,7 @@ const SignUp = ({
 	signUpPassword,
 	signUpEmail,
 	signUpAjax,
+	isSignUp,
 }) => {
 	const inputReset = () => {
 		signUpPasswordInput('');
@@ -26,27 +27,44 @@ const SignUp = ({
 		signUpSexSelect('male');
 		signUpModal();
 	};
-	const signUpHandler = (e) => {
-		e.preventDefault();
-		signUpAjax({ email: signUpEmail, password: signUpPassword, nickname: signUpUsername, sex: signUpSex, age: signUpAge });
-		console.log('email:', signUpEmail);
-		console.log('password: ', signUpPassword);
-		console.log('username: ', signUpUsername);
-		console.log('sex: ', signUpSex);
-		console.log('age: ', signUpAge);
-		inputReset();
-	};
 	const [certificate, setCertificate] = useState({
 		email: '#ff8787',
 		password: '#ff8787',
 		username: '#ff8787',
 	});
+	useEffect(() => {
+		console.log(certificate);
+	}, [certificate.email, certificate.password, certificate.username]);
+	const signUpHandler = (e) => {
+		e.preventDefault();
+		if (signUpEmail.length < 12) {
+			alert('email');
+		} else if (signUpPassword.length < 8) {
+			alert('password');
+		} else if (signUpUsername.length < 6) {
+			alert('username');
+		} else if (signUpSex === '성별') {
+			alert('성별');
+		} else if (signUpAge === '나이') {
+			alert('나이');
+		} else {
+			signUpAjax({ email: signUpEmail, password: signUpPassword, nickname: signUpUsername, sex: signUpSex, age: signUpAge });
+			console.log('signUp: ', isSignUp);
+			console.log('email:', signUpEmail);
+			console.log('password: ', signUpPassword);
+			console.log('username: ', signUpUsername);
+			console.log('sex: ', signUpSex);
+			console.log('age: ', signUpAge);
+			inputReset();
+		}
+	};
+
 	return (
 		<div className="modal" style={modalSwitch(signUpSwitch)}>
 			<div className="modalExit" onClick={inputReset}>
 				X
 			</div>
-			<form onSubmit={() => signUpHandler()}>
+			<form onSubmit={(e) => signUpHandler(e)}>
 				<input
 					required="required"
 					className="email"

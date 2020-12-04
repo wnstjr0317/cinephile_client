@@ -20,8 +20,8 @@ export const loginPasswordAction = (loginPassword) => ({
 	type: LOGIN_PASSWORD,
 	loginPassword,
 });
-const signInPost = async (signInInfo) => await axios.post(`http://localhost:3000/users/login`, signInInfo);
-const signOutPost = async () => await axios.post(`http://localhost:3000/users/logout`);
+const signInPost = async (signInInfo) => await axios.post(`https://final.cinephile.kro.kr/login`, signInInfo);
+const signOutPost = async () => await axios.post(`https://final.cinephile.kro.kr/logout`);
 export const signInAjaxAction = (signInInfo) => (dispatch) => {
 	dispatch({ type: SIGNIN_POST_PENDING });
 	signInPost(signInInfo)
@@ -36,23 +36,27 @@ export const signInAjaxAction = (signInInfo) => (dispatch) => {
 				type: SIGNIN_POST_FAILURE,
 				result: error,
 			});
+			alert('다시 입력하세요.');
 		});
 };
 export const signOutAjaxAction = () => (dispatch) => {
 	signOutPost()
 		.then((res) => {
+			document.cookie = 'cookie' + '=; expires=Thu, 25 Oct 1990 00:00:00 GMT;';
+			document.cookie = 'token' + '=; expires=Thu, 25 Oct 1990 00:00:10 GMT;';
+
 			dispatch({
 				type: LOGOUT,
 				result: res.data,
 			});
-			document.cookie = 'cookie' + '=; expires=Thu, 01 Jan 1999 00:00:10 GMT;';
-			document.cookie = 'token' + '=; expires=Thu, 01 Jan 1999 00:00:10 GMT;';
+			alert('로그아웃 완료');
 		})
 		.catch((error) => {
 			dispatch({
 				type: LOGOUT,
 				result: error,
 			});
+			alert('로그아웃 실패');
 		});
 };
 //action function

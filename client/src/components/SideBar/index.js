@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './SideBar.css';
 
-const SideBar = ({ signOutAjax, toggleSwitch, signUpSwitch, loginSwitch, toggle, loginModal, signUpModal }) => {
+const SideBar = ({ isLogOut, signOutAjax, toggleSwitch, signUpSwitch, loginSwitch, toggle, loginModal, signUpModal }) => {
 	const toggleEventHandler = () => {
 		return toggleSwitch
 			? { transform: 'translateX(0px)', width: '25%', transition: 'all 3s', opacity: 1 }
@@ -9,7 +9,9 @@ const SideBar = ({ signOutAjax, toggleSwitch, signUpSwitch, loginSwitch, toggle,
 	};
 
 	const cookie = document.cookie.split(';').some((cookie) => cookie.includes('token') || cookie.includes('cookie'));
-
+	useEffect(() => {
+		console.log(isLogOut);
+	}, [isLogOut]);
 	return (
 		<>
 			<div className="sideBarToggle" onClick={toggle}>
@@ -21,7 +23,12 @@ const SideBar = ({ signOutAjax, toggleSwitch, signUpSwitch, loginSwitch, toggle,
 					<div className="signIn" onClick={() => !signUpSwitch && loginSwitch === false && loginModal()}>
 						마이 인포
 					</div>
-					<div className="logout" onClick={signOutAjax}>
+					<div
+						className="logout"
+						onClick={() => {
+							signOutAjax();
+						}}
+					>
 						로그아웃
 					</div>
 				</div>

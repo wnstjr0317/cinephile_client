@@ -34,7 +34,7 @@ export const signUpAgeAction = (signUpAge) => ({
 	type: SIGNUP_AGE,
 	signUpAge,
 });
-const signUpPost = async (signUpInfo) => await axios.post(`http://localhost:3000/users/signup`, signUpInfo);
+const signUpPost = async (signUpInfo) => await axios.post(`https://final.cinephile.kro.kr/users/signup`, signUpInfo);
 
 //action function
 export const signUpAjaxAction = (signUpInfo) => (dispatch) => {
@@ -45,12 +45,14 @@ export const signUpAjaxAction = (signUpInfo) => (dispatch) => {
 				type: SIGNUP_POST_SUCCESS,
 				result: res.data,
 			});
+			alert('회원가입 완료');
 		})
 		.catch((error) => {
 			dispatch({
 				type: SIGNUP_POST_FAILURE,
 				result: error,
 			});
+			alert('회원가입 실패');
 		});
 };
 
@@ -60,8 +62,8 @@ const signUpInitialState = {
 	signUpEmail: '',
 	signUpPassword: '',
 	signUpUsername: '',
-	signUpSex: 'male',
-	signUpAge: '10',
+	signUpSex: '성별',
+	signUpAge: '나이',
 	pending: false,
 	error: false,
 	isSignUp: false,

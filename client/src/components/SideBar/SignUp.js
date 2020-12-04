@@ -1,5 +1,6 @@
-import React from 'react';
-
+import React, { useState, useEffect } from 'react';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const SignUp = ({
 	signUpSwitch,
 	modalSwitch,
@@ -15,6 +16,7 @@ const SignUp = ({
 	signUpPassword,
 	signUpEmail,
 	signUpAjax,
+	isSignUp,
 }) => {
 	const inputReset = () => {
 		signUpPasswordInput('');
@@ -24,42 +26,109 @@ const SignUp = ({
 		signUpSexSelect('male');
 		signUpModal();
 	};
-	const signUpHandler = () => {
-		signUpAjax({ email: signUpEmail, password: signUpPassword, nickname: signUpUsername, sex: signUpSex, age: signUpAge });
-		console.log('email:', signUpEmail);
-		console.log('password: ', signUpPassword);
-		console.log('username: ', signUpUsername);
-		console.log('sex: ', signUpSex);
-		console.log('age: ', signUpAge);
-		inputReset();
+	const [certificate, setCertificate] = useState({
+		email: '#ff8787',
+		password: '#ff8787',
+		username: '#ff8787',
+	});
+	useEffect(() => {
+		console.log(certificate);
+	}, [certificate.email, certificate.password, certificate.username]);
+	const signUpHandler = (e) => {
+		e.preventDefault();
+		if (signUpEmail.length < 12) {
+			alert('email');
+		} else if (signUpPassword.length < 8) {
+			alert('password');
+		} else if (signUpUsername.length < 6) {
+			alert('username');
+		} else if (signUpSex === '성별') {
+			alert('성별');
+		} else if (signUpAge === '나이') {
+			alert('나이');
+		} else {
+			signUpAjax({ email: signUpEmail, password: signUpPassword, nickname: signUpUsername, sex: signUpSex, age: signUpAge });
+			console.log('signUp: ', isSignUp);
+			console.log('email:', signUpEmail);
+			console.log('password: ', signUpPassword);
+			console.log('username: ', signUpUsername);
+			console.log('sex: ', signUpSex);
+			console.log('age: ', signUpAge);
+			inputReset();
+		}
 	};
 
 	return (
 		<div className="modal" style={modalSwitch(signUpSwitch)}>
-			<span onClick={inputReset}> x</span>
-			<hr />
-			<input className="email" value={signUpEmail} type="text" placeholder="email" onChange={(e) => signUpEmailInput(e.target.value)} />
-			<input className="password" value={signUpPassword} type="text" placeholder="password" onChange={(e) => signUpPasswordInput(e.target.value)} />
-			<input className="username" value={signUpUsername} type="text" placeholder="username" onChange={(e) => signUpUsernameInput(e.target.value)} />
-			<br />
-			<label>Male: </label>
-			<input type="radio" checked={signUpSex === 'male'} value="male" onChange={(e) => signUpSexSelect(e.target.value)} />
-			<label>Female: </label>
-			<input type="radio" checked={signUpSex === 'female'} value="female" onChange={(e) => signUpSexSelect(e.target.value)} />
-			<br />
-			<label>10~19: </label>
-			<input type="radio" checked={signUpAge === '10'} value="10" onChange={(e) => signUpAgeSelect(e.target.value)} />
-			<label>20~29: </label>
-			<input type="radio" checked={signUpAge === '20'} value="20" onChange={(e) => signUpAgeSelect(e.target.value)} />
-			<label>30~39: </label>
-			<input type="radio" checked={signUpAge === '30'} value="30" onChange={(e) => signUpAgeSelect(e.target.value)} />
-			<label>40~49: </label>
-			<input type="radio" checked={signUpAge === '40'} value="40" onChange={(e) => signUpAgeSelect(e.target.value)} />
-			<label>50~: </label>
-			<input type="radio" checked={signUpAge === '50'} value="50" onChange={(e) => signUpAgeSelect(e.target.value)} />
-			<button className="signup__button" onClick={signUpHandler}>
-				SignUp
-			</button>
+			<div className="modalExit" onClick={inputReset}>
+				X
+			</div>
+			<form onSubmit={(e) => signUpHandler(e)}>
+				<input
+					required="required"
+					className="email"
+					value={signUpEmail}
+					type="email"
+					placeholder="email"
+					onChange={(e) => {
+						if (e.target.value.length < 12) {
+							setCertificate(Object.assign({}, certificate, { email: 'ff8787' }));
+						} else {
+							setCertificate(Object.assign({}, certificate, { email: 'black' }));
+						}
+						signUpEmailInput(e.target.value);
+					}}
+				/>
+				<FontAwesomeIcon icon={faUser} style={{ color: certificate.email, bottom: '17px' }} />
+				<input
+					required="required"
+					className="password"
+					value={signUpPassword}
+					type="password"
+					placeholder="password"
+					onChange={(e) => {
+						if (e.target.value.length < 8) {
+							setCertificate(Object.assign({}, certificate, { password: 'ff8787' }));
+						} else {
+							setCertificate(Object.assign({}, certificate, { password: 'black' }));
+						}
+						signUpPasswordInput(e.target.value);
+					}}
+				/>
+				<FontAwesomeIcon icon={faUser} style={{ color: certificate.password, bottom: '18px' }} />
+				<input
+					required="required"
+					className="username"
+					value={signUpUsername}
+					type="username"
+					placeholder="username"
+					onChange={(e) => {
+						if (e.target.value.length < 6) {
+							setCertificate(Object.assign({}, certificate, { username: 'ff8787' }));
+						} else {
+							setCertificate(Object.assign({}, certificate, { username: 'black' }));
+						}
+						signUpUsernameInput(e.target.value);
+					}}
+				/>
+				<FontAwesomeIcon icon={faUser} style={{ color: certificate.username, left: '-2%', bottom: '27px' }} />
+
+				<select defaultValue={'DEFAULT'} onChange={(e) => signUpSexSelect(e.target.value)}>
+					<option value="DEFAULT">성별</option>
+					<option value="male">남성</option>
+					<option value="famale">여성</option>
+				</select>
+				<select defaultValue={'DEFAULT'} onChange={(e) => signUpAgeSelect(e.target.value)}>
+					<option value="DEFAULT">나이</option>
+					{[10, 20, 30, 40, 50, 60].map((age, id) => (
+						<option value={age} key={id}>
+							{age}대
+						</option>
+					))}
+				</select>
+
+				<button className="signup__button">SignUp</button>
+			</form>
 		</div>
 	);
 };

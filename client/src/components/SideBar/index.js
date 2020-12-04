@@ -1,30 +1,48 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './SideBar.css';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
 
-const SideBar = ({ signOutAjax, toggleSwitch, signUpSwitch, loginSwitch, toggle, loginModal, signUpModal }) => {
+const SideBar = ({ isLogOut, signOutAjax, toggleSwitch, signUpSwitch, loginSwitch, toggle, loginModal, signUpModal }) => {
 	const toggleEventHandler = () => {
 		return toggleSwitch
 			? { transform: 'translateX(0px)', width: '25%', transition: 'all 3s', opacity: 1 }
 			: { transform: 'translateX(-500px)', width: '0%', opacity: 0, transition: 'all 3s', color: 'white' };
 	};
-	console.log(document.cookie);
 
+	const cookie = document.cookie.split(';').some((cookie) => cookie.includes('token') || cookie.includes('cookie'));
+	useEffect(() => {
+		console.log(isLogOut);
+	}, [isLogOut]);
 	return (
 		<>
 			<div className="sideBarToggle" onClick={toggle}>
 				≡
 			</div>
-			<div className="sideBar" style={toggleEventHandler()}>
-				<span>chiione님 반갑습니다.</span>
-				<div style={{ color: "rgb(197, 200, 202)" }} className="signIn" onClick={() => !signUpSwitch && loginSwitch === false && loginModal()}>
-					로그인
+			{cookie ? (
+				<div className="sideBar" style={toggleEventHandler()}>
+					<span>chiione님 반갑습니다.</span>
+					<div className="signIn" onClick={() => !signUpSwitch && loginSwitch === false && loginModal()}>
+						마이 인포
+					</div>
+					<div
+						className="logout"
+						onClick={() => {
+							signOutAjax();
+						}}
+					>
+						로그아웃
+					</div>
 				</div>
-				<div style={{ color: "rgb(197, 200, 202)" }} className="signUp" onClick={() => !loginSwitch && signUpSwitch === false && signUpModal()}>
-					회원가입
+			) : (
+				<div className="sideBar" style={toggleEventHandler()}>
+					<span>로그인을 해주세요.</span>
+					<div className="signIn" onClick={() => !signUpSwitch && loginSwitch === false && loginModal()}>
+						로그인
+					</div>
+					<div className="signUp" onClick={() => !loginSwitch && signUpSwitch === false && signUpModal()}>
+						회원가입
+					</div>
 				</div>
-				<div style={{ color: "rgb(197, 200, 202)" }} onClick={signOutAjax}>로그아웃</div>
-			</div>
+			)}
 		</>
 	);
 };

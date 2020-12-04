@@ -1,22 +1,18 @@
-import React, { useCallback } from 'react'
+import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { movieGetAjaxAction } from '../modules/movieList';
-import MovieList from '../components/MovieList'
+import MovieList from '../components/MovieList';
 
 const mainPage = () => {
-    const dispatch = useDispatch();
+	// const dispatch = useDispatch();
 
-    const movieGetAjax = useCallback(
-        (e) => {
-            dispatch(movieGetAjaxAction(e))
-        }, [dispatch]
-    )
+	// const movieGetAjax = useCallback(
+	//     (e) => {
+	//         dispatch(movieGetAjaxAction(e))
+	//     }, [dispatch]
+	// )
 
-    return (
-        <div>
-            <MovieList movieGetAjax={movieGetAjax} />
-        </div>
-    )
-}
+	return <div>{/* <MovieList movieGetAjax={movieGetAjax} /> */}</div>;
+};
 
-export default React.memo(containerMainPage);
+export default React.memo(mainPage);

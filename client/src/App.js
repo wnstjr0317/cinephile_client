@@ -1,10 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
 import SideBar from './containers/SideBar';
 import Main from './containers/Main';
+import Header from './containers/Header';
 import MovieContents from './containers/MovieContents';
-<div className="main"></div>;
 
 function App() {
 	return (
@@ -15,9 +14,21 @@ function App() {
 				render={() => {
 					return (
 						<div className="wrapper">
-							<div className="header" />
+							<Header />
 							<SideBar />
 							<Main />
+						</div>
+					);
+				}}
+			/>
+			<Route
+				exact
+				path="/read/:id"
+				render={() => {
+					return (
+						<div className="wrapper">
+							<Header />
+							<SideBar />
 							<MovieContents />
 						</div>
 					);

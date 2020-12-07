@@ -1,8 +1,20 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './Main.css';
+import { Link } from 'react-router-dom';
 
-const MovieList = () => {
-	return <div className="movie__list">무비리스트</div>;
+const MovieList = ({ movieList }) => {
+	return (
+		<div className="movie__list">
+			{movieList.map((el) => {
+				return (
+					<Link to={`/read/${el.id}`} className="Contents" key={el.id}>
+						<img src={el.thumbnailUrl} />
+						<div className="title">{el.title}</div>
+					</Link>
+				);
+			})}
+		</div>
+	);
 };
 
 export default MovieList;

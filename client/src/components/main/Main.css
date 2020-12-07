@@ -1,6 +1,11 @@
 .movie__list {
-    display: grid;
-    grid-template-columns: repeat(4, 15rem);
-    grid-template-rows: repeat(2, 26rem);
-    grid-gap: 1rem;
+	display: grid;
+	justify-content: center;
+	grid-template-columns: repeat(4, 16rem);
+	grid-template-rows: repeat(5, 15rem);
+	grid-gap: 1rem;
+	border: 1px solid black;
+}
+.title {
+	color: black;
 }

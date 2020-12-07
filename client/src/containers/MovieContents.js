@@ -2,9 +2,10 @@ import React from 'react';
 import MovieInfo from '../components/movieContents/MovieInfo';
 import ExpertEvaluation from '../components/movieContents/ExpertEvaluation';
 import Comment from '../components/movieContents/Comment';
+import '../App.css';
 const movieContent = () => {
 	return (
-		<div className="movieContents">
+		<div className="main">
 			<MovieInfo />
 			<ExpertEvaluation />
 			<Comment />

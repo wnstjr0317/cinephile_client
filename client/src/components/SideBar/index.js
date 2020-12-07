@@ -31,6 +31,9 @@ const SideBar = ({ isLogOut, signOutAjax, toggleSwitch, signUpSwitch, loginSwitc
 					>
 						로그아웃
 					</div>
+					<div className="signUp" onClick={() => !loginSwitch && signUpSwitch === false && signUpModal()}>
+						Board
+					</div>
 				</div>
 			) : (
 				<div className="sideBar" style={toggleEventHandler()}>
@@ -40,6 +43,9 @@ const SideBar = ({ isLogOut, signOutAjax, toggleSwitch, signUpSwitch, loginSwitc
 					</div>
 					<div className="signUp" onClick={() => !loginSwitch && signUpSwitch === false && signUpModal()}>
 						회원가입
+					</div>
+					<div className="signUp" onClick={() => !loginSwitch && signUpSwitch === false && signUpModal()}>
+						Board
 					</div>
 				</div>
 			)}

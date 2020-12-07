@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import MovieInfo from '../components/movieContents/MovieInfo';
 import ExpertEvaluation from '../components/movieContents/ExpertEvaluation';
 import Comment from '../components/movieContents/Comment';
-import '../App.css';
+import { cmmtGetAjaxAction } from '../modules/MovieComment';
+
 const movieContent = () => {
+	const dispatch = useDispatch();
+	const commentList = useSelector(state => state.MovieComment.commentList);
+	const cmmtGetAjax = useCallback(() => {
+		dispatch(cmmtGetAjaxAction());
+	}, [dispatch])
+
 	return (
-		<div className="main">
+		<div className="movieContents">
 			<MovieInfo />
 			<ExpertEvaluation />
-			<Comment />
+			<Comment cmmtGetAjax={cmmtGetAjax} commentList={commentList} />
 		</div>
 	);
 };

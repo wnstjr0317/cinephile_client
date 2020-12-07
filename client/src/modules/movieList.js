@@ -27,17 +27,17 @@ export const movieGetAjaxAction = () => (dispatch) => {
 const movieInitialState = [];
 
 const movieReducer = (state = movieInitialState, action) => {
-	const { result } = action;
-	switch (action.type) {
-		case MOVIE_GET_PENDING:
-			return state;
-		case MOVIE_GET_SUCCESS:
-			return result;
-		case MOVIE_GET_FAILURE:
-			return result;
-		default:
-			return state;
-	}
+  const { result } = action;
+  switch (action.type) {
+    case MOVIE_GET_PENDING:
+      return [...state];
+    case MOVIE_GET_SUCCESS:
+      return [...state, result];
+    case MOVIE_GET_FAILURE:
+      return [...state, result];
+    default:
+      return state;
+  }
 };
 
 export default movieReducer;

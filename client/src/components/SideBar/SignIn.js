@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+require('dotenv').config();
 
 const SignIn = ({ isLogin, signInAjax, loginSwitch, modalSwitch, loginModal, loginPassword, loginEmail, loginEmailInput, loginPasswordInput }) => {
 	const inputReset = () => {
@@ -34,6 +35,7 @@ const SignIn = ({ isLogin, signInAjax, loginSwitch, modalSwitch, loginModal, log
 			console.log('password: ', loginPassword);
 		}
 	};
+
 	return (
 		<div className="modal" style={modalSwitch(loginSwitch)}>
 			<div className="modalExit" onClick={inputReset}>
@@ -76,7 +78,9 @@ const SignIn = ({ isLogin, signInAjax, loginSwitch, modalSwitch, loginModal, log
 				</button>
 			</form>
 			<button className="signin__button">
-				<a href={`https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=738ab2caacd62503182dcef1f05fb1dc&redirect_uri=https://final.cinephile.kro.kr/users/kakao`}>카카오톡 로그인</a>
+				{/* <a href={`https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI_KA}`}>카카오톡 로그인</a>
+				<a href={`https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI_NA}&state=test`}>네이버 로그인</a>
+				<a href={`https://www.facebook.com/v9.0/dialog/oauth?client_id=${APP_ID}&redirect_uri=${REDIRECT_URI_FA}&state=test`}>페이스북 로그인</a> */}
 			</button>
 			<button className="signin__button">
 				<a href={`https://final.cinephile.kro.kr/users/kakao/unlink`}>연결 끊기</a>

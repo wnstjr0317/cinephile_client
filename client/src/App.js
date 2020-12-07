@@ -23,6 +23,18 @@ function App() {
 			/>
 			<Route
 				exact
+				path="/write"
+				render={() => {
+					return (
+						<div className="wrapper">
+							<Header />
+							<SideBar />
+						</div>
+					);
+				}}
+			/>
+			<Route
+				exact
 				path="/read/:id"
 				render={() => {
 					return (

@@ -43,26 +43,26 @@
 	/* border-bottom: 1px solid rgb(162, 162, 176); */
 	text-align: center;
 }
-/* button {
+.sideBaButton {
 	position: relative;
 	width: 300px;
 	height: 50px;
 	outline: none;
 	background-color: rgb(43, 40, 40);
 	text-decoration: none;
-
 	color: cornsilk;
 	display: block;
 	margin-bottom: 5px;
 	transform: translate(95px, 5px);
-} */
+}
+*/
 /* a {
 	width: 100%;
 	display: block;
 	text-decoration: none;
 	color: cornsilk;
 } */
-/* input {
+.sideBarInput {
 	border: 1px solid rgb(190, 190, 199);
 	width: 320px;
 	height: 50px;
@@ -72,7 +72,7 @@
 	transform: translate(80px, 0px);
 	margin: 5px;
 	display: block;
-} */
+}
 /* label {
 	display: inline;
 }
@@ -102,7 +102,7 @@ select {
 
 	transform: translate(70px, 30px);
 }
-.board {
+.sideBarList {
 	color: rgb(255, 255, 255);
 	width: 90%;
 	height: 50px;
@@ -114,9 +114,10 @@ select {
 	justify-content: center;
 	align-items: center;
 	transition: all 0.5s;
+	text-decoration: none;
 	/* border: 1px solid rgb(232, 221, 221); */
 }
-.board:hover {
+.sideBarList:hover {
 	background-color: white;
 	width: 100%;
 	border-radius: 10px;
@@ -135,26 +136,8 @@ select {
 .logout {
 	cursor: pointer;
 }
-li {
-	width: 90%;
-	color: rgb(255, 255, 255);
-	font-weight: 400;
-	font-size: 20px;
-	/* border: 1px solid rgb(240, 222, 222); */
-	height: 50px;
-	margin-top: 20px;
-	list-style: none;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	transition: width 0.5s;
-}
-li:hover {
-	background-color: white;
-	color: black;
-	width: 100%;
-	border-radius: 10px;
-}
-span {
+
+.nickName {
 	color: white;
+	user-select: none;
 }

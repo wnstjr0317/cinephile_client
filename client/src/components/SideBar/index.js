@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import './SideBar.css';
+import { Link } from 'react-router-dom';
 
 const SideBar = ({ isLogOut, signOutAjax, toggleSwitch, signUpSwitch, loginSwitch, toggle, loginModal, signUpModal }) => {
 	const toggleEventHandler = () => {
 		return toggleSwitch
-			? { transform: 'translateX(0px)', width: '25%', transition: 'all 2.5s', opacity: 1 }
+			? { transform: 'translateX(0px)', width: '15%', transition: 'all 2.5s', opacity: 1, marginLeft: '15px' }
 			: { transform: 'translateX(-500px)', width: '0%', opacity: 0, transition: 'all 2s', color: 'white' };
 	};
 
@@ -23,6 +24,9 @@ const SideBar = ({ isLogOut, signOutAjax, toggleSwitch, signUpSwitch, loginSwitc
 					<div className="signIn" onClick={() => !signUpSwitch && loginSwitch === false && loginModal()}>
 						마이 인포
 					</div>
+					<Link className="board" to="/board">
+						Board
+					</Link>
 					<div
 						className="logout"
 						onClick={() => {
@@ -31,9 +35,6 @@ const SideBar = ({ isLogOut, signOutAjax, toggleSwitch, signUpSwitch, loginSwitc
 					>
 						로그아웃
 					</div>
-					<div className="signUp" onClick={() => !loginSwitch && signUpSwitch === false && signUpModal()}>
-						Board
-					</div>
 				</div>
 			) : (
 				<div className="sideBar" style={toggleEventHandler()}>
@@ -41,11 +42,11 @@ const SideBar = ({ isLogOut, signOutAjax, toggleSwitch, signUpSwitch, loginSwitc
 					<div className="signIn" onClick={() => !signUpSwitch && loginSwitch === false && loginModal()}>
 						로그인
 					</div>
+					<Link className="board" to="/board">
+						Board
+					</Link>
 					<div className="signUp" onClick={() => !loginSwitch && signUpSwitch === false && signUpModal()}>
 						회원가입
-					</div>
-					<div className="signUp" onClick={() => !loginSwitch && signUpSwitch === false && signUpModal()}>
-						Board
 					</div>
 				</div>
 			)}

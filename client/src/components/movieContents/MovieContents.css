@@ -16,3 +16,27 @@
 	border: 1px solid blue;
 	height: 300px;
 }
+.comment__box {
+	border: 1px solid rgb(177, 177, 201);
+	margin-top: 10px;
+}
+.commentName {
+	/* border: 1px solid blue; */
+	height: 50px;
+	display: flex;
+	align-items: center;
+	color: rgb(106, 102, 96);
+	border-bottom: 1px solid rgb(188, 188, 206);
+}
+.commentBody {
+	margin-top: 10px;
+	/* border: 1px solid blue; */
+	color: brown;
+	height: 150px;
+}
+.user__comment {
+	width: 90%;
+	margin-top: 30px;
+	height: 100px;
+	resize: none;
+}

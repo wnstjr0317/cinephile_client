@@ -1,22 +1,35 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import MovieInfo from '../components/movieContents/MovieInfo';
-import ExpertEvaluation from '../components/movieContents/ExpertEvaluation';
+import UserText from '../components/movieContents/UserText';
 import Comment from '../components/movieContents/Comment';
-import { cmmtGetAjaxAction } from '../modules/MovieComment';
+import { contentsGetAjaxAction } from '../modules/MovieContents';
 
-const movieContent = () => {
+const movieContent = ({ match }) => {
+	// eslint-disable-next-line react-hooks/rules-of-hooks
 	const dispatch = useDispatch();
-	const commentList = useSelector(state => state.MovieComment.commentList);
-	const cmmtGetAjax = useCallback(() => {
-		dispatch(cmmtGetAjaxAction());
-	}, [dispatch])
+	// eslint-disable-next-line react-hooks/rules-of-hooks
+	const { contentsList } = useSelector((state) => ({
+		contentsList: state.MovieContents.contentsInfo,
+	}));
+	// eslint-disable-next-line react-hooks/rules-of-hooks
+	const contentsGetAjax = useCallback(
+		(boardNo) => {
+			dispatch(contentsGetAjaxAction(boardNo));
+		},
+		[dispatch]
+	);
+
+	// eslint-disable-next-line react-hooks/rules-of-hooks
+	useEffect(() => {
+		contentsGetAjax(match.params.id);
+	}, [match.params.id]);
 
 	return (
 		<div className="movieContents">
-			<MovieInfo />
-			<ExpertEvaluation />
-			<Comment cmmtGetAjax={cmmtGetAjax} commentList={commentList} />
+			<MovieInfo contentsList={contentsList} />
+			<UserText contentsList={contentsList} />
+			<Comment contentsList={contentsList} />
 		</div>
 	);
 };

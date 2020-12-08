@@ -1,45 +1,49 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import './MovieContents.css';
-import axios from "axios";
+import axios from 'axios';
 
-const comment = ({ cmmtGetAjax, commentList }) => {
-  const [cmmt, setCmmt] = useState("");
-  const [star, setStar] = useState("");
+const comment = ({ contentsList }) => {
+	// eslint-disable-next-line react-hooks/rules-of-hooks
+	const [cmmt, setCmmt] = useState('');
+	// eslint-disable-next-line react-hooks/rules-of-hooks
 
-  // 댓글 등록 함수
-  const cmmtSubmitHandler = () => {
-    axios
-      .post("https://final.cinephile.kro.kr/movies", {
-        usercomment: cmmt,
-        star: star,
-      })
-      .then((res) => {
-        cmmtGetAjax();
-        setCmmt("");
-        setStar("");
-      });
-  };
+	// 댓글 등록 함수
+	const cmmtSubmitHandler = (e) => {
+		e.preventDefault();
+		axios
+			.post('https://final.cinephile.kro.kr/board/comment', {
+				usercomment: cmmt,
+			})
+			.then((res) => {
+				setCmmt('');
+			})
+			.catch((error) => {
+				setCmmt('');
+			});
+	};
 
-  // 컴포넌트 마운트 시 댓글 불러오기
-  useEffect(() => {
-    cmmtGetAjax();
-  }, [commentList])
+	// 컴포넌트 마운트 시 댓글 불러오기
+	// eslint-disable-next-line react-hooks/rules-of-hooks
 
-  return (
-    <div className="movie__detail">
-      <div className="comment__box">
-        <div className="username">홍길동</div>
-        <div className="rating" value={star} onChange={(e) => setStar(e.target.value)}>
-          별점
-        </div>
-        {/* 별 버튼 구현하면 일부 수정 필요 */}
-        <textarea className="user__comment" type="text" value={cmmt} onChange={(e) => setCmmt(e.target.value)}></textarea>
-        <button className="submit" onClick={() => cmmtSubmitHandler()}>
-          Submit
-        </button>
-      </div>
-    </div>
-  );
+	return (
+		<div className="movie__detail">
+			{contentsList.map((comment) => {
+				return (
+					<div className="comment__box" key={comment.id}>
+						<div>ID: {comment.id}</div>
+						<div className="commentName">{comment.name}</div>
+						<div className="commentBody">{comment.body}</div>
+					</div>
+				);
+			})}
+			<form type="submit">
+				<textarea className="user__comment" type="text" value={cmmt} onChange={(e) => setCmmt(e.target.value)}></textarea>
+				<button type="submit" onClick={cmmtSubmitHandler}>
+					Submit
+				</button>
+			</form>
+		</div>
+	);
 };
 
 export default comment;

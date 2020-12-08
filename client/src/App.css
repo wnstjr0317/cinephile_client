@@ -17,10 +17,16 @@
 }
 .main {
 	float: left;
+	width: 82%;
 	padding-top: 200px;
-	width: 100%;
+	margin-left: 200px;
 	box-sizing: border-box;
+
 	/* border: 1px solid red; */
+}
+.movieContents {
+	padding-top: 200px;
+	margin-left: 250px;
 }
 .logo {
 	/* border: 1px solid blue; */
@@ -41,7 +47,7 @@
 	justify-content: center;
 	align-items: center;
 	position: relative;
-	top: 30px;
-
+	top: 70px;
+	left: 100px;
 	height: 30px;
 }

@@ -4,6 +4,7 @@ import SideBar from './containers/SideBar';
 import Main from './containers/Main';
 import Header from './containers/Header';
 import MovieContents from './containers/MovieContents';
+import Board from './containers/Board';
 
 function App() {
 	return (
@@ -24,10 +25,10 @@ function App() {
 			<Route
 				exact
 				path="/write"
-				render={() => {
+				render={({ match }) => {
 					return (
 						<div className="wrapper">
-							<Header />
+							<Header match={match} />
 							<SideBar />
 						</div>
 					);
@@ -35,13 +36,26 @@ function App() {
 			/>
 			<Route
 				exact
-				path="/read/:id"
-				render={() => {
+				path="/board"
+				render={({ history, match }) => {
 					return (
 						<div className="wrapper">
 							<Header />
 							<SideBar />
-							<MovieContents />
+							<Board />
+						</div>
+					);
+				}}
+			/>
+			<Route
+				exact
+				path="/board/:id"
+				render={({ history, match }) => {
+					return (
+						<div className="wrapper">
+							<Header />
+							<SideBar />
+							<MovieContents history={history} match={match} />
 						</div>
 					);
 				}}

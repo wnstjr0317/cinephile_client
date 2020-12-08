@@ -1,13 +1,14 @@
 import React from 'react';
-import './Main.css';
+import './Board.css';
 import { Link } from 'react-router-dom';
 
-const MovieList = ({ movieList }) => {
+const MovieList = ({ boardList }) => {
+	console.log(boardList);
 	return (
-		<div className="movie__list">
-			{movieList.map((el) => {
+		<div className="boardList">
+			{boardList.map((el) => {
 				return (
-					<Link to={`/board/${el.id}`} className="Contents" key={el.id}>
+					<Link to={`/board/${el.id}`} className="contents" key={el.id}>
 						<img src={el.thumbnailUrl} />
 						<div className="title">{el.title}</div>
 					</Link>

@@ -3,12 +3,14 @@
 	margin: 70px 10px 0 0;
 	height: 1000px;
 	font-size: 20px;
+	position: fixed;
 }
 .sideBarToggle {
 	font-size: 30px;
 	font-weight: 100;
 	margin: 15px;
 	user-select: none;
+	position: fixed;
 }
 .signIn {
 	margin-top: 50px;
@@ -40,7 +42,7 @@
 	width: 500px;
 	height: 500px;
 	z-index: 9999;
-	position: absolute;
+	position: fixed;
 	left: 50%;
 	top: 50px;
 	margin-left: -200px;
@@ -71,8 +73,8 @@ button {
 	/* left: 45%; */
 	color: cornsilk;
 	display: block;
-	margin: 25px;
-	transform: translate(70px, 30px);
+	margin-bottom: 5px;
+	transform: translate(95px, 5px);
 }
 a {
 	width: 100%;
@@ -124,4 +126,7 @@ svg {
 	position: relative;
 
 	transform: translate(70px, 30px);
+}
+.board {
+	color: black;
 }

@@ -34,7 +34,7 @@ const movieReducer = (state = movieInitialState, action) => {
 		case MOVIE_GET_SUCCESS:
 			return result;
 		case MOVIE_GET_FAILURE:
-			return result;
+			return [...state, result];
 		default:
 			return state;
 	}

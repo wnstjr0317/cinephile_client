@@ -17,7 +17,7 @@
 }
 .main {
 	float: left;
-	width: 82%;
+	width: 83%;
 	padding-top: 200px;
 	margin-left: 200px;
 	box-sizing: border-box;
@@ -30,7 +30,7 @@
 }
 .logo {
 	/* border: 1px solid blue; */
-	width: 75%;
+	width: 90%;
 	background: url(./Main_Logo.png) no-repeat;
 	height: 80%;
 
@@ -48,6 +48,6 @@
 	align-items: center;
 	position: relative;
 	top: 70px;
-	left: 100px;
+	left: -70px;
 	height: 30px;
 }

@@ -53,7 +53,7 @@ function CreatePage() {
 	};
 
 	return (
-		<div style={{ maxWidth: '700px', margin: '2rem auto', marginTop: '300px' }}>
+		<div style={{ maxWidth: '700px', margin: '2rem auto' }}>
 			<div style={{ textAlign: 'center' }}>
 				<h1>게시글 작성하기</h1>
 			</div>

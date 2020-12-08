@@ -1,11 +1,11 @@
 import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import SideBar from '../components/SideBar/index';
+import SideBar from '../components/sideBar/index';
 import { toggleSwitchAction, loginSwitchAction, signUpSwitchAction } from '../modules/SideBar';
 import { loginEmailAction, signInAjaxAction, signOutAjaxAction, loginPasswordAction } from '../modules/SignIn';
 import { signUpAjaxAction, signUpPasswordAction, signUpEmailAction, signUpUsernameAction, signUpSexAction, signUpAgeAction } from '../modules/SignUp';
-import SignIn from '../components/SideBar/SignIn';
-import SignUp from '../components/SideBar/SignUp';
+import SignIn from '../components/sideBar/SignIn';
+import SignUp from '../components/sideBar/SignUp';
 const containerSideBar = () => {
 	// eslint-disable-next-line react-hooks/rules-of-hooks
 	const { toggleSwitch, signUpSex, loginSwitch, signUpSwitch, loginEmail, loginPassword, signUpUsername, signUpPassword, signUpEmail, signUpAge, isSignUp, isLogin, isLogOut } = useSelector(

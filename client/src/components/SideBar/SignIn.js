@@ -13,14 +13,7 @@ const SignIn = ({ isLogin, signInAjax, loginSwitch, modalSwitch, loginModal, log
 		email: '#ff8787',
 		password: '#ff8787',
 	});
-	const REST_API_KEY = 'c49145b5d9bfdeb487ab57eb34d14c57';
-	const REDIRECT_URI_KA = 'http://localhost:3000/users/kakao';
 
-	const CLIENT_ID = 'Y_LrBu8baSORi3c5DdFM';
-	const REDIRECT_URI_NA = 'http://localhost:3000/users/naver';
-
-	const APP_ID = '871172790317447';
-	const REDIRECT_URI_FA = 'http://localhost:3000/users/facebook';
 
 	useEffect(() => {
 		console.log(certificate);

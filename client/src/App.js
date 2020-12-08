@@ -5,6 +5,7 @@ import Main from './containers/Main';
 import Header from './containers/Header';
 import MovieContents from './containers/MovieContents';
 import Board from './containers/Board';
+import CreateText from './components/movieContents/CreateText';
 
 function App() {
 	return (
@@ -30,6 +31,7 @@ function App() {
 						<div className="wrapper">
 							<Header match={match} />
 							<SideBar />
+							<CreateText />
 						</div>
 					);
 				}}

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const SideBar = ({ isLogOut, signOutAjax, toggleSwitch, signUpSwitch, loginSwitch, toggle, loginModal, signUpModal }) => {
 	const toggleEventHandler = () => {
 		return toggleSwitch
-			? { transform: 'translateX(0px)', width: '15%', transition: 'all 2.5s', opacity: 1, marginLeft: '15px' }
+			? { transform: 'translateX(0px)', width: '16.7%', transition: 'all 2.5s', opacity: 0.4, marginLeft: '-25px' }
 			: { transform: 'translateX(-500px)', width: '0%', opacity: 0, transition: 'all 2s', color: 'white' };
 	};
 
@@ -20,34 +20,39 @@ const SideBar = ({ isLogOut, signOutAjax, toggleSwitch, signUpSwitch, loginSwitc
 			</div>
 			{cookie ? (
 				<div className="sideBar" style={toggleEventHandler()}>
-					<span>chiione님 반갑습니다.</span>
-					<div className="signIn" onClick={() => !signUpSwitch && loginSwitch === false && loginModal()}>
-						마이 인포
-					</div>
-					<Link className="board" to="/board">
-						Board
-					</Link>
-					<div
-						className="logout"
-						onClick={() => {
-							signOutAjax();
-						}}
-					>
-						로그아웃
-					</div>
+					<ul>
+						<img src="" alt="" />
+						<span>chiione님</span>
+						<li className="signIn" onClick={() => !signUpSwitch && loginSwitch === false && loginModal()}>
+							마이 인포
+						</li>
+						<li
+							className="logout"
+							onClick={() => {
+								signOutAjax();
+							}}
+						>
+							로그아웃
+						</li>
+						<Link className="board" to="/board">
+							Board
+						</Link>
+					</ul>
 				</div>
 			) : (
 				<div className="sideBar" style={toggleEventHandler()}>
-					<span>로그인을 해주세요.</span>
-					<div className="signIn" onClick={() => !signUpSwitch && loginSwitch === false && loginModal()}>
-						로그인
-					</div>
-					<Link className="board" to="/board">
-						Board
-					</Link>
-					<div className="signUp" onClick={() => !loginSwitch && signUpSwitch === false && signUpModal()}>
-						회원가입
-					</div>
+					<ul>
+						<span>로그인을 해주세요.</span>
+						<li className="signIn" onClick={() => !signUpSwitch && loginSwitch === false && loginModal()}>
+							로그인
+						</li>
+						<li className="signUp" onClick={() => !loginSwitch && signUpSwitch === false && signUpModal()}>
+							회원가입
+						</li>
+						<Link className="board" to="/board">
+							Board
+						</Link>
+					</ul>
 				</div>
 			)}
 		</>

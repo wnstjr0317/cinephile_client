@@ -44,12 +44,10 @@ export const signOutAjaxAction = () => (dispatch) => {
 		.then((res) => {
 			document.cookie = 'cookie' + '=; expires=Thu, 25 Oct 1990 00:00:00 GMT;';
 			document.cookie = 'token' + '=; expires=Thu, 25 Oct 1990 00:00:10 GMT;';
-
 			dispatch({
 				type: LOGOUT,
 				result: res.data,
 			});
-			alert('로그아웃 완료');
 		})
 		.catch((error) => {
 			dispatch({

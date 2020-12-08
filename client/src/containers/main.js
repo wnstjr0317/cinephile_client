@@ -8,7 +8,7 @@ import Footer from '../components/main/Footer';
 import '../App.css';
 import { movieGetAjaxAction } from '../modules/MovieList';
 
-const main = () => {
+const Main = () => {
 	// eslint-disable-next-line react-hooks/rules-of-hooks
 	const { movieList } = useSelector((state) => ({
 		movieList: state.MovieList,
@@ -34,4 +34,4 @@ const main = () => {
 	);
 };
 
-export default React.memo(main);
+export default React.memo(Main);

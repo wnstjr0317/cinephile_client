@@ -13,14 +13,6 @@ const SignIn = ({ isLogin, signInAjax, loginSwitch, modalSwitch, loginModal, log
 		email: '#ff8787',
 		password: '#ff8787',
 	});
-	const REST_API_KEY = 'c49145b5d9bfdeb487ab57eb34d14c57';
-	const REDIRECT_URI_KA = 'http://localhost:3000/users/kakao';
-
-	const CLIENT_ID = 'Y_LrBu8baSORi3c5DdFM';
-	const REDIRECT_URI_NA = 'http://localhost:3000/users/naver';
-
-	const APP_ID = '871172790317447';
-	const REDIRECT_URI_FA = 'http://localhost:3000/users/facebook';
 
 	useEffect(() => {
 		console.log(certificate);
@@ -51,6 +43,7 @@ const SignIn = ({ isLogin, signInAjax, loginSwitch, modalSwitch, loginModal, log
 			</div>
 			<form onSubmit={(e) => singInHandler(e)}>
 				<input
+					className="sideBarInput"
 					required="required"
 					value={loginEmail}
 					type="email"
@@ -66,6 +59,7 @@ const SignIn = ({ isLogin, signInAjax, loginSwitch, modalSwitch, loginModal, log
 				/>
 				<FontAwesomeIcon icon={faUser} style={{ color: certificate.email }} />
 				<input
+					className="sideBarInput"
 					required="required"
 					value={loginPassword}
 					type="password"
@@ -81,22 +75,22 @@ const SignIn = ({ isLogin, signInAjax, loginSwitch, modalSwitch, loginModal, log
 				/>
 				<FontAwesomeIcon icon={faUser} style={{ color: certificate.password }} />
 
-				<button className="signin__button" type="submit">
+				<button className="sideBaButton" type="submit">
 					SignIn
 				</button>
 			</form>
-			<button className="signin__button">
-				{/* <a href={`https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI_KA}`}>카카오톡 로그인</a> */}
+			{/* <button className="sideBaButton">
+				<a href={`https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI_KA}`}>카카오톡 로그인</a>
 			</button>
-			<button className="signin__button">
-				{/* <a href={`https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI_NA}&state=test`}>네이버 로그인</a> */}
+			<button className="sideBaButton">
+				<a href={`https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI_NA}&state=test`}>네이버 로그인</a>
 			</button>
-			<button className="signin__button">
-				{/* <a href={`https://www.facebook.com/v9.0/dialog/oauth?client_id=${APP_ID}&redirect_uri=${REDIRECT_URI_FA}&state=test`}>페이스북 로그인</a> */}
+			<button className="sideBaButton">
+				<a href={`https://www.facebook.com/v9.0/dialog/oauth?client_id=${APP_ID}&redirect_uri=${REDIRECT_URI_FA}&state=test`}>페이스북 로그인</a>
 			</button>
-			<button className="signin__button">
+			<button className="sideBaButton">
 				<a href={`https://final.cinephile.kro.kr/users/kakao/unlink`}>연결 끊기</a>
-			</button>
+			</button> */}
 		</div>
 	);
 };

@@ -22,19 +22,19 @@ const SideBar = ({ isLogOut, signOutAjax, toggleSwitch, signUpSwitch, loginSwitc
 				<div className="sideBar" style={toggleEventHandler()}>
 					<ul>
 						<img src="" alt="" />
-						<span>chiione님</span>
-						<li className="signIn" onClick={() => !signUpSwitch && loginSwitch === false && loginModal()}>
+						<span className="nickName">chiione님</span>
+						<li className="sideBarList" onClick={() => !signUpSwitch && loginSwitch === false && loginModal()}>
 							마이 인포
 						</li>
 						<li
-							className="logout"
+							className="sideBarList"
 							onClick={() => {
 								signOutAjax();
 							}}
 						>
 							로그아웃
 						</li>
-						<Link className="board" to="/board">
+						<Link className="sideBarList" to="/board">
 							Board
 						</Link>
 					</ul>
@@ -42,14 +42,14 @@ const SideBar = ({ isLogOut, signOutAjax, toggleSwitch, signUpSwitch, loginSwitc
 			) : (
 				<div className="sideBar" style={toggleEventHandler()}>
 					<ul>
-						<span>로그인을 해주세요.</span>
-						<li className="signIn" onClick={() => !signUpSwitch && loginSwitch === false && loginModal()}>
+						<span className="nickName">로그인을 해주세요.</span>
+						<li className="sideBarList" onClick={() => !signUpSwitch && loginSwitch === false && loginModal()}>
 							로그인
 						</li>
-						<li className="signUp" onClick={() => !loginSwitch && signUpSwitch === false && signUpModal()}>
+						<li className="sideBarList" onClick={() => !loginSwitch && signUpSwitch === false && signUpModal()}>
 							회원가입
 						</li>
-						<Link className="board" to="/board">
+						<Link className="sideBarList" to="/board">
 							Board
 						</Link>
 					</ul>

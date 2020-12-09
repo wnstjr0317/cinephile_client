@@ -2,18 +2,18 @@
 	/* border: 1px solid blue; */
 	display: flex;
 	max-width: 100%;
-	background-color: rgb(255, 255, 255);
+	background-color: rgb(245, 247, 246);
 }
 .header {
 	position: absolute;
-	width: 83%;
+	width: 60%;
 	height: 200px;
 	z-index: 1;
 	/* border: 1px solid blue; */
 	text-align: center;
 	display: flex;
 	box-sizing: border-box;
-	margin-left: 17%;
+	left: 31%;
 }
 .main {
 	float: left;
@@ -32,9 +32,10 @@
 	/* border: 1px solid blue; */
 	width: 90%;
 	background: url(./Main_Logo.png) no-repeat;
+	background-size: 300px 200px;
 	height: 80%;
 
-	background-position: center -30px;
+	background-position: center;
 }
 .writingButton {
 	background-color: white;
@@ -48,6 +49,8 @@
 	align-items: center;
 	position: relative;
 	top: 70px;
-	left: -70px;
 	height: 30px;
+}
+a {
+	text-decoration: none;
 }

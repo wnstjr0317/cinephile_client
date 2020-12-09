@@ -33,12 +33,12 @@ function CreatePage() {
 		// }
 		// login 안 되어 있는 상태에서 글쓰기 시도할 때
 
-		const variables = {
-			title: title,
-			content: content,
-			// userID: user.userData._id
-			// props 로 유저인포 받아오면 포스트 요청 시 유저ID 함께 보내야 함
-		};
+		// const variables = {
+		// 	title: title,
+		// 	content: content,
+		// 	userID: user.userData._id
+		// 	// props 로 유저인포 받아오면 포스트 요청 시 유저ID 함께 보내야 함
+		// };
 
 		// axios.post("https://final.cinephile.kro.kr/board/write:", variables).then((response) => {
 		//   if (response) {

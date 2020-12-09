@@ -6,13 +6,16 @@ const comment = ({ contentsList }) => {
 	// eslint-disable-next-line react-hooks/rules-of-hooks
 	const [cmmt, setCmmt] = useState('');
 	// eslint-disable-next-line react-hooks/rules-of-hooks
-
+	console.log(contentsList);
 	// 댓글 등록 함수
 	const cmmtSubmitHandler = (e) => {
 		e.preventDefault();
 		axios
 			.post('https://final.cinephile.kro.kr/board/comment', {
 				usercomment: cmmt,
+				//users_id:
+				//articl_id:
+				//text:
 			})
 			.then((res) => {
 				setCmmt('');

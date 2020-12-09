@@ -28,15 +28,14 @@ export const signInAjaxAction = (signInInfo) => (dispatch) => {
 		.then((res) => {
 			dispatch({
 				type: SIGNIN_POST_SUCCESS,
-				result: res.data,
+				userInfo: res.data,
 			});
 		})
 		.catch((error) => {
 			dispatch({
 				type: SIGNIN_POST_FAILURE,
-				result: error,
+				error,
 			});
-			alert('다시 입력하세요.');
 		});
 };
 export const signOutAjaxAction = () => (dispatch) => {
@@ -46,13 +45,13 @@ export const signOutAjaxAction = () => (dispatch) => {
 			document.cookie = 'token' + '=; expires=Thu, 25 Oct 1990 00:00:10 GMT;';
 			dispatch({
 				type: LOGOUT,
-				result: res.data,
+				userInfo: res.data,
 			});
 		})
 		.catch((error) => {
 			dispatch({
 				type: LOGOUT,
-				result: error,
+				error,
 			});
 			alert('로그아웃 실패');
 		});
@@ -68,10 +67,11 @@ const loginInitialState = {
 	error: false,
 	isLogin: false,
 	isLogOut: true,
+	userInfo: null,
 };
 
 const loginReducer = (state = loginInitialState, action) => {
-	const { loginEmail, loginPassword, result } = action;
+	const { loginEmail, loginPassword, userInfo, error } = action;
 	switch (action.type) {
 		case LOGIN_EMAIL:
 			return Object.assign({}, state, {
@@ -85,7 +85,6 @@ const loginReducer = (state = loginInitialState, action) => {
 			return Object.assign({}, state, {
 				pending: true,
 				error: false,
-				isLogin: false,
 				isLogOut: true,
 			});
 		case SIGNIN_POST_SUCCESS:
@@ -93,7 +92,7 @@ const loginReducer = (state = loginInitialState, action) => {
 				pending: false,
 				isLogin: true,
 				isLogOut: false,
-				result,
+				userInfo,
 			});
 		case SIGNIN_POST_FAILURE:
 			return Object.assign({}, state, {
@@ -101,13 +100,12 @@ const loginReducer = (state = loginInitialState, action) => {
 				error: true,
 				isLogin: false,
 				isLogOut: true,
-				result,
+				error,
 			});
 		case LOGOUT:
 			return Object.assign({}, state, {
 				isLogOut: true,
 				isLogin: false,
-				result,
 			});
 
 		default:

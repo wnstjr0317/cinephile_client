@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import QuillEditor from './editor/QuillEditor';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useHistory } from "react-router-dom";
 
-function CreatePage() {
-	// const user = useSelector(state => state.user);
-	// redux 에서 props 받아와야 함 => userInfo 사용하기 위해
 
+function CreateText({ userInfo, url }) {
+
+	const history = useHistory();
 	const [title, setTitle] = useState('');
 	const [content, setContent] = useState('');
 	const [files, setFiles] = useState([]);
@@ -25,31 +25,23 @@ function CreatePage() {
 
 	const onSubmit = (event) => {
 		event.preventDefault();
-
 		setContent('');
-
-		// if (user.userData && !user.userData.isAuth) {
-		//     return alert('Please Log in first');
-		// }
-		// login 안 되어 있는 상태에서 글쓰기 시도할 때
 
 		const variables = {
 			title: title,
-			content: content,
-			// userID: user.userData._id
-			// props 로 유저인포 받아오면 포스트 요청 시 유저ID 함께 보내야 함
+			text: content,
+			url: url,
+			user_id: userInfo.id
+			// movies_id 도 보내야 하나? 아님 url 만 보내면 서버에서 알아서 무비id 붙여서 저장하나?
 		};
 
-		// axios.post("https://final.cinephile.kro.kr/board/write:", variables).then((response) => {
-		//   if (response) {
-		//     message.success("Post Created!");
-
-		//     setTimeout(() => {
-		//       // props.
-		//       // history.push('/board')
-		//     }, 1000);
-		//   }
-		// });
+		axios.post("https://final.cinephile.kro.kr/board/write", variables).then((res) => {
+		  if (res.status === 200) {
+		    setTimeout(() => {
+		      history.push('/board')
+		    }, 500);
+		  }
+		});
 	};
 
 	return (
@@ -70,4 +62,4 @@ function CreatePage() {
 	);
 }
 
-export default CreatePage;
+export default CreateText;

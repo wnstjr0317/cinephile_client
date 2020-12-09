@@ -8,12 +8,13 @@ import SignIn from '../components/sideBar/SignIn';
 import SignUp from '../components/sideBar/SignUp';
 const containerSideBar = () => {
 	// eslint-disable-next-line react-hooks/rules-of-hooks
-	const { toggleSwitch, signUpSex, loginSwitch, signUpSwitch, loginEmail, loginPassword, signUpUsername, signUpPassword, signUpEmail, signUpAge, isSignUp, isLogin, isLogOut } = useSelector(
+	const { toggleSwitch, signUpSex, userInfo, loginSwitch, signUpSwitch, loginEmail, loginPassword, signUpUsername, signUpPassword, signUpEmail, signUpAge, isSignUp, isLogin, isLogOut } = useSelector(
 		(state) => ({
 			toggleSwitch: state.SideBar.toggleSwitch,
 			loginSwitch: state.SideBar.loginSwitch,
 			signUpSwitch: state.SideBar.signUpSwitch,
 			loginEmail: state.SignIn.loginEmail,
+			userInfo: state.SignIn.userInfo,
 			loginPassword: state.SignIn.loginPassword,
 			signUpPassword: state.SignUp.signUpPassword,
 			signUpEmail: state.SignUp.signUpEmail,
@@ -27,7 +28,7 @@ const containerSideBar = () => {
 	);
 	//회원가입만 알림, 로그인 및 로그아웃은 알림 없음 => 사이드 바 렌더링 변경만!
 	//useSelector 사용하여 state 값 호출
-
+	console.log(userInfo);
 	const modalSwitch = (sign) => {
 		return sign ? { display: 'block' } : { display: 'none' };
 	};
@@ -129,6 +130,7 @@ const containerSideBar = () => {
 	return (
 		<>
 			<SideBar
+				userInfo={userInfo}
 				toggle={toggle}
 				signOutAjax={signOutAjax}
 				isLogOut={isLogOut}

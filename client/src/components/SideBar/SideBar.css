@@ -71,29 +71,21 @@
 	transform: translate(-80px, 0px);
 	margin: 5px;
 }
-/* label {
-	display: inline;
-}
+
 select {
 	width: 100px;
 	height: 30px;
 	position: relative;
-	transform: translate(-200px, 0px);
-	margin-left: 20px;
+	transform: translate(90px, 70px);
+	/* margin-left: 20px; */
 	font-size: 10px;
+	float: left;
 	font-weight: 100;
 	color: rgb(80, 74, 75);
 	outline: none;
-} */
-
-.email {
-	margin-bottom: 20px;
 }
-.password {
-	margin-bottom: 20px;
-}
-.username {
-	margin-bottom: 30px;
+.age {
+	transform: translate(220px, 6px);
 }
 .signup__button {
 	position: relative;
@@ -148,4 +140,11 @@ select {
 	background-color: rgb(189, 108, 98);
 	padding: 10px;
 	border-radius: 100%;
+}
+.signUpButton {
+	top: 130px;
+	left: -90px;
+}
+.sotialLoginButton {
+	color: rgb(255, 255, 255);
 }

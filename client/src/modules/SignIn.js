@@ -3,6 +3,7 @@ import axios from 'axios';
 axios.defaults.withCredentials = true;
 const LOGIN_EMAIL = 'LOGIN_EMAIL';
 const LOGIN_PASSWORD = 'LOGIN_PASSWORD';
+const COOKIE_LOGIN = 'COOKIE_LOGIN';
 const SIGNIN_POST_PENDING = 'SIGNIN_POST_PENDING';
 const SIGNIN_POST_SUCCESS = 'SIGNIN_POST_SUCCESS';
 const SIGNIN_POST_FAILURE = 'SIGNIN_POST_FAILURE';
@@ -13,6 +14,12 @@ export const loginEmailAction = (loginEmail) => {
 	return {
 		type: LOGIN_EMAIL,
 		loginEmail,
+	};
+};
+export const cookieLoginAction = (userInfo) => {
+	return {
+		type: COOKIE_LOGIN,
+		userInfo,
 	};
 };
 
@@ -26,26 +33,29 @@ export const signInAjaxAction = (signInInfo) => (dispatch) => {
 	dispatch({ type: SIGNIN_POST_PENDING });
 	signInPost(signInInfo)
 		.then((res) => {
+			sessionStorage.setItem('userInfo', JSON.stringify(res.data));
 			dispatch({
 				type: SIGNIN_POST_SUCCESS,
 				userInfo: res.data,
 			});
 		})
 		.catch((error) => {
+			alert('로그인 실패');
 			dispatch({
 				type: SIGNIN_POST_FAILURE,
 				error,
 			});
 		});
 };
-export const signOutAjaxAction = () => (dispatch) => {
+export const signOutAjaxAction = (e) => (dispatch) => {
 	signOutPost()
 		.then((res) => {
+			sessionStorage.clear();
 			document.cookie = 'cookie' + '=; expires=Thu, 25 Oct 1990 00:00:00 GMT;';
 			document.cookie = 'token' + '=; expires=Thu, 25 Oct 1990 00:00:10 GMT;';
 			dispatch({
 				type: LOGOUT,
-				userInfo: res.data,
+				userInfo: null,
 			});
 		})
 		.catch((error) => {
@@ -65,8 +75,6 @@ const loginInitialState = {
 	loginPassword: '',
 	pending: false,
 	error: false,
-	isLogin: false,
-	isLogOut: true,
 	userInfo: null,
 };
 
@@ -81,31 +89,29 @@ const loginReducer = (state = loginInitialState, action) => {
 			return Object.assign({}, state, {
 				loginPassword,
 			});
+		case COOKIE_LOGIN:
+			return Object.assign({}, state, {
+				userInfo,
+			});
 		case SIGNIN_POST_PENDING:
 			return Object.assign({}, state, {
 				pending: true,
 				error: false,
-				isLogOut: true,
 			});
 		case SIGNIN_POST_SUCCESS:
 			return Object.assign({}, state, {
 				pending: false,
-				isLogin: true,
-				isLogOut: false,
 				userInfo,
 			});
 		case SIGNIN_POST_FAILURE:
 			return Object.assign({}, state, {
 				pending: false,
-				error: true,
-				isLogin: false,
-				isLogOut: true,
 				error,
 			});
 		case LOGOUT:
 			return Object.assign({}, state, {
-				isLogOut: true,
-				isLogin: false,
+				error,
+				userInfo,
 			});
 
 		default:

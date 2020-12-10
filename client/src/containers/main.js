@@ -23,7 +23,6 @@ const Main = () => {
 	useEffect(() => {
 		movieListUpdate();
 	}, []);
-	console.log(movieList);
 
 	return (
 		<div className="main">

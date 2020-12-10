@@ -2,11 +2,15 @@
 	/* border: 1px solid blue; */
 	margin-left: 80px;
 }
-.contents {
+.boardContents {
 	border: 1px solid rgb(200, 200, 220);
 	display: flex;
 	margin-bottom: 10px;
 }
-.title {
-	margin-left: 10px;
+.boardTitle {
+	/* border: 1px solid blue; */
+}
+.boardText {
+	border-left: 1px solid rgb(202, 202, 218);
+	padding-left: 10px;
 }

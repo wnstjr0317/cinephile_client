@@ -15,7 +15,7 @@ const CONTENTS_GET_FAILURE = 'CONTENTS_GET_FAILURE';
 // 선택된 영화에 해당하는 댓글만 받아와야 함
 // 포스터에 걸리는 onClick 이벤트에 맞춰서 end point 수정 필요
 
-const contentsGet = async (boardNo) => boardNo && (await axios.get(`https://jsonplaceholder.typicode.com/comments/${boardNo}`));
+const contentsGet = async (boardNo) => boardNo && (await axios.get(`http://localhost:3000/board/article/${boardNo}`));
 
 // 액션 생성자
 export const contentsGetAjaxAction = (boardNo) => (dispatch) => {
@@ -37,9 +37,9 @@ export const contentsGetAjaxAction = (boardNo) => (dispatch) => {
 
 // initialState
 const contentsInitialState = {
-	pending: false,
+	pending: true,
 	error: false,
-	contentsInfo: [],
+	contentsInfo: {},
 };
 
 // 리듀서
@@ -54,13 +54,12 @@ const contentsReducer = (state = contentsInitialState, action) => {
 		case CONTENTS_GET_SUCCESS:
 			return Object.assign({}, state, {
 				pending: false,
-				contentsInfo: [result],
+				contentsInfo: result,
 			});
 		case CONTENTS_GET_FAILURE:
 			return Object.assign({}, state, {
 				pending: false,
 				error: true,
-				result,
 			});
 
 		default:

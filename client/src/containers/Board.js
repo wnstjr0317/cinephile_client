@@ -3,7 +3,6 @@ import React, { useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import BoardList from '../components/board/BoardList';
-
 import '../App.css';
 import { boardGetAjaxAction } from '../modules/BoardList';
 

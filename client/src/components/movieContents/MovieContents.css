@@ -1,8 +1,7 @@
 .movieInfo {
 	width: 100%;
-	border: 1px solid blue;
-	height: 300px;
-	box-sizing: border-box;
+	border: 1px solid rgb(195, 195, 218);
+	/* height: 300px; */
 }
 .comment {
 	width: 100%;
@@ -13,7 +12,7 @@
 .writingHeader {
 	width: 100%;
 	box-sizing: border-box;
-	border: 1px solid blue;
+	/* border: 1px solid rgb(161, 161, 181); */
 	height: 300px;
 }
 .comment__box {
@@ -39,4 +38,9 @@
 	margin-top: 30px;
 	height: 100px;
 	resize: none;
+}
+.movieConetents {
+	display: flex;
+}
+.post {
 }

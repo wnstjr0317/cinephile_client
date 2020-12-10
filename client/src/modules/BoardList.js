@@ -5,7 +5,7 @@ const BOARD_GET_PENDING = 'BOARD_GET_PENDING';
 const BOARD_GET_SUCCESS = 'BOARD_GET_SUCCESS';
 const BOARD_GET_FAILURE = 'BOARD_GET_FAILURE';
 
-const boardGet = async () => await axios.get('https://jsonplaceholder.typicode.com/photos');
+const boardGet = async () => await axios.get('http://localhost:3000/board');
 
 export const boardGetAjaxAction = () => (dispatch) => {
 	dispatch({ type: BOARD_GET_PENDING });
@@ -13,7 +13,7 @@ export const boardGetAjaxAction = () => (dispatch) => {
 		.then((res) => {
 			dispatch({
 				type: BOARD_GET_SUCCESS,
-				result: res.data.slice(0, 20),
+				result: res.data,
 			});
 		})
 		.catch((error) => {
@@ -30,7 +30,7 @@ const boardReducer = (state = boardInitialState, action) => {
 	const { result } = action;
 	switch (action.type) {
 		case BOARD_GET_PENDING:
-			return [...state];
+			return state;
 		case BOARD_GET_SUCCESS:
 			return result;
 		case BOARD_GET_FAILURE:

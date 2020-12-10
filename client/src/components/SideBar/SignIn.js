@@ -2,20 +2,20 @@ import React, { useState, useEffect } from 'react';
 
 require('dotenv').config();
 
-const SignIn = ({ isLogin, signInAjax, loginSwitch, modalSwitch, loginModal, loginPassword, loginEmail, loginEmailInput, loginPasswordInput }) => {
+const SignIn = ({ signInAjax, loginSwitch, modalSwitch, loginModal, loginPassword, loginEmail, loginEmailInput, loginPasswordInput }) => {
 	const inputReset = () => {
 		loginEmailInput('');
 		loginPasswordInput('');
 		loginModal();
 	};
-	const [certificate, setCertificate] = useState({
-		email: '#ff8787',
-		password: '#ff8787',
-	});
+	// const [certificate, setCertificate] = useState({
+	// 	email: '#ff8787',
+	// 	password: '#ff8787',
+	// });
 
-	useEffect(() => {
-		console.log(certificate);
-	}, [certificate.email, certificate.password, isLogin]);
+	// useEffect(() => {
+	// 	console.log(certificate);
+	// }, [certificate.email, certificate.password, isLogin]);
 	const singInHandler = (e) => {
 		e.preventDefault();
 		if (loginEmail.length < 12) {
@@ -25,7 +25,6 @@ const SignIn = ({ isLogin, signInAjax, loginSwitch, modalSwitch, loginModal, log
 		} else {
 			signInAjax({ email: loginEmail, password: loginPassword });
 			loginModal();
-			console.log('signIn: ', isLogin);
 			console.log('email:', loginEmail);
 			console.log('password: ', loginPassword);
 		}
@@ -44,11 +43,11 @@ const SignIn = ({ isLogin, signInAjax, loginSwitch, modalSwitch, loginModal, log
 					type="email"
 					placeholder="email"
 					onChange={(e) => {
-						if (e.target.value.length < 12) {
-							setCertificate(Object.assign({}, certificate, { email: 'ff8787' }));
-						} else {
-							setCertificate(Object.assign({}, certificate, { email: 'black' }));
-						}
+						// if (e.target.value.length < 12) {
+						// 	setCertificate(Object.assign({}, certificate, { email: 'ff8787' }));
+						// } else {
+						// 	setCertificate(Object.assign({}, certificate, { email: 'black' }));
+						// }
 						loginEmailInput(e.target.value);
 					}}
 				/>
@@ -60,11 +59,11 @@ const SignIn = ({ isLogin, signInAjax, loginSwitch, modalSwitch, loginModal, log
 					type="password"
 					placeholder="password"
 					onChange={(e) => {
-						if (e.target.value.length < 8) {
-							setCertificate(Object.assign({}, certificate, { password: 'ff8787' }));
-						} else {
-							setCertificate(Object.assign({}, certificate, { password: 'black' }));
-						}
+						// if (e.target.value.length < 8) {
+						// 	setCertificate(Object.assign({}, certificate, { password: 'ff8787' }));
+						// } else {
+						// 	setCertificate(Object.assign({}, certificate, { password: 'black' }));
+						// }
 						loginPasswordInput(e.target.value);
 					}}
 				/>
@@ -74,18 +73,32 @@ const SignIn = ({ isLogin, signInAjax, loginSwitch, modalSwitch, loginModal, log
 					SignIn
 				</button>
 			</form>
-			{/* <button className="sideBarButton">
-				<a href={`https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI_KA}`}>카카오톡 로그인</a>
+			<button className="sideBarButton">
+				<a
+					className="sotialLoginButton"
+					href={`https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.REACT_APP_REST_API_KEY}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI_KA}`}
+				>
+					카카오톡 로그인
+				</a>
 			</button>
 			<button className="sideBarButton">
-				<a href={`https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI_NA}&state=test`}>네이버 로그인</a>
+				<a
+					className="sotialLoginButton"
+					href={`https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI_NA}&state=test`}
+				>
+					네이버 로그인
+				</a>
 			</button>
 			<button className="sideBarButton">
-				<a href={`https://www.facebook.com/v9.0/dialog/oauth?client_id=${APP_ID}&redirect_uri=${REDIRECT_URI_FA}&state=test`}>페이스북 로그인</a>
+				<a className="sotialLoginButton" href={`https://www.facebook.com/v9.0/dialog/oauth?client_id=${process.env.REACT_APP_APP_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI_FA}&state=test`}>
+					페이스북 로그인
+				</a>
 			</button>
 			<button className="sideBarButton">
-				<a href={`https://final.cinephile.kro.kr/users/kakao/unlink`}>연결 끊기</a>
-			</button> */}
+				<a className="sotialLoginButton" href={`https://final.cinephile.kro.kr/users/kakao/unlink`}>
+					연결 끊기
+				</a>
+			</button>
 		</div>
 	);
 };

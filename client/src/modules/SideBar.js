@@ -22,8 +22,6 @@ export function signUpSwitchAction() {
 
 //action function
 
-//ajax(middleWare)
-
 const toggleInitialState = {
 	toggleSwitch: true,
 	loginSwitch: false,

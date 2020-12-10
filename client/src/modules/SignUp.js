@@ -34,7 +34,7 @@ export const signUpAgeAction = (signUpAge) => ({
 	type: SIGNUP_AGE,
 	signUpAge,
 });
-const signUpPost = async (signUpInfo) => await axios.post(`https://final.cinephile.kro.kr/users/signup`, signUpInfo);
+const signUpPost = async (signUpInfo) => await axios.post(`http://localhost:3000/users/signup`, signUpInfo);
 
 //action function
 export const signUpAjaxAction = (signUpInfo) => (dispatch) => {
@@ -48,11 +48,11 @@ export const signUpAjaxAction = (signUpInfo) => (dispatch) => {
 			alert('회원가입 완료');
 		})
 		.catch((error) => {
+			alert('회원가입 실패');
 			dispatch({
 				type: SIGNUP_POST_FAILURE,
-				result: error,
+				error,
 			});
-			alert('회원가입 실패');
 		});
 };
 
@@ -66,11 +66,10 @@ const signUpInitialState = {
 	signUpAge: '나이',
 	pending: false,
 	error: false,
-	isSignUp: false,
 };
 
 const signUpReducer = (state = signUpInitialState, action) => {
-	const { signUpEmail, signUpPassword, signUpUsername, signUpSex, signUpAge, result } = action;
+	const { signUpEmail, signUpPassword, signUpUsername, signUpSex, signUpAge, result, error } = action;
 	switch (action.type) {
 		case SIGNUP_EMAIL:
 			return Object.assign({}, state, {
@@ -96,20 +95,16 @@ const signUpReducer = (state = signUpInitialState, action) => {
 			return Object.assign({}, state, {
 				pending: true,
 				error: false,
-				isSignUp: false,
 			});
 		case SIGNUP_POST_SUCCESS:
 			return Object.assign({}, state, {
 				pending: false,
-				isSignUp: true,
 				result,
 			});
 		case SIGNUP_POST_FAILURE:
 			return Object.assign({}, state, {
 				pending: false,
-				error: true,
-				isSignUp: false,
-				result,
+				error,
 			});
 
 		default:

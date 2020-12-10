@@ -3,14 +3,13 @@ import './Board.css';
 import { Link } from 'react-router-dom';
 
 const MovieList = ({ boardList }) => {
-	console.log(boardList);
 	return (
 		<div className="boardList">
-			{boardList.map((el) => {
+			{boardList.map((movie) => {
 				return (
-					<Link to={`/board/${el.id}`} className="contents" key={el.id}>
-						<img src={el.thumbnailUrl} />
-						<div className="title">{el.title}</div>
+					<Link to={`/board/${movie.id}`} className="boardContents" key={movie.id}>
+						<div className="boardTitle">{movie.title}</div>
+						<div className="boardText">{movie.text}</div>
 					</Link>
 				);
 			})}

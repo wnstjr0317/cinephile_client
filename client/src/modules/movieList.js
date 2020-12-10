@@ -30,11 +30,11 @@ const movieReducer = (state = movieInitialState, action) => {
 	const { result } = action;
 	switch (action.type) {
 		case MOVIE_GET_PENDING:
-			return [...state];
+			return state;
 		case MOVIE_GET_SUCCESS:
 			return result;
 		case MOVIE_GET_FAILURE:
-			return [...state, result];
+			return result;
 		default:
 			return state;
 	}

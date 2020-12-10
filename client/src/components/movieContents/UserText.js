@@ -1,8 +1,15 @@
-import React from "react";
+import React from 'react';
 
-
-const userText = () => {
-  return <div className="writingHeader">유저 글</div>;
+const userText = ({ contentsList }) => {
+	return (
+		<div className="writingHeader">
+			<div className="userText" key={contentsList.id}>
+				{/* <iframe srcDoc={contentsList.title} style={{ border: 'none' }}></iframe> */}
+				<div className="userTitle">{contentsList.title}</div>
+				<div className="userText">{contentsList.text}</div>
+			</div>
+		</div>
+	);
 };
 
 export default userText;

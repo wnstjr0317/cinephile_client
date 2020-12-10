@@ -216,7 +216,7 @@ class QuillEditor extends React.Component {
       };
       formData.append("file", file);
 
-      axios.post("/api/blog/uploadfiles", formData, config).then((response) => {
+      axios.post("https://final.cinephile.kro.kr/board/write", formData, config).then((response) => {
         if (response.data.success) {
           const quill = this.reactQuillRef.getEditor();
           quill.focus();
@@ -226,7 +226,7 @@ class QuillEditor extends React.Component {
 
           //먼저 노드 서버에다가 이미지를 넣은 다음에   여기 아래에 src에다가 그걸 넣으면 그게
           //이미지 블롯으로 가서  크리에이트가 이미지를 형성 하며 그걸 밸류에서 src 랑 alt 를 가져간후에  editorHTML에 다가 넣는다.
-          quill.insertEmbed(position, "image", { src: "http://localhost:5000/" + response.data.url, alt: response.data.fileName });
+          quill.insertEmbed(position, "image", { src: "http://localhost:3000/" + response.data.url, alt: response.data.fileName });
           quill.setSelection(position + 1);
 
           if (this._isMounted) {
@@ -259,14 +259,14 @@ class QuillEditor extends React.Component {
       };
       formData.append("file", file);
 
-      axios.post("/api/blog/uploadfiles", formData, config).then((response) => {
+      axios.post("https://final.cinephile.kro.kr/board/write", formData, config).then((response) => {
         if (response.data.success) {
           const quill = this.reactQuillRef.getEditor();
           quill.focus();
 
           let range = quill.getSelection();
           let position = range ? range.index : 0;
-          quill.insertEmbed(position, "video", { src: "http://localhost:5000/" + response.data.url, title: response.data.fileName });
+          quill.insertEmbed(position, "video", { src: "http://localhost:3000/" + response.data.url, title: response.data.fileName });
           quill.setSelection(position + 1);
 
           if (this._isMounted) {
@@ -300,7 +300,7 @@ class QuillEditor extends React.Component {
       };
       formData.append("file", file);
 
-      axios.post("/api/blog/uploadfiles", formData, config).then((response) => {
+      axios.post("https://final.cinephile.kro.kr/board/write", formData, config).then((response) => {
         if (response.data.success) {
           const quill = this.reactQuillRef.getEditor();
           quill.focus();
@@ -334,9 +334,8 @@ class QuillEditor extends React.Component {
           <button className="ql-underline" />
           <button className="ql-strike" />
           <button className="ql-insertImage">I</button>
-          <button className="ql-insertVideo">V</button>
-          <button className="ql-insertFile">F</button>
-          <button className="ql-link" />
+          {/* <button className="ql-insertVideo">V</button>
+          <button className="ql-insertFile">F</button> */}
           <button className="ql-video" />
           <button className="ql-blockquote" />
         </div>
@@ -352,7 +351,7 @@ class QuillEditor extends React.Component {
           placeholder={this.props.placeholder}
         />
         <input type="file" accept="image/*" ref={this.inputOpenImageRef} style={{ display: "none" }} onChange={this.insertImage} />
-        <input type="file" accept="video/*" ref={this.inputOpenVideoRef} style={{ display: "none" }} onChange={this.insertVideo} />
+        {/* <input type="file" accept="video/*" ref={this.inputOpenVideoRef} style={{ display: "none" }} onChange={this.insertVideo} /> */}
         <input type="file" accept="*" ref={this.inputOpenFileRef} style={{ display: "none" }} onChange={this.insertFile} />
       </div>
     );
@@ -365,13 +364,13 @@ class QuillEditor extends React.Component {
       //id ="toorbar"는  그 위에 B I U S I V F P 이거 있는 곳이다.
       handlers: {
         insertImage: this.imageHandler,
-        insertVideo: this.videoHandler,
-        insertFile: this.fileHandler,
+        // insertVideo: this.videoHandler,
+        // insertFile: this.fileHandler,
       },
     },
   };
 
-  formats = ["bold", "italic", "underline", "strike", "image", "video", "file", "link", "video", "blockquote"];
+  formats = ["bold", "italic", "underline", "strike", "image", "video", "blockquote"];
 }
 
 export default QuillEditor;

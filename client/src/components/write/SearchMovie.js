@@ -22,13 +22,13 @@ const SearchMovie = ({ userInfo }) => {
     setKeyword("");
 
     // ==== 글 쓰기 위해 검색할 때 아래 endpoint 맞는지 && 검색어 전달 어떻게 해야 하는지 && 전달 시 키값 === //
-    // const res = await axios.get("https://final.cinephile.kro.kr/board/movies", {
-    //   params: {
-    //    keyword: title
-    //   }
-    // });
-    const res = await axios.get("https://jsonplaceholder.typicode.com/photos?albumId=1");
-    console.log("res : ", res.data);
+    const res = await axios.get("https://final.cinephile.kro.kr/board/movies", {
+      params: {
+       title: keyword
+      }
+    });
+    // const res = await axios.get("https://jsonplaceholder.typicode.com/photos?albumId=1");
+    console.log("res : ", res);
     setResult(res.data);
   };
   const renderResult = result.map((el) => {

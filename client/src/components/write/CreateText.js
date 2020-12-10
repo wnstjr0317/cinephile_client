@@ -32,7 +32,7 @@ function CreateText({ userInfo, url }) {
 			text: content,
 			url: url,
 			user_id: userInfo.id
-			// movies_id 도 보내야 하나? 아님 url 만 보내면 서버에서 알아서 무비id 붙여서 저장하나?
+			
 		};
 
 		axios.post("https://final.cinephile.kro.kr/board/write", variables).then((res) => {

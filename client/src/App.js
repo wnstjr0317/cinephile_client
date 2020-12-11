@@ -6,6 +6,7 @@ import Header from './containers/Header';
 import MovieContents from './containers/MovieContents';
 import Board from './containers/Board';
 import Write from './containers/Write';
+import UserInfo from './containers/UserInfo';
 
 function App() {
 	return (
@@ -13,12 +14,12 @@ function App() {
 			<Route
 				exact
 				path="/"
-				render={() => {
+				render={({ history, match }) => {
 					return (
 						<div className="wrapper">
 							<Header />
 							<SideBar />
-							<Main />
+							<Main history={history} match={match} />
 						</div>
 					);
 				}}
@@ -26,12 +27,12 @@ function App() {
 			<Route
 				exact
 				path="/write"
-				render={({ match }) => {
+				render={({ match, history }) => {
 					return (
 						<div className="wrapper">
 							<Header match={match} />
 							<SideBar />
-							<Write />
+							<Write history={history} match={match} />
 						</div>
 					);
 				}}
@@ -44,7 +45,7 @@ function App() {
 						<div className="wrapper">
 							<Header />
 							<SideBar />
-							<Board />
+							<Board history={history} match={match} />
 						</div>
 					);
 				}}
@@ -58,6 +59,19 @@ function App() {
 							<Header />
 							<SideBar />
 							<MovieContents history={history} match={match} />
+						</div>
+					);
+				}}
+			/>
+			<Route
+				exact
+				path="/userInfo"
+				render={({ history, match }) => {
+					return (
+						<div className="wrapper">
+							<Header />
+							<SideBar />
+							<UserInfo history={history} match={match} />
 						</div>
 					);
 				}}

@@ -4,8 +4,6 @@ require('dotenv').config();
 
 const SignIn = ({ signInAjax, loginSwitch, modalSwitch, loginModal, loginPassword, loginEmail, loginEmailInput, loginPasswordInput }) => {
 	const inputReset = () => {
-		loginEmailInput('');
-		loginPasswordInput('');
 		loginModal();
 	};
 	// const [certificate, setCertificate] = useState({
@@ -18,9 +16,9 @@ const SignIn = ({ signInAjax, loginSwitch, modalSwitch, loginModal, loginPasswor
 	// }, [certificate.email, certificate.password, isLogin]);
 	const singInHandler = (e) => {
 		e.preventDefault();
-		if (loginEmail.length < 12) {
+		if (loginEmail.length < 1) {
 			alert('email');
-		} else if (loginPassword.length < 8) {
+		} else if (loginPassword.length < 1) {
 			alert('password');
 		} else {
 			signInAjax({ email: loginEmail, password: loginPassword });

@@ -113,12 +113,12 @@ const SignUp = ({
 					}}
 				/>
 
-				<select defaultValue={'DEFAULT'} onChange={(e) => signUpSexSelect(e.target.value)}>
+				<select className="sidiBarSelect" defaultValue={'DEFAULT'} onChange={(e) => signUpSexSelect(e.target.value)}>
 					<option value="DEFAULT">성별</option>
 					<option value="male">남성</option>
 					<option value="famale">여성</option>
 				</select>
-				<select defaultValue={'DEFAULT'} className="age" onChange={(e) => signUpAgeSelect(e.target.value)}>
+				<select className="sidiBarSelect age" defaultValue={'DEFAULT'} onChange={(e) => signUpAgeSelect(e.target.value)}>
 					<option value="DEFAULT">나이</option>
 					{[10, 20, 30, 40, 50, 60].map((age, id) => (
 						<option value={age} key={id}>

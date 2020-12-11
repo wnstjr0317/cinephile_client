@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const SideBar = ({ autoCookieLogin, userInfo, signOutAjax, toggleSwitch, signUpSwitch, loginSwitch, toggle, loginModal, signUpModal }) => {
+const SideBar = ({ signInAjax, autoCookieLogin, userInfo, signOutAjax, toggleSwitch, signUpSwitch, loginSwitch, toggle, loginModal, signUpModal }) => {
 	const toggleEventHandler = () => {
 		return toggleSwitch
-			? { transform: 'translateX(0px)', width: '20%', transition: 'all 2.5s', opacity: 0.4, marginLeft: '-25px' }
+			? { transform: 'translateX(0px)', width: '22%', transition: 'all 2.5s', opacity: 0.4, marginLeft: '-25px' }
 			: { transform: 'translateX(-500px)', width: '0%', opacity: 0, transition: 'all 2s', color: 'white' };
 	};
 
@@ -15,6 +15,8 @@ const SideBar = ({ autoCookieLogin, userInfo, signOutAjax, toggleSwitch, signUpS
 
 	useEffect(() => {
 		if (cookie) {
+			let sotialKey = document.cookie.split(';').filter((string) => string.slice(0, 8) === 'oauth_id')[0];
+			sotialKey && signInAjax(sotialKey.split('='));
 			autoCookieLogin(JSON.parse(sessionStorage.getItem('userInfo')));
 		} else {
 			return () => {
@@ -32,12 +34,14 @@ const SideBar = ({ autoCookieLogin, userInfo, signOutAjax, toggleSwitch, signUpS
 				<div className="sideBar" style={toggleEventHandler()}>
 					{
 						<ul>
-							<img src="" alt="" />
 							<FontAwesomeIcon icon={faUser} className="userIcon" />
 							<span className="nickName"> {userInfo.nickname} 님</span>
-							<li className="sideBarList" onClick={() => !signUpSwitch && loginSwitch === false && loginModal()}>
-								마이 인포
-							</li>
+							<Link to="/userInfo" className="sideBarList" id="firstLi">
+								My Info
+							</Link>
+							<Link className="sideBarList" to="/board">
+								Board
+							</Link>
 							<li
 								className="sideBarList"
 								onClick={() => {
@@ -45,11 +49,8 @@ const SideBar = ({ autoCookieLogin, userInfo, signOutAjax, toggleSwitch, signUpS
 									window.location.href = 'http://localhost:3001/';
 								}}
 							>
-								로그아웃
+								LogOut
 							</li>
-							<Link className="sideBarList" to="/board">
-								Board
-							</Link>
 						</ul>
 					}
 				</div>

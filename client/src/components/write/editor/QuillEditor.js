@@ -79,79 +79,13 @@ ImageBlot.blotName = "image";
 ImageBlot.tagName = "img";
 Quill.register(ImageBlot);
 
-class VideoBlot extends BlockEmbed {
-  static create(value) {
-    if (value && value.src) {
-      const videoTag = super.create();
-      videoTag.setAttribute("src", value.src);
-      videoTag.setAttribute("title", value.title);
-      videoTag.setAttribute("width", "100%");
-      videoTag.setAttribute("controls", "");
-
-      return videoTag;
-    } else {
-      const iframeTag = document.createElement("iframe");
-      iframeTag.setAttribute("src", value);
-      iframeTag.setAttribute("frameborder", "0");
-      iframeTag.setAttribute("allowfullscreen", true);
-      iframeTag.setAttribute("width", "100%");
-      return iframeTag;
-    }
-  }
-
-  static value(node) {
-    if (node.getAttribute("title")) {
-      return { src: node.getAttribute("src"), alt: node.getAttribute("title") };
-    } else {
-      return node.getAttribute("src");
-    }
-    
-  }
-}
-
-VideoBlot.blotName = "video";
-VideoBlot.tagName = "video";
-Quill.register(VideoBlot);
-
-class FileBlot extends BlockEmbed {
-  static create(value) {
-    const prefixTag = document.createElement("span");
-    prefixTag.innerText = "첨부파일 - ";
-
-    const bTag = document.createElement("b");
-    //위에 첨부파일 글자 옆에  파일 이름이 b 태그를 사용해서 나온다.
-    bTag.innerText = value;
-
-    const linkTag = document.createElement("a");
-    linkTag.setAttribute("href", value);
-    linkTag.setAttribute("target", "_blank");
-    linkTag.setAttribute("className", "file-link-inner-post");
-    linkTag.appendChild(bTag);
-    //linkTag 이런식으로 나온다 <a href="btn_editPic@3x.png" target="_blank" classname="file-link-inner-post"><b>btn_editPic@3x.png</b></a>
-
-    const node = super.create();
-    node.appendChild(prefixTag);
-    node.appendChild(linkTag);
-
-    return node;
-  }
-
-  static value(node) {
-    const linkTag = node.querySelector("a");
-    return linkTag.getAttribute("href");
-  }
-}
-
-FileBlot.blotName = "file";
-FileBlot.tagName = "p";
-FileBlot.className = "file-inner-post";
-Quill.register(FileBlot);
 
 class QuillEditor extends React.Component {
   bandId;
   placeholder;
   onEditorChange;
   onFilesChange;
+  setSearchUrl;
   _isMounted;
 
   constructor(props) {
@@ -165,8 +99,6 @@ class QuillEditor extends React.Component {
     this.reactQuillRef = null;
 
     this.inputOpenImageRef = React.createRef();
-    this.inputOpenVideoRef = React.createRef();
-    this.inputOpenFileRef = React.createRef();
   }
 
   componentDidMount() {
@@ -195,14 +127,6 @@ class QuillEditor extends React.Component {
     this.inputOpenImageRef.current.click();
   };
 
-  videoHandler = () => {
-    this.inputOpenVideoRef.current.click();
-  };
-
-  fileHandler = () => {
-    this.inputOpenFileRef.current.click();
-  };
-
   insertImage = (e) => {
     e.stopPropagation();
     e.preventDefault();
@@ -214,10 +138,13 @@ class QuillEditor extends React.Component {
       const config = {
         header: { "content-type": "multipart/form-data" },
       };
-      formData.append("file", file);
+      formData.append("img", file);
 
-      axios.post("https://final.cinephile.kro.kr/board/write", formData, config).then((response) => {
-        if (response.data.success) {
+      axios.post("http://localhost:3000/setting/upload", formData, config).then((response) => {
+        // ressponse 에 이미지 주소 들어옴
+        // 아래 if(안에 여기) res 에 맞춰서 변경해야 함
+        if (response.data) {
+          this.props.setSearchUrl(response.data);
           const quill = this.reactQuillRef.getEditor();
           quill.focus();
 
@@ -226,7 +153,7 @@ class QuillEditor extends React.Component {
 
           //먼저 노드 서버에다가 이미지를 넣은 다음에   여기 아래에 src에다가 그걸 넣으면 그게
           //이미지 블롯으로 가서  크리에이트가 이미지를 형성 하며 그걸 밸류에서 src 랑 alt 를 가져간후에  editorHTML에 다가 넣는다.
-          quill.insertEmbed(position, "image", { src: "http://localhost:3000/" + response.data.url, alt: response.data.fileName });
+          quill.insertEmbed(position, "image", { src: response.data, alt: response.data.fileName });
           quill.setSelection(position + 1);
 
           if (this._isMounted) {
@@ -241,85 +168,6 @@ class QuillEditor extends React.Component {
           }
         } else {
           return alert("failed to upload file");
-        }
-      });
-    }
-  };
-
-  insertVideo = (e) => {
-    e.stopPropagation();
-    e.preventDefault();
-
-    if (e.currentTarget && e.currentTarget.files && e.currentTarget.files.length > 0) {
-      const file = e.currentTarget.files[0];
-
-      let formData = new FormData();
-      const config = {
-        header: { "content-type": "multipart/form-data" },
-      };
-      formData.append("file", file);
-
-      axios.post("https://final.cinephile.kro.kr/board/write", formData, config).then((response) => {
-        if (response.data.success) {
-          const quill = this.reactQuillRef.getEditor();
-          quill.focus();
-
-          let range = quill.getSelection();
-          let position = range ? range.index : 0;
-          quill.insertEmbed(position, "video", { src: "http://localhost:3000/" + response.data.url, title: response.data.fileName });
-          quill.setSelection(position + 1);
-
-          if (this._isMounted) {
-            this.setState(
-              {
-                files: [...this.state.files, file],
-              },
-              () => {
-                this.props.onFilesChange(this.state.files);
-              }
-            );
-          }
-        } else {
-          return alert("failed to upload file");
-        }
-      });
-    }
-  };
-
-  insertFile = (e) => {
-    e.stopPropagation();
-    e.preventDefault();
-
-    if (e.currentTarget && e.currentTarget.files && e.currentTarget.files.length > 0) {
-      const file = e.currentTarget.files[0];
-      console.log(file);
-
-      let formData = new FormData();
-      const config = {
-        header: { "content-type": "multipart/form-data" },
-      };
-      formData.append("file", file);
-
-      axios.post("https://final.cinephile.kro.kr/board/write", formData, config).then((response) => {
-        if (response.data.success) {
-          const quill = this.reactQuillRef.getEditor();
-          quill.focus();
-
-          let range = quill.getSelection();
-          let position = range ? range.index : 0;
-          quill.insertEmbed(position, "file", response.data.fileName);
-          quill.setSelection(position + 1);
-
-          if (this._isMounted) {
-            this.setState(
-              {
-                files: [...this.state.files, file],
-              },
-              () => {
-                this.props.onFilesChange(this.state.files);
-              }
-            );
-          }
         }
       });
     }
@@ -334,8 +182,6 @@ class QuillEditor extends React.Component {
           <button className="ql-underline" />
           <button className="ql-strike" />
           <button className="ql-insertImage">I</button>
-          {/* <button className="ql-insertVideo">V</button>
-          <button className="ql-insertFile">F</button> */}
           <button className="ql-video" />
           <button className="ql-blockquote" />
         </div>
@@ -351,8 +197,6 @@ class QuillEditor extends React.Component {
           placeholder={this.props.placeholder}
         />
         <input type="file" accept="image/*" ref={this.inputOpenImageRef} style={{ display: "none" }} onChange={this.insertImage} />
-        {/* <input type="file" accept="video/*" ref={this.inputOpenVideoRef} style={{ display: "none" }} onChange={this.insertVideo} /> */}
-        <input type="file" accept="*" ref={this.inputOpenFileRef} style={{ display: "none" }} onChange={this.insertFile} />
       </div>
     );
   }

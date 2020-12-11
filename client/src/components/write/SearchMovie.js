@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import CreateText from './CreateText';
+import renderHTML from "react-render-html";
 import "./SearchMovie.css";
 
 const SearchMovie = ({ userInfo }) => {
@@ -18,7 +19,7 @@ const SearchMovie = ({ userInfo }) => {
   };
 
   const onSearchMovie = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     setKeyword("");
 
     // ==== 글 쓰기 위해 검색할 때 아래 endpoint 맞는지 && 검색어 전달 어떻게 해야 하는지 && 전달 시 키값 === //
@@ -32,11 +33,20 @@ const SearchMovie = ({ userInfo }) => {
     console.log("제목 검색 res : ", res);
     setResult(res.data.items);
   };
+
+  const handleEnterPress = (e) => {
+    
+    if(e.key === 'Enter') {
+      onSearchMovie();
+    }
+  };
+
   const renderResult = result.map((el, index) => {
     return (
       <div className="movie__result" key={index}>
-        <img src={el.image} alt={el.title} />
-        <button className="url" value={el.link} onClick={onCatchUrl}>{el.link}</button>
+        <img src={el.image} alt={el.link}  />
+        <button className="url" value={el.link} onClick={onCatchUrl}>{renderHTML(el.title)}</button>
+        {/* <div className="title" >{renderHTML(el.title)}</div> */}
       </div>
     );
   });
@@ -44,7 +54,7 @@ const SearchMovie = ({ userInfo }) => {
   return (
     <div>
       {catchUrl !== "" ? (<CreateText userInfo={userInfo} url={catchUrl} />) : (<div>
-      <input type="text" value={keyword} placeholder="영화 제목" onChange={onInputTitle} />
+      <input type="text" value={keyword} placeholder="영화 제목" onKeyPress={handleEnterPress} onChange={onInputTitle} />
       <button onClick={onSearchMovie}>검색</button>
       
       <div>{renderResult}</div>

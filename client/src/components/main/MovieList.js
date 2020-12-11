@@ -3,6 +3,7 @@ import './Main.css';
 import { Link } from 'react-router-dom';
 
 const MovieList = ({ movieList }) => {
+	console.log(movieList);
 	return (
 		<div className="movie__list">
 			{movieList.map((el) => {

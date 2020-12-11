@@ -218,3 +218,5 @@ class QuillEditor extends React.Component {
 }
 
 export default QuillEditor;
+
+

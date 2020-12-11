@@ -18,19 +18,23 @@ const CONTENTS_GET_FAILURE = 'CONTENTS_GET_FAILURE';
 const contentsGet = async (boardNo) => boardNo && (await axios.get(`http://localhost:3000/board/article/${boardNo}`));
 
 // 액션 생성자
+
 export const contentsGetAjaxAction = (boardNo) => (dispatch) => {
 	dispatch({ type: CONTENTS_GET_PENDING });
 	contentsGet(boardNo)
 		.then((res) => {
+			console.log('comment:', res.data.comments);
 			dispatch({
 				type: CONTENTS_GET_SUCCESS,
-				result: res.data,
+				contentsInfo: res.data,
+				comment: res.data.comments,
+				movie: res.data.movie,
 			});
 		})
 		.catch((error) => {
 			dispatch({
 				type: CONTENTS_GET_FAILURE,
-				result: error,
+				error,
 			});
 		});
 };
@@ -40,11 +44,13 @@ const contentsInitialState = {
 	pending: true,
 	error: false,
 	contentsInfo: {},
+	comment: [],
+	movie: [],
 };
 
 // 리듀서
 const contentsReducer = (state = contentsInitialState, action) => {
-	const { result } = action;
+	const { contentsInfo, comment, movie, error } = action;
 	switch (action.type) {
 		case CONTENTS_GET_PENDING:
 			return Object.assign({}, state, {
@@ -54,12 +60,14 @@ const contentsReducer = (state = contentsInitialState, action) => {
 		case CONTENTS_GET_SUCCESS:
 			return Object.assign({}, state, {
 				pending: false,
-				contentsInfo: result,
+				contentsInfo,
+				comment,
+				movie,
 			});
 		case CONTENTS_GET_FAILURE:
 			return Object.assign({}, state, {
 				pending: false,
-				error: true,
+				error,
 			});
 
 		default:

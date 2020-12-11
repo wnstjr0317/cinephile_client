@@ -27,12 +27,21 @@ export const loginPasswordAction = (loginPassword) => ({
 	type: LOGIN_PASSWORD,
 	loginPassword,
 });
-const signInPost = async (signInInfo) => await axios.post(`http://localhost:3000/users/login`, signInInfo);
+const signInPost = async (signInInfo) => {
+	if (Array.isArray(signInInfo)) {
+		console.log(Object.assign({}, { oauth_id: signInInfo[1] }));
+
+		return await axios.post(`http://localhost:3000`, Object.assign({}, { auth_id: signInInfo[1] }));
+	}
+	return await axios.post(`http://localhost:3000/users/login`, signInInfo);
+};
 const signOutPost = async () => await axios.post(`http://localhost:3000/users/logout`);
 export const signInAjaxAction = (signInInfo) => (dispatch) => {
 	dispatch({ type: SIGNIN_POST_PENDING });
+
 	signInPost(signInInfo)
 		.then((res) => {
+			console.log(res);
 			sessionStorage.setItem('userInfo', JSON.stringify(res.data));
 			dispatch({
 				type: SIGNIN_POST_SUCCESS,
@@ -40,7 +49,6 @@ export const signInAjaxAction = (signInInfo) => (dispatch) => {
 			});
 		})
 		.catch((error) => {
-			alert('로그인 실패');
 			dispatch({
 				type: SIGNIN_POST_FAILURE,
 				error,

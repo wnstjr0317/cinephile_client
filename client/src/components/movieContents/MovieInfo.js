@@ -1,14 +1,17 @@
 import React, { useEffect } from 'react';
 import './MovieContents.css';
-const movieInfo = ({ contentsList, history }) => {
-	const movie = Object.assign({}, contentsList.movie);
-	return (
-		<div className="movieInfo">
-			<div className="movieConetents" key={contentsList.id}>
+const movieInfo = ({ contentsList, movie, history }) => {
+	// eslint-disable-next-line react-hooks/rules-of-hooks
+	useEffect(() => {
+		return () => {};
+	});
+	return movie ? (
+		<div className="movieWrapper">
+			<div className="movieInfo" key={contentsList.id}>
 				<div className="poster">
 					<img src={movie.poster} alt="" />
 				</div>
-				<div className="movieInfo">
+				<div className="movieDetail">
 					<div className="title">{movie.title}</div>
 					<div className="subTitle">{movie.sub_title}</div>
 					<div className="director">{movie.director}</div>
@@ -21,6 +24,8 @@ const movieInfo = ({ contentsList, history }) => {
 				</div>
 			</div>
 		</div>
+	) : (
+		<img src="https://www.newtide.com.tw/v_comm/global/images/loading.gif" alt="" />
 	);
 };
 

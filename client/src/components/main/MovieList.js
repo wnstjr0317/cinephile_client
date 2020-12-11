@@ -3,13 +3,16 @@ import './Main.css';
 import { Link } from 'react-router-dom';
 
 const MovieList = ({ movieList }) => {
+	console.log(movieList);
+
 	return (
 		<div className="movie__list">
-			{movieList.map((el) => {
+			{movieList.map((movies) => {
+				const { movie } = movies;
 				return (
-					<Link to={`/board/${el.id}`} className="Contents" key={el.id}>
-						<img src={el.thumbnailUrl} />
-						<div className="title">{el.title}</div>
+					<Link to={`/board/${movies.id}`} className="mainContents" key={movies.id}>
+						<img src={movie.poster} />
+						<div className="mainTitle">{movie.title}</div>
 					</Link>
 				);
 			})}

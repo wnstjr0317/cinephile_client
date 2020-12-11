@@ -1,6 +1,6 @@
-export const SIDEBAR = 'SIDEBAR';
-export const LOGIN = 'LOGIN';
-export const SIGNUP = 'SIGNUP';
+const SIDEBAR = 'SIDEBAR';
+const LOGIN = 'LOGIN';
+const SIGNUP = 'SIGNUP';
 
 //action
 

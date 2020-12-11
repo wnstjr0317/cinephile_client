@@ -141,6 +141,7 @@ const containerSideBar = () => {
 				loginSwitch={loginSwitch}
 				loginModal={loginModal}
 				signUpModal={signUpModal}
+				signInAjax={signInAjax}
 			/>
 			<SignIn
 				signInAjax={signInAjax}

@@ -5,7 +5,7 @@ const MOVIE_GET_PENDING = 'MOVIE_GET_PENDING';
 const MOVIE_GET_SUCCESS = 'MOVIE_GET_SUCCESS';
 const MOVIE_GET_FAILURE = 'MOVIE_GET_FAILURE';
 
-const movieGet = async () => await axios.get('https://jsonplaceholder.typicode.com/photos');
+const movieGet = async () => await axios.get('http://localhost:3000/card');
 
 export const movieGetAjaxAction = () => (dispatch) => {
 	dispatch({ type: MOVIE_GET_PENDING });
@@ -13,13 +13,13 @@ export const movieGetAjaxAction = () => (dispatch) => {
 		.then((res) => {
 			dispatch({
 				type: MOVIE_GET_SUCCESS,
-				result: res.data.slice(0, 20),
+				movieList: res.data,
 			});
 		})
 		.catch((error) => {
 			dispatch({
 				type: MOVIE_GET_FAILURE,
-				result: error,
+				error,
 			});
 		});
 };
@@ -27,14 +27,14 @@ export const movieGetAjaxAction = () => (dispatch) => {
 const movieInitialState = [];
 
 const movieReducer = (state = movieInitialState, action) => {
-	const { result } = action;
+	const { movieList, error } = action;
 	switch (action.type) {
 		case MOVIE_GET_PENDING:
 			return state;
 		case MOVIE_GET_SUCCESS:
-			return result;
+			return movieList;
 		case MOVIE_GET_FAILURE:
-			return result;
+			return error;
 		default:
 			return state;
 	}

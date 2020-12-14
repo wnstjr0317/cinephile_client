@@ -1,7 +1,7 @@
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
 import SideBar from './containers/SideBar';
-import Main from './containers/Main';
+import Main from './containers/main';
 import Header from './containers/Header';
 import MovieContents from './containers/MovieContents';
 import Board from './containers/Board';

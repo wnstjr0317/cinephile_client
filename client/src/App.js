@@ -6,7 +6,7 @@ import Header from './containers/Header';
 import MovieContents from './containers/MovieContents';
 import Board from './containers/Board';
 import Write from './containers/Write';
-import UserInfo from './containers/UserInfo';
+import UserInfo from './containers/userInfo';
 
 function App() {
 	return (

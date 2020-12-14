@@ -6,6 +6,7 @@ const MODIFY_EMAIL = 'MODIFY_EMAIL';
 const MODIFY_PASSWORD = 'MODIFY_PASSWORD';
 const MODIFY_GENDER = 'MODIFY_GENDER';
 const MODIFY_AGE = 'MODIFY_AGE';
+const DEFAULT_USERINFO = 'DEFAULT_USERINFO';
 const MODIFY_POST_PENDING = 'MODIFY_POST_PENDING';
 const MODIFY_POST_SUCCESS = 'MODIFY_POST_SUCCESS';
 const MODIFY_POST_FAILURE = 'MODIFY_POST_FAILURE';
@@ -43,6 +44,12 @@ export function modifyAgeAction(age) {
 		age,
 	};
 }
+export function defalutUserInfoAction(modifyUserInfo) {
+	return {
+		type: DEFAULT_USERINFO,
+		modifyUserInfo,
+	};
+}
 //action function
 const modifyUserInfoPost = async (userInfo) => await axios.post(`http://localhost:3000/setting/userinfo`, userInfo);
 
@@ -69,7 +76,7 @@ export const modifyUserInfoAjaxAction = (userInfo) => (dispatch) => {
 
 			dispatch({
 				type: MODIFY_POST_SUCCESS,
-				modifyUserInfo: res.data,
+				result: res.data,
 			});
 		})
 		.catch((error) => {
@@ -82,8 +89,12 @@ export const modifyUserInfoAjaxAction = (userInfo) => (dispatch) => {
 };
 
 const userInfoReducer = (state = modifyUserInfo, action) => {
-	const { nickname, password, email, gender, age, modifyUserInfo, error } = action;
+	const { nickname, password, email, result, gender, age, modifyUserInfo, error } = action;
 	switch (action.type) {
+		case DEFAULT_USERINFO:
+			return Object.assign({}, state, {
+				modifyUserInfo,
+			});
 		case MODIFY_NICKNAME:
 			return Object.assign({}, state, {
 				nickname,
@@ -111,7 +122,7 @@ const userInfoReducer = (state = modifyUserInfo, action) => {
 			});
 		case MODIFY_POST_SUCCESS:
 			return Object.assign({}, state, {
-				modifyUserInfo,
+				result,
 				pending: false,
 				error: false,
 			});

@@ -8,12 +8,13 @@ const userInfo = ({ match, history }) => {
 	// eslint-disable-next-line react-hooks/rules-of-hooks
 	const dispatch = useDispatch();
 	// eslint-disable-next-line react-hooks/rules-of-hooks
-	const { modifyNickname, loginUserInfo, modifyPassword, modifyAge, modifyGender, modifyEmail } = useSelector((state) => ({
+	const { modifyUserInfo, modifyNickname, loginUserInfo, modifyPassword, modifyAge, modifyGender, modifyEmail } = useSelector((state) => ({
 		modifyNickname: state.UserInfo.nickname,
 		modifyPassword: state.UserInfo.password,
 		modifyAge: state.UserInfo.age,
 		modifyGender: state.UserInfo.gender,
 		modifyEmail: state.UserInfo.email,
+		modifyUserInfo: state.UserInfo.modifyUserInfo,
 		loginUserInfo: state.SignIn.userInfo,
 	}));
 	// eslint-disable-next-line react-hooks/rules-of-hooks
@@ -27,6 +28,7 @@ const userInfo = ({ match, history }) => {
 		},
 		[dispatch]
 	);
+
 	// eslint-disable-next-line react-hooks/rules-of-hooks
 	const modifyUserInfoPost = useCallback(
 		(userInfo) => {
@@ -74,6 +76,7 @@ const userInfo = ({ match, history }) => {
 	return (
 		<div className="main">
 			<ModifyUserInfo
+				modifyUserInfo={modifyUserInfo}
 				autoCookieLogin={autoCookieLogin}
 				modifyUserInfoPost={modifyUserInfoPost}
 				modifyAge={modifyAge}

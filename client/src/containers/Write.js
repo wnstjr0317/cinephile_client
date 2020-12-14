@@ -1,26 +1,19 @@
 /* eslint-disable no-undef */
-import React, { useCallback, useEffect, useState } from 'react';
+import React from "react";
+import { useSelector } from "react-redux";
+import SearchMovie from "../components/write/SearchMovie";
+import "../App.css";
 
-import CreateText from '../components/write/CreateText';
-import SearchMovie from '../components/write/SearchMovie';
-import '../App.css';
+const Write = ({ history }) => {
+  const { userInfo } = useSelector((state) => ({
+    userInfo: state.SignIn.userInfo,
+  }));
 
-const Write = () => {
-	const [transfer, setTransfer] = useState({
-		a: '',
-		b: '',
-		c: '',
-		d: '',
-		e: '',
-		f: '',
-	});
-
-	return (
-		<div className="main">
-			<CreateText />
-			<SearchMovie />
-		</div>
-	);
+  return (
+    <div className="main">
+      <SearchMovie userInfo={userInfo} history={history} />
+    </div>
+  );
 };
 
 export default React.memo(Write);

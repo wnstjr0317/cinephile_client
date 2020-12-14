@@ -7,8 +7,8 @@ import { signUpAjaxAction, signUpPasswordAction, signUpEmailAction, signUpUserna
 
 import { defalutUserInfoAction } from '../modules/UserInfo';
 
-import SignIn from '../components/sideBar/SignIn';
-import SignUp from '../components/sideBar/SignUp';
+import SignIn from '../components/SideBar/SignIn';
+import SignUp from '../components/SideBar/SignUp';
 
 const containerSideBar = () => {
 	// eslint-disable-next-line react-hooks/rules-of-hooks

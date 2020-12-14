@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ModifyUserInfo from '../components/userInfo/ModifyUserInfo';
 import { cookieLoginAction } from '../modules/SignIn';

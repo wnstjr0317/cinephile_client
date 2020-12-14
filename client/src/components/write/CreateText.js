@@ -4,7 +4,7 @@
 // import { useHistory } from "react-router-dom";
 
 
-// function CreateText({ userInfo, url }) {
+// function CreateText({ userInfo, url, history }) {
 
 // 	const history = useHistory();
 // 	const [title, setTitle] = useState('');
@@ -43,7 +43,7 @@
 // 			console.log("글 게시 axios :", res);
 // 		  if (res.status === 200) {
 // 		    setTimeout(() => {
-// 		      history.push('/board/${res.id}')
+// 		      history.push(`/board/${res.data.id}`)
 // 		    }, 500);
 // 		  }
 // 		});
@@ -77,7 +77,7 @@ import ReactQuill, { Quill } from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
 import { Link } from 'react-router-dom';
-
+import renderHTML from "react-render-html";
 // #1 import quill-image-uploader
 import ImageUploader from "quill-image-uploader";
 // #2 register module
@@ -86,6 +86,7 @@ Quill.register("modules/imageUploader", ImageUploader);
 class CreateText extends Component {
     userInfo; 
 	url;
+	history;
     constructor(props) {
         super(props);
         this.state = {
@@ -93,40 +94,56 @@ class CreateText extends Component {
             content: "",
             searchUrl: ""
         }
-        this.onSubmit = this.onSubmit.bind(this);
+		this.onSubmit = this.onSubmit.bind(this);
+		this.onHandleChange = this.onHandleChange.bind(this);
+		console.log('this.state', this.state);
     }
 	
     modules = {
-        // #3 Add "image" to the toolbar
-        toolbar: [["bold", "italic", "underline", "strike", "image", "video"]],
-        // # 4 Add module and upload function
-        imageUploader: {
-          upload: file => {
-            return new Promise((resolve, reject) => {
-              const formData = new FormData();
-              const config = {
-                header: { "content-type": "multipart/form-data" },
-              };
-              formData.append("img", file);
-              axios.post("http://localhost:3000/setting/upload", formData, config)
-              .then((response) => {
-              if(response.data) {
-                  this.setState({
-                      searchUrl: response.data
-                  })
-    
-              } else {
-                  return alert("failed to upload file");
-              }
-            })
-          })
-          }
-        }
-      };
+		// #3 Add "image" to the toolbar
+		toolbar: [["bold", "italic", "underline", "strike", "image", "video"]],
+		// # 4 Add module and upload function
+		imageUploader: {
+		  upload: file => {
+			return new Promise((resolve, reject) => {
+			  const formData = new FormData();
+			  
+			  formData.append("img", file);
+			 
+			  fetch(
+				"http://localhost:3000/setting/upload",
+				{
+				  method: "POST",
+				  header: { "content-type": "multipart/form-data" },
+				  body: formData
+				}
+			  ).then(response => response.json())
+				.then(result => {
+				  console.log(result);
+				  resolve(result);
+				  this.setState({
+					searchUrl: result
+				  })
+				})
+				.catch(error => {
+				  reject("Upload failed");
+				  console.error("Error:", error);
+				})
+			})
+		  }
+		}
+	  };
+
+	  onHandleChange(e) {
+		  this.setState({
+			  content: e
+		  })
+	  }
 
       onSubmit (e) {
         e.preventDefault();
 		console.log('유알엘 : ', this.props.url)
+		console.log('히스토리 : ', this.props.history)
         const variables = {
           title: this.state.title,
           text: this.state.content,
@@ -134,13 +151,14 @@ class CreateText extends Component {
           user: this.props.userInfo.id,
           upload_url: this.state.searchUrl,
         };
-    
+		console.log('variables :', variables)
         axios.post("http://localhost:3000/board/write", variables)
         .then((res) => {
-          console.log("글 게시 axios :", res.status);
+          console.log("글 게시 axios :", res.data);
           if (res.status === 200) {
-            <Link to={`/board/${res.id}`} />
-            console.log("포스팅 :", res);
+            this.props.history.push(`/board/${res.data.id}`)
+			console.log("포스팅 :", res);
+			console.log('히스토리 : ', this.props.history);
           }
         });
         this.setState({
@@ -170,7 +188,7 @@ class CreateText extends Component {
                     formats={CreateText.formats}
                     value={this.state.content}
                     placeholder="내용을 입력하세요"
-                    // onChange={(e) => this.setState({ content: e.target.value})} 
+                    onChange={this.onHandleChange} 
 					/>
         
                 <button className="submit__text" onClick={this.onSubmit}>

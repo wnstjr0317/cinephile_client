@@ -4,7 +4,7 @@ import CreateText from './CreateText';
 import renderHTML from "react-render-html";
 import "./SearchMovie.css";
 
-const SearchMovie = ({ userInfo }) => {
+const SearchMovie = ({ userInfo, history }) => {
   const [keyword, setKeyword] = useState("");
   const [result, setResult] = useState([]);
   const [catchUrl, setCatchUrl] = useState("");
@@ -46,14 +46,14 @@ const SearchMovie = ({ userInfo }) => {
       <div className="movie__result" key={index}>
         <img src={el.image} alt={el.link}  />
         <button className="url" value={el.link} onClick={onCatchUrl}>{renderHTML(el.title)}</button>
-        {/* <div className="title" >{renderHTML(el.title)}</div> */}
+        {console.log("catchUrl 2 :", catchUrl)}
       </div>
     );
   });
 
   return (
     <div>
-      {catchUrl !== "" ? (<CreateText userInfo={userInfo} url={catchUrl} />) : (<div>
+      {catchUrl !== "" ? (<CreateText userInfo={userInfo} url={catchUrl} history={history} />) : (<div>
       <input type="text" value={keyword} placeholder="영화 제목" onKeyPress={handleEnterPress} onChange={onInputTitle} />
       <button onClick={onSearchMovie}>검색</button>
       

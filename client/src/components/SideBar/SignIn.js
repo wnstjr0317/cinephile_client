@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 require('dotenv').config();
 
@@ -23,6 +23,7 @@ const SignIn = ({ signInAjax, loginSwitch, modalSwitch, loginModal, loginPasswor
 		} else {
 			signInAjax({ email: loginEmail, password: loginPassword });
 			loginModal();
+
 			console.log('email:', loginEmail);
 			console.log('password: ', loginPassword);
 		}

@@ -17,7 +17,7 @@ const comment = ({ comments, contentsList, contentsGetAjax, userInfo, loginModal
 	useEffect(() => {
 		// eslint-disable-next-line no-undef
 		contentsGetAjax(contentsList.id);
-	}, [like, sign]);
+	}, [contentsGetAjax, contentsList.id, like, sign]);
 	console.log(comments);
 	const cmmtSubmitHandler = (e) => {
 		e.preventDefault();

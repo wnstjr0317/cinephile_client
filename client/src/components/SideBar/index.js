@@ -24,7 +24,7 @@ const SideBar = ({ defaultUserInfo, signInAjax, autoCookieLogin, userInfo, signO
 				autoCookieLogin(null);
 			};
 		}
-	}, []);
+	}, [autoCookieLogin, cookie, defaultUserInfo, signInAjax]);
 
 	return (
 		<>

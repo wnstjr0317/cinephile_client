@@ -1,12 +1,13 @@
 import React from 'react';
 
 const userText = ({ contentsList }) => {
+	console.log(contentsList.upload_url);
 	return (
 		<div className="writingHeader">
 			<div className="userText" key={contentsList.id}>
-				{/* <iframe srcDoc={contentsList.title} style={{ border: 'none' }}></iframe> */}
-				<div className="userTitle">{contentsList.title}</div>
-				<div className="userText">{contentsList.text}</div>
+				<div>{contentsList.title}</div>
+				{/* {contentsList.upload_url && <img src={contentsList.upload_url} className="userTextImg"></img>} */}
+				<iframe srcDoc={contentsList.text} width="1000" height="1000" className="userText" style={{ border: 'none', display: 'block' }}></iframe>
 			</div>
 		</div>
 	);

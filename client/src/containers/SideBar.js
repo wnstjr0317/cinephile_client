@@ -5,7 +5,8 @@ import { toggleSwitchAction, loginSwitchAction, signUpSwitchAction } from '../mo
 import { loginEmailAction, signInAjaxAction, signOutAjaxAction, loginPasswordAction, cookieLoginAction } from '../modules/SignIn';
 import { signUpAjaxAction, signUpPasswordAction, signUpEmailAction, signUpUsernameAction, signUpSexAction, signUpAgeAction } from '../modules/SignUp';
 
-import { defalutUserInfoAction } from '../modules/UserInfo';
+import { defalutUserInfoAction, modifyUserInfoAjaxAction } from '../modules/UserInfo';
+
 
 import SignIn from '../components/SideBar/SignIn';
 import SignUp from '../components/SideBar/SignUp';
@@ -144,6 +145,7 @@ const containerSideBar = () => {
 	return (
 		<>
 			<SideBar
+				modifyUserInfoAjaxAction={modifyUserInfoAjaxAction}
 				defaultUserInfo={defaultUserInfo}
 				autoCookieLogin={autoCookieLogin}
 				userInfo={userInfo}

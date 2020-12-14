@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import axios from "axios";
 import CreateText from './CreateText';
@@ -61,6 +62,7 @@ const SearchMovie = ({ userInfo, history }) => {
       </div> )}
       </div>
   );
+
 };
 
 export default SearchMovie;

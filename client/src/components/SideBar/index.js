@@ -4,19 +4,22 @@ import { Link } from 'react-router-dom';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const SideBar = ({ defaultUserInfo, signInAjax, autoCookieLogin, userInfo, signOutAjax, toggleSwitch, signUpSwitch, loginSwitch, toggle, loginModal, signUpModal }) => {
+const SideBar = ({ modifyUserInfoAjaxAction, defaultUserInfo, signInAjax, autoCookieLogin, userInfo, signOutAjax, toggleSwitch, signUpSwitch, loginSwitch, toggle, loginModal, signUpModal }) => {
 	const toggleEventHandler = () => {
 		return toggleSwitch
 			? { transform: 'translateX(0px)', width: '22%', transition: 'all 2.5s', opacity: 0.4, marginLeft: '-25px' }
 			: { transform: 'translateX(-500px)', width: '0%', opacity: 0, transition: 'all 2s', color: 'white' };
 	};
 
-	const cookie = document.cookie.split(';').some((cookie) => cookie.includes('token') || cookie.includes('cookie'));
+	const cookie = document.cookie.split('; ').some((cookie) => cookie.includes('token') || cookie.includes('cookie') || cookie.includes('oauth_id'));
 	const authenticate = JSON.parse(sessionStorage.getItem('userInfo'));
 	useEffect(() => {
 		if (cookie) {
-			let sotialKey = document.cookie.split(';').filter((string) => string.slice(0, 8) === 'oauth_id')[0];
+			let aouth = document.cookie.split('; ').filter((string) => string.slice(0, 8) === 'oauth_id')[0];
+			console.log(aouth);
+			let sotialKey = document.cookie.split('; ').filter((string) => string.slice(0, 4) === 'user')[0];
 			sotialKey && signInAjax(sotialKey.split('='));
+			aouth && modifyUserInfoAjaxAction(aouth.split('='));
 			autoCookieLogin(JSON.parse(sessionStorage.getItem('userInfo')));
 			defaultUserInfo(JSON.parse(sessionStorage.getItem('userInfo')));
 		} else {
@@ -24,7 +27,7 @@ const SideBar = ({ defaultUserInfo, signInAjax, autoCookieLogin, userInfo, signO
 				autoCookieLogin(null);
 			};
 		}
-	}, [autoCookieLogin, cookie, defaultUserInfo, signInAjax]);
+	}, [autoCookieLogin, cookie, defaultUserInfo, modifyUserInfoAjaxAction, signInAjax]);
 
 	return (
 		<>

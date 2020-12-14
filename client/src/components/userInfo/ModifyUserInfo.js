@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const modifyUserInfo = ({
+const modifyUserInfoFunc = ({
 	modifyAge,
 	modifyGender,
 	emailChangeInput,
@@ -28,8 +28,7 @@ const modifyUserInfo = ({
 	// eslint-disable-next-line react-hooks/rules-of-hooks
 	useEffect(() => {
 		autoCookieLogin(JSON.parse(sessionStorage.getItem('userInfo')));
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [sessionStorage.getItem('userInfo')]);
+	}, [autoCookieLogin]);
 	//모두 포스트로 보낼 것
 	//localhost:3000/setting/check 이메일하고 닉네임만 중복 검사
 	//localhost:3000/setting/password id:유저 id, password:현재 패스워드, newpassword:새로운 패스워드 보낼 것.
@@ -76,10 +75,15 @@ const modifyUserInfo = ({
 		}
 
 		if (e.target.className === 'submitModifyButton') {
-			modifyNickname === '' && nickNameChangeInput(modifyUserInfo.nickname);
-			modifyEmail === '' && emailChangeInput(modifyUserInfo.email);
-			modifyAge === '' && ageChangeSelect(modifyUserInfo.age);
-			modifyAge === '' && genderChangeSelect(modifyUserInfo.gender);
+			if (modifyUserInfo) {
+				modifyNickname === '' && nickNameChangeInput(modifyUserInfo.nickname);
+				modifyEmail === '' && emailChangeInput(modifyUserInfo.email);
+				modifyAge === '' && ageChangeSelect(modifyUserInfo.age);
+				modifyAge === '' && genderChangeSelect(modifyUserInfo.gender);
+			} else {
+				alert('유저 정보가 없습니다.');
+			}
+
 			modifyUserInfoPost(Object.assign({}, loginUserInfo, { email: modifyEmail, nickname: modifyNickname, age: modifyAge, gender: modifyGender }));
 		}
 	};
@@ -155,4 +159,4 @@ const modifyUserInfo = ({
 	);
 };
 
-export default modifyUserInfo;
+export default modifyUserInfoFunc;

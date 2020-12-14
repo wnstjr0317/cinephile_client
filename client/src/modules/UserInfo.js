@@ -51,8 +51,15 @@ export function defalutUserInfoAction(modifyUserInfo) {
 	};
 }
 //action function
-const modifyUserInfoPost = async (userInfo) => await axios.post(`http://localhost:3000/setting/userinfo`, userInfo);
 
+const modifyUserInfoPost = async (userInfo) => {
+	if (Array.isArray(userInfo)) {
+		console.log(Object.assign({}, { oauth_id: userInfo[1] }));
+
+		return await axios.post(`http://localhost:3000/setting/userinfo`, Object.assign({}, { user: userInfo[1] }));
+	}
+	return await axios.post(`http://localhost:3000/setting/userinfo`, userInfo);
+};
 const modifyUserInfo = {
 	nickname: '',
 	password: '',

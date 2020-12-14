@@ -31,7 +31,7 @@ const signInPost = async (signInInfo) => {
 	if (Array.isArray(signInInfo)) {
 		console.log(Object.assign({}, { oauth_id: signInInfo[1] }));
 
-		return await axios.post(`http://localhost:3000`, Object.assign({}, { auth_id: signInInfo[1] }));
+		return await axios.post(`http://localhost:3000`, Object.assign({}, { user: signInInfo[1] }));
 	}
 	return await axios.post(`http://localhost:3000/users/login`, signInInfo);
 };

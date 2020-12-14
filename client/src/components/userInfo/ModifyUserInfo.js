@@ -28,6 +28,7 @@ const modifyUserInfo = ({
 	// eslint-disable-next-line react-hooks/rules-of-hooks
 	useEffect(() => {
 		autoCookieLogin(JSON.parse(sessionStorage.getItem('userInfo')));
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [sessionStorage.getItem('userInfo')]);
 	//모두 포스트로 보낼 것
 	//localhost:3000/setting/check 이메일하고 닉네임만 중복 검사

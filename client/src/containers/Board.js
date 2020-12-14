@@ -21,7 +21,7 @@ const board = () => {
 	// eslint-disable-next-line react-hooks/rules-of-hooks
 	useEffect(() => {
 		boardListUpdate();
-	}, []);
+	}, [boardListUpdate]);
 
 	return (
 		<div className="main">

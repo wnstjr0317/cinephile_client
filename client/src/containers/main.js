@@ -22,7 +22,7 @@ const Main = () => {
 	// eslint-disable-next-line react-hooks/rules-of-hooks
 	useEffect(() => {
 		movieListUpdate();
-	}, []);
+	}, [movieListUpdate]);
 
 	return (
 		<div className="main">

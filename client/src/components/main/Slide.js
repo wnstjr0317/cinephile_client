@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { useEffect, useState, useRef } from 'react';
 import './Main.css';
 const slide = () => {

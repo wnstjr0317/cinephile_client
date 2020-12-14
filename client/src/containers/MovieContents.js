@@ -31,7 +31,7 @@ const movieContent = ({ match, history }) => {
 	// eslint-disable-next-line react-hooks/rules-of-hooks
 	useEffect(() => {
 		contentsGetAjax(match.params.id);
-	}, [match.params.id]);
+	}, [contentsGetAjax, match.params.id]);
 
 	return (
 		Number(match.params.id) === contentsList.id && (

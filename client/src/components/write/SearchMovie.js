@@ -12,7 +12,7 @@ const SearchMovie = ({ userInfo, history }) => {
 
   const onCatchUrl = (e) => {
     e.preventDefault();
-    setCatchUrl(e.target.value);
+    setCatchUrl(e.target.alt);
   };
   const onInputTitle = (e) => {
     setKeyword(e.target.value);
@@ -44,8 +44,8 @@ const SearchMovie = ({ userInfo, history }) => {
   const renderResult = result.map((el, index) => {
     return (
       <div className="movie__result" key={index}>
-        <img src={el.image} alt={el.link}  />
-        <button className="url" value={el.link} onClick={onCatchUrl}>{renderHTML(el.title)}</button>
+        <img src={el.image} alt={el.link} value={el.link} onClick={onCatchUrl} />
+        <h4 className="url" >{renderHTML(el.title)}</h4>
         {console.log("catchUrl 2 :", catchUrl)}
       </div>
     );

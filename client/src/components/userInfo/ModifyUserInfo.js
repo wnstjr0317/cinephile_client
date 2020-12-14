@@ -14,6 +14,7 @@ const modifyUserInfo = ({
 	nickNameChangeInput,
 	modifyUserInfoPost,
 	autoCookieLogin,
+	modifyUserInfo,
 }) => {
 	// eslint-disable-next-line react-hooks/rules-of-hooks
 	const [modifySwitch, setModifySwitch] = useState({
@@ -25,10 +26,6 @@ const modifyUserInfo = ({
 	});
 
 	// eslint-disable-next-line react-hooks/rules-of-hooks
-
-	// eslint-disable-next-line react-hooks/rules-of-hooks
-
-	// eslint-disable-next-line react-hooks/rules-of-hooks
 	useEffect(() => {
 		autoCookieLogin(JSON.parse(sessionStorage.getItem('userInfo')));
 	}, [sessionStorage.getItem('userInfo')]);
@@ -36,13 +33,18 @@ const modifyUserInfo = ({
 	//localhost:3000/setting/check 이메일하고 닉네임만 중복 검사
 	//localhost:3000/setting/password id:유저 id, password:현재 패스워드, newpassword:새로운 패스워드 보낼 것.
 
+	//일반 가입자들이 성별하고 나이 바꿀 수 없게 만들기
+	// 소셜 로그인
+	// eslint-disable-next-line react-hooks/rules-of-hooks
+
 	const modifySwitchHandler = (e) => {
 		e.preventDefault();
+
 		if (e.target.className === 'nicknameModifyButton') {
 			if (modifySwitch.nicknameModify && modifyNickname !== '') {
 				console.log('nickname submit');
 				//여기서 ajax 실행
-				// setModifyPost(Object.assign({}, modifyPost, { nickname: modifyNickname, pending: false }));
+
 				setModifySwitch(Object.assign({}, modifySwitch, { nicknameModify: !modifySwitch.nicknameModify }));
 			} else {
 				setModifySwitch(Object.assign({}, modifySwitch, { nicknameModify: !modifySwitch.nicknameModify }));
@@ -53,7 +55,7 @@ const modifyUserInfo = ({
 			if (modifySwitch.passwordModify && modifyPassword !== '') {
 				console.log('password submit');
 				//여기서 ajax 실행
-				// setModifyPost(Object.assign({}, modifyPost, { password: modifyPassword, pending: false }));
+
 				setModifySwitch(Object.assign({}, modifySwitch, { passwordModify: !modifySwitch.passwordModify }));
 			} else {
 				setModifySwitch(Object.assign({}, modifySwitch, { passwordModify: !modifySwitch.passwordModify }));
@@ -64,7 +66,7 @@ const modifyUserInfo = ({
 			if (modifySwitch.emailModify && modifyEmail !== '') {
 				console.log('email submit');
 				//여기서 ajax 실행
-				// setModifyPost(Object.assign({}, modifyPost, { email: modifyEmail, pending: false }));
+
 				setModifySwitch(Object.assign({}, modifySwitch, { emailModify: !modifySwitch.emailModify }));
 			} else {
 				setModifySwitch(Object.assign({}, modifySwitch, { emailModify: !modifySwitch.emailModify }));
@@ -72,15 +74,11 @@ const modifyUserInfo = ({
 			// emailChangeInput('');
 		}
 
-		if (modifyGender && modifyGender !== 'DEFAULT') {
-			// setModifyPost(Object.assign({}, modifyPost, { gender: modifyGender }));
-		}
-
-		if (modifyAge && modifyAge !== 'DEFAULT') {
-			// setModifyPost(Object.assign({}, modifyPost, { age: modifyAge }));
-		}
-
 		if (e.target.className === 'submitModifyButton') {
+			modifyNickname === '' && nickNameChangeInput(modifyUserInfo.nickname);
+			modifyEmail === '' && emailChangeInput(modifyUserInfo.email);
+			modifyAge === '' && ageChangeSelect(modifyUserInfo.age);
+			modifyAge === '' && genderChangeSelect(modifyUserInfo.gender);
 			modifyUserInfoPost(Object.assign({}, loginUserInfo, { email: modifyEmail, nickname: modifyNickname, age: modifyAge, gender: modifyGender }));
 		}
 	};

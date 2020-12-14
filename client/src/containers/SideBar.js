@@ -4,8 +4,12 @@ import SideBar from '../components/SideBar/index';
 import { toggleSwitchAction, loginSwitchAction, signUpSwitchAction } from '../modules/SideBar';
 import { loginEmailAction, signInAjaxAction, signOutAjaxAction, loginPasswordAction, cookieLoginAction } from '../modules/SignIn';
 import { signUpAjaxAction, signUpPasswordAction, signUpEmailAction, signUpUsernameAction, signUpSexAction, signUpAgeAction } from '../modules/SignUp';
-import SignIn from '../components/SideBar/SignIn';
-import SignUp from '../components/SideBar/SignUp';
+
+import { defalutUserInfoAction } from '../modules/UserInfo';
+
+import SignIn from '../components/sideBar/SignIn';
+import SignUp from '../components/sideBar/SignUp';
+
 const containerSideBar = () => {
 	// eslint-disable-next-line react-hooks/rules-of-hooks
 	const { toggleSwitch, signUpSex, userInfo, loginSwitch, signUpSwitch, loginEmail, loginPassword, signUpUsername, signUpPassword, signUpEmail, signUpAge } = useSelector((state) => ({
@@ -124,6 +128,14 @@ const containerSideBar = () => {
 		},
 		[dispatch]
 	);
+
+	// eslint-disable-next-line react-hooks/rules-of-hooks
+	const defaultUserInfo = useCallback(
+		(userInfo) => {
+			dispatch(defalutUserInfoAction(userInfo));
+		},
+		[dispatch]
+	);
 	// state 끌어올리기를 이용하여 modules에서 생성한 액션 생성 함수에 인자 e를 넣어 dispatch.
 	// useCallback으로 dispatch가 될 때마다 액션 함수 호출
 
@@ -132,6 +144,7 @@ const containerSideBar = () => {
 	return (
 		<>
 			<SideBar
+				defaultUserInfo={defaultUserInfo}
 				autoCookieLogin={autoCookieLogin}
 				userInfo={userInfo}
 				toggle={toggle}

@@ -4,8 +4,8 @@ import './Main.css';
 import { Link } from 'react-router-dom';
 
 const MovieList = ({ movieList }) => {
-
-	return (
+	console.log(movieList);
+	return movieList[0] ? (
 		<div className="movie__list">
 			{movieList.map((movies) => {
 				const { movie } = movies;
@@ -17,6 +17,8 @@ const MovieList = ({ movieList }) => {
 				);
 			})}
 		</div>
+	) : (
+		<div />
 	);
 };
 

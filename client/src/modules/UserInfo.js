@@ -53,12 +53,13 @@ export function defalutUserInfoAction(modifyUserInfo) {
 //action function
 
 const modifyUserInfoPost = async (userInfo) => {
+	console.log(userInfo);
 	if (Array.isArray(userInfo)) {
-		console.log(Object.assign({}, { oauth_id: userInfo[1] }));
-
-		return await axios.post(`http://localhost:3000/setting/userinfo`, Object.assign({}, { user: userInfo[1] }));
+		console.log(userInfo[0]);
+		return await axios.post(`http://localhost:3000/setting/userinfo`, userInfo[0]);
+	} else {
+		return await axios.post(`http://localhost:3000/setting/userinfo`, userInfo);
 	}
-	return await axios.post(`http://localhost:3000/setting/userinfo`, userInfo);
 };
 const modifyUserInfo = {
 	nickname: '',
@@ -77,9 +78,9 @@ export const modifyUserInfoAjaxAction = (userInfo) => (dispatch) => {
 	modifyUserInfoPost(userInfo)
 		.then((res) => {
 			console.log(res);
-			if (res.status === 200) {
-				sessionStorage.setItem('userInfo', JSON.stringify(userInfo));
-			}
+			// eslint-disable-next-line no-useless-concat
+			document.cookie = 'oauth_id' + '=; expires=Thu, 25 Oct 1990 00:00:10 GMT;';
+			Array.isArray(userInfo) ? sessionStorage.setItem('userInfo', JSON.stringify(userInfo[0])) : sessionStorage.setItem('userInfo', JSON.stringify(userInfo));
 
 			dispatch({
 				type: MODIFY_POST_SUCCESS,

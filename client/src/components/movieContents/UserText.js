@@ -7,7 +7,7 @@ const userText = ({ contentsList }) => {
 			<div className="userText" key={contentsList.id}>
 				<div>{contentsList.title}</div>
 				{/* {contentsList.upload_url && <img src={contentsList.upload_url} className="userTextImg"></img>} */}
-				<iframe srcDoc={contentsList.text} width="1000" height="1000" className="userText" style={{ border: 'none', display: 'block' }}></iframe>
+				<iframe srcDoc={contentsList.text} width="500" height="500" className="userText" style={{ border: 'none', display: 'block' }}></iframe>
 			</div>
 		</div>
 	);

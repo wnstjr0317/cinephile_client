@@ -30,12 +30,13 @@ export const loginPasswordAction = (loginPassword) => ({
 const signInPost = async (signInInfo) => {
 	if (Array.isArray(signInInfo)) {
 		console.log(Object.assign({}, { oauth_id: signInInfo[1] }));
-
+		console.log(signInInfo);
 		return await axios.post(`http://localhost:3000`, Object.assign({}, { user: signInInfo[1] }));
 	}
 	return await axios.post(`http://localhost:3000/users/login`, signInInfo);
 };
 const signOutPost = async () => await axios.post(`http://localhost:3000/users/logout`);
+
 export const signInAjaxAction = (signInInfo) => (dispatch) => {
 	dispatch({ type: SIGNIN_POST_PENDING });
 
@@ -63,6 +64,7 @@ export const signOutAjaxAction = (e) => (dispatch) => {
 			document.cookie = 'cookie' + '=; expires=Thu, 25 Oct 1990 00:00:00 GMT;';
 			// eslint-disable-next-line no-useless-concat
 			document.cookie = 'token' + '=; expires=Thu, 25 Oct 1990 00:00:10 GMT;';
+
 			dispatch({
 				type: LOGOUT,
 				userInfo: null,

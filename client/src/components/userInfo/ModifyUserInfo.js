@@ -16,6 +16,7 @@ const modifyUserInfoFunc = ({
 	autoCookieLogin,
 	modifyUserInfo,
 }) => {
+	console.log(loginUserInfo);
 	// eslint-disable-next-line react-hooks/rules-of-hooks
 	const [modifySwitch, setModifySwitch] = useState({
 		nicknameModify: false,
@@ -75,11 +76,11 @@ const modifyUserInfoFunc = ({
 		}
 
 		if (e.target.className === 'submitModifyButton') {
-			if (modifyUserInfo) {
-				modifyNickname === '' && nickNameChangeInput(modifyUserInfo.nickname);
-				modifyEmail === '' && emailChangeInput(modifyUserInfo.email);
-				modifyAge === '' && ageChangeSelect(modifyUserInfo.age);
-				modifyAge === '' && genderChangeSelect(modifyUserInfo.gender);
+			if (loginUserInfo) {
+				modifyNickname === '' && nickNameChangeInput(loginUserInfo.nickname);
+				modifyEmail === '' && emailChangeInput(loginUserInfo.email);
+				modifyAge === '' && ageChangeSelect(loginUserInfo.age);
+				modifyAge === '' && genderChangeSelect(loginUserInfo.gender);
 			} else {
 				alert('유저 정보가 없습니다.');
 			}

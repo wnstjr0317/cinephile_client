@@ -6,9 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const SideBar = ({ modifyUserInfoPost, defaultUserInfo, signInAjax, autoCookieLogin, userInfo, signOutAjax, toggleSwitch, signUpSwitch, loginSwitch, toggle, loginModal, signUpModal }) => {
 	const toggleEventHandler = () => {
-		return toggleSwitch
-			? { transform: 'translateX(0px)', width: '22%', transition: 'all 2.5s', opacity: 0.4, marginLeft: '-25px' }
-			: { transform: 'translateX(-500px)', width: '0%', opacity: 0, transition: 'all 2s', color: 'white' };
+		return toggleSwitch ? { display: 'none' } : { display: 'block' };
 	};
 
 	const cookie = document.cookie.split('; ').some((cookie) => cookie.includes('token') || cookie.includes('cookie') || cookie.includes('oauth_id'));

@@ -64,6 +64,8 @@ export const signOutAjaxAction = (e) => (dispatch) => {
 			document.cookie = 'cookie' + '=; expires=Thu, 25 Oct 1990 00:00:00 GMT;';
 			// eslint-disable-next-line no-useless-concat
 			document.cookie = 'token' + '=; expires=Thu, 25 Oct 1990 00:00:10 GMT;';
+			// eslint-disable-next-line no-useless-concat
+			document.cookie = 'user' + '=; expires=Thu, 25 Oct 1990 00:00:00 GMT;';
 
 			dispatch({
 				type: LOGOUT,

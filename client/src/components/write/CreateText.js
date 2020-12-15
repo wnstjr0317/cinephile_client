@@ -171,7 +171,7 @@ class CreateText extends Component {
           return (
             <div style={{ maxWidth: "700px", margin: "2rem auto" }}>
               <div style={{ textAlign: "center" }}>
-                <p className="writeIntro">영화에 대한 당신의 생각을 들려주세요.</p>
+                <div className="writeIntro">영화에 대한 당신의 <span>생각</span>을 들려주세요.</div>
               </div>
               <form onSubmit={this.onSubmit}>
                 <input

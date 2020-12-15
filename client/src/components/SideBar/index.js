@@ -48,6 +48,9 @@ const SideBar = ({ modifyUserInfoPost, defaultUserInfo, signInAjax, autoCookieLo
 							<Link className="sideBarList" to="/board">
 								Board
 							</Link>
+							<Link className="sideBarList" to="/chat">
+								Chatting Room
+							</Link>
 							<li
 								className="sideBarList"
 								onClick={() => {

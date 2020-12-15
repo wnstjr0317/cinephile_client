@@ -6,7 +6,10 @@ import Header from './containers/Header';
 import MovieContents from './containers/MovieContents';
 import Board from './containers/Board';
 import Write from './containers/Write';
-import UserInfo from './containers/UserInfo';
+
+import UserInfo from './containers/userInfo';
+import Chat from './containers/Chat';
+
 
 function App() {
 	return (
@@ -72,6 +75,19 @@ function App() {
 							<Header />
 							<SideBar />
 							<UserInfo history={history} match={match} />
+						</div>
+					);
+				}}
+			/>
+			<Route
+				exact
+				path="/chat"
+				render={({ history, match }) => {
+					return (
+						<div className="wrapper">
+							<Header />
+							<SideBar />
+							<Chat history={history} match={match} />
 						</div>
 					);
 				}}

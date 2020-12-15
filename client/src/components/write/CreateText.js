@@ -76,8 +76,6 @@ import React, { Component } from "react";
 import ReactQuill, { Quill } from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
-import { Link } from 'react-router-dom';
-import renderHTML from "react-render-html";
 // #1 import quill-image-uploader
 import ImageUploader from "quill-image-uploader";
 // #2 register module

@@ -94,7 +94,7 @@ const SignIn = ({ signInAjax, loginSwitch, modalSwitch, loginModal, loginPasswor
 				</a>
 			</button>
 			<button className="sideBarButton">
-				<a className="sotialLoginButton" href={`https://final.cinephile.kro.kr/users/kakao/unlink`}>
+				<a className="sotialLoginButton" href={`http://localhost:3000/users/kakao/unlink`}>
 					연결 끊기
 				</a>
 			</button>

@@ -18,6 +18,7 @@ const SignUp = ({
 	signUpPassword,
 	signUpEmail,
 	signUpAjax,
+	modifyUserInfoPost,
 }) => {
 	const inputReset = () => {
 		signUpPasswordInput('');
@@ -27,6 +28,7 @@ const SignUp = ({
 		signUpSexSelect('male');
 		signUpModal();
 	};
+	let aouth = document.cookie.split('; ').filter((string) => string.slice(0, 8) === 'oauth_id')[0];
 	// const [certificate, setCertificate] = useState({
 	// 	email: '#ff8787',
 	// 	password: '#ff8787',
@@ -37,26 +39,36 @@ const SignUp = ({
 	// }, [certificate.email, certificate.password, certificate.username]);
 	const signUpHandler = (e) => {
 		e.preventDefault();
-		if (signUpEmail.length < 12) {
-			alert('email');
-		} else if (signUpPassword.length < 8) {
-			alert('password');
-		} else if (signUpUsername.length < 6) {
-			alert('username');
-		} else if (signUpSex === '성별') {
-			alert('성별');
-		} else if (signUpAge === '나이') {
-			alert('나이');
+
+		// if (signUpEmail.length < 12) {
+		// 	alert('email');
+		// }
+		//  else if (signUpPassword.length < 8) {
+		// 	alert('password');
+		// } else if (signUpUsername.length < 6) {
+		// 	alert('username');
+		// } else if (signUpSex === '성별') {
+		// 	alert('성별');
+		// } else if (signUpAge === '나이') {
+		// 	alert('나이');
+		// } else {
+		if (aouth) {
+			console.log(aouth);
+			modifyUserInfoPost([{ id: aouth.split('=')[1], email: signUpEmail, nickname: signUpUsername, gender: signUpSex, age: signUpAge }]);
+			signUpModal();
 		} else {
 			signUpAjax({ email: signUpEmail, password: signUpPassword, nickname: signUpUsername, gender: signUpSex, age: signUpAge });
-			// console.log('signUp: ', isSignUp);
-			// console.log('email:', signUpEmail);
-			// console.log('password: ', signUpPassword);
-			// console.log('username: ', signUpUsername);
-			// console.log('sex: ', signUpSex);
-			// console.log('age: ', signUpAge);
 			inputReset();
 		}
+
+		// console.log('signUp: ', isSignUp);
+		console.log('email:', signUpEmail);
+		console.log('password: ', signUpPassword);
+		console.log('username: ', signUpUsername);
+		console.log('sex: ', signUpSex);
+		console.log('age: ', signUpAge);
+
+		// }
 	};
 
 	return (
@@ -81,21 +93,23 @@ const SignUp = ({
 					}}
 				/>
 
-				<input
-					required="required"
-					className="sideBarInput"
-					value={signUpPassword}
-					type="password"
-					placeholder="password"
-					onChange={(e) => {
-						// if (e.target.value.length < 8) {
-						// 	setCertificate(Object.assign({}, certificate, { password: 'ff8787' }));
-						// } else {
-						// 	setCertificate(Object.assign({}, certificate, { password: 'black' }));
-						// }
-						signUpPasswordInput(e.target.value);
-					}}
-				/>
+				{aouth === undefined && (
+					<input
+						required="required"
+						className="sideBarInput"
+						value={signUpPassword}
+						type="password"
+						placeholder="password"
+						onChange={(e) => {
+							// if (e.target.value.length < 8) {
+							// 	setCertificate(Object.assign({}, certificate, { password: 'ff8787' }));
+							// } else {
+							// 	setCertificate(Object.assign({}, certificate, { password: 'black' }));
+							// }
+							signUpPasswordInput(e.target.value);
+						}}
+					/>
+				)}
 
 				<input
 					required="required"

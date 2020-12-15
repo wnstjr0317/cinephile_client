@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const SideBar = ({ modifyUserInfoAjaxAction, defaultUserInfo, signInAjax, autoCookieLogin, userInfo, signOutAjax, toggleSwitch, signUpSwitch, loginSwitch, toggle, loginModal, signUpModal }) => {
+const SideBar = ({ modifyUserInfoPost, defaultUserInfo, signInAjax, autoCookieLogin, userInfo, signOutAjax, toggleSwitch, signUpSwitch, loginSwitch, toggle, loginModal, signUpModal }) => {
 	const toggleEventHandler = () => {
 		return toggleSwitch
 			? { transform: 'translateX(0px)', width: '22%', transition: 'all 2.5s', opacity: 0.4, marginLeft: '-25px' }
@@ -16,10 +16,12 @@ const SideBar = ({ modifyUserInfoAjaxAction, defaultUserInfo, signInAjax, autoCo
 	useEffect(() => {
 		if (cookie) {
 			let aouth = document.cookie.split('; ').filter((string) => string.slice(0, 8) === 'oauth_id')[0];
-			console.log(aouth);
 			let sotialKey = document.cookie.split('; ').filter((string) => string.slice(0, 4) === 'user')[0];
+			console.log(sotialKey);
 			sotialKey && signInAjax(sotialKey.split('='));
-			aouth && modifyUserInfoAjaxAction(aouth.split('='));
+			// modifyUserInfoPost(JSON.parse(sessionStorage.getItem('userInfo')));
+			aouth && signUpModal();
+			// sotialKey && modifyUserInfoPost([JSON.parse(sessionStorage.getItem('userInfo'))]);
 			autoCookieLogin(JSON.parse(sessionStorage.getItem('userInfo')));
 			defaultUserInfo(JSON.parse(sessionStorage.getItem('userInfo')));
 		} else {
@@ -27,7 +29,7 @@ const SideBar = ({ modifyUserInfoAjaxAction, defaultUserInfo, signInAjax, autoCo
 				autoCookieLogin(null);
 			};
 		}
-	}, [autoCookieLogin, cookie, defaultUserInfo, modifyUserInfoAjaxAction, signInAjax]);
+	}, [autoCookieLogin, cookie, defaultUserInfo, signInAjax, modifyUserInfoPost, signUpModal]);
 
 	return (
 		<>

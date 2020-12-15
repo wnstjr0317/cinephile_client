@@ -1,0 +1,116 @@
+.modifyUserInfo {
+    height: 30rem;
+}
+p > .loginUser {
+    color: #66d9e8;
+}
+.modifyTable {
+    /* background-color: black; */
+    /* color: white; */
+    text-align: center;
+    display: grid;
+    height: 13rem;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-gap: 0.2rem 0.5rem;
+    
+}
+
+button {
+    font-size: 0.8rem;
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+select {
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    height: 1.9rem;
+}
+.nickname  {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+    display: inline-grid;
+    grid-template-columns: repeat(2,1fr);
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 3px;
+    line-height: 1.9rem;
+}
+.nickname > .modifyNicknameText  {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+
+.nicknameModifyButton {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+}
+
+.password {
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
+    display: inline-grid;
+    grid-template-columns: repeat(2,1fr);
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 3px;
+    line-height: 1.9rem;
+}
+
+.password > .modifyPasswordText {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+
+.passwordModifyButton {
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+}
+
+.email {
+    grid-column: 1 / 3;
+    grid-row: 3 / 4;
+    display: inline-grid;
+    grid-template-columns: repeat(2,1fr);
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 3px;
+    line-height: 1.9rem;
+}
+
+.email > .modifyEmailText {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+.emailModifyButton {
+    grid-column: 3 / 4;
+    grid-row: 3 / 4;
+}
+.gender {
+    grid-column: 1 / 2;
+    grid-row: 4 / 5;
+    display: inline-grid;
+}
+.gender > select {
+    grid-column: 1 / 2;
+    display: inline-grid;
+}
+.ageModify {
+    grid-column: 2 / 3;
+    grid-row: 4 / 5;
+    display: inline-grid;
+}
+.ageModify > select {
+    grid-column: 1 / 2;
+    display: inline-grid;
+}
+
+.submitModifyButton {
+    grid-column: 3 / 4;
+    grid-row: 4 / 5;
+}

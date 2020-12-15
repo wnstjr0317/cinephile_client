@@ -42,7 +42,7 @@ const SearchMovie = ({ userInfo, history }) => {
     return (
       <div className="movie__result" key={index}>
         <img src={el.image} alt={el.link} value={el.link} onClick={onCatchUrl} />
-        <h4 className="url" >{renderHTML(el.title)}</h4>
+        <h5 className="url" >{renderHTML(el.title)}</h5>
         {console.log("catchUrl 2 :", catchUrl)}
       </div>
     );
@@ -51,10 +51,11 @@ const SearchMovie = ({ userInfo, history }) => {
   return (
     <div>
       {catchUrl !== "" ? (<CreateText userInfo={userInfo} url={catchUrl} history={history} />) : (<div>
-      <input type="text" value={keyword} placeholder="영화 제목" onKeyPress={handleEnterPress} onChange={onInputTitle} />
-      <button onClick={onSearchMovie}>검색</button>
+      <p className="searchIntro">어떤 영화 찾으세요?</p>
+      <input className="inputTitle" type="text" value={keyword} placeholder="영화 제목" onKeyPress={handleEnterPress} onChange={onInputTitle} />
+      <button className="goSearch" onClick={onSearchMovie}>검색</button>
       
-      <div>{renderResult}</div>
+      <div className="renderResult">{renderResult}</div>
       </div> )}
       </div>
   );

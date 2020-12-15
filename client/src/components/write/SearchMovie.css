@@ -1,0 +1,41 @@
+.searchIntro {
+    margin-left: 0.3rem;
+    font-style: italic;
+    font-size: large;
+}
+.inputTitle {
+    border: 1px solid black;
+    border-radius: 3px;
+    margin: 0.3rem;
+    width: 15rem;
+    height: 1.5rem;
+    font-size: 0.8rem;
+}
+
+.goSearch {
+    border: 1px solid black;
+    border-radius: 3px;
+    background-color: white;
+    margin: 0.3rem;
+    width: 4rem;
+    height: 1.7rem;
+}
+
+.renderResult {
+    margin: 0.3rem;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 0.8rem;
+}
+
+.movie__result > img {
+    transition: all 0.7s;
+    cursor: pointer;
+    box-shadow: 7px 5px 5px lightgray;
+}
+.movie__result > img:hover {
+    transform: scale(1.05);
+	z-index: 100;
+	position: relative;
+}

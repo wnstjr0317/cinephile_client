@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './ModifyUserInfo.css';
 
 const modifyUserInfoFunc = ({
 	modifyAge,
@@ -93,11 +94,14 @@ const modifyUserInfoFunc = ({
 	return (
 		loginUserInfo && (
 			<div className="modifyUserInfo">
-				<form action="">
-					<label htmlFor="nickname">
-						닉네임:
+				<p><span className="loginUser">{loginUserInfo.nickname}</span>
+					<span> 님의 마이페이지입니다.</span></p>
+				<p>개인 정보를 수정하시려면 아래 수정 버튼을 클릭해 주세요.</p>
+				<form action="" className="modifyTable">
+					<label htmlFor="nickname" className="nickname" >
+						Nickname :
 						{modifySwitch.nicknameModify ? (
-							<input type="text" value={modifyNickname} onChange={(e) => nickNameChangeInput(e.target.value)} />
+							<input type="text" className="modifyNicknameText" value={modifyNickname} onChange={(e) => nickNameChangeInput(e.target.value)} />
 						) : (
 							<span className="modifyNicknameText">{modifyNickname ? modifyNickname : loginUserInfo.nickname}</span>
 						)}
@@ -106,8 +110,8 @@ const modifyUserInfoFunc = ({
 						{modifySwitch.nicknameModify ? '확인' : '수정'}
 					</button>
 					<p />
-					<label htmlFor="password">
-						패스워드:
+					<label htmlFor="password" className="password">
+						Password :
 						{modifySwitch.passwordModify ? (
 							<input type="password" value={modifyPassword} onChange={(e) => passwordChangeInput(e.target.value)} />
 						) : (
@@ -118,8 +122,8 @@ const modifyUserInfoFunc = ({
 						{modifySwitch.passwordModify ? '확인' : '수정'}
 					</button>
 					<p />
-					<label htmlFor="email">
-						이메일:
+					<label htmlFor="email" className="email">
+						Email :
 						{modifySwitch.emailModify ? (
 							<input type="email" value={modifyEmail} onChange={(e) => emailChangeInput(e.target.value)} />
 						) : (
@@ -130,7 +134,7 @@ const modifyUserInfoFunc = ({
 						{modifySwitch.emailModify ? '확인' : '수정'}
 					</button>
 					<p />
-					<label htmlFor="gender">
+					<label htmlFor="gender" className="gender">
 						<select defaultValue={loginUserInfo.gender} onChange={(e) => genderChangeSelect(e.target.value)}>
 							<option value="DEFAULT">성별</option>
 							<option value="male">남성</option>
@@ -139,7 +143,7 @@ const modifyUserInfoFunc = ({
 					</label>
 
 					<p />
-					<label htmlFor="age">
+					<label htmlFor="age" className="ageModify">
 						<select defaultValue={loginUserInfo.age} onChange={(e) => ageChangeSelect(e.target.value)}>
 							<option value="DEFAULT">나이</option>
 							{[10, 20, 30, 40, 50, 60].map((age, id) => (

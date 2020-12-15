@@ -18,16 +18,18 @@ const comment = ({ comments, contentsList, contentsGetAjax, userInfo, loginModal
 		// eslint-disable-next-line no-undef
 		contentsGetAjax(contentsList.id);
 	}, [contentsGetAjax, contentsList.id, like, sign]);
-	console.log(comments);
+	console.log(contentsList);
+
 	const cmmtSubmitHandler = (e) => {
 		e.preventDefault();
 		axios
 			.post(`http://localhost:3000/board/comment`, {
 				text: comment,
 				user: userInfo.id,
-				article: contentsList.movieId,
+				article: contentsList.id,
 			})
 			.then((res) => {
+				console.log(res);
 				setData(Object.assign({}, data, { comment: '', sign: !sign }));
 				ref.current.focus();
 			});

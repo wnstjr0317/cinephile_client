@@ -11,7 +11,7 @@ const MovieList = ({ movieList }) => {
 				const { movie } = movies;
 				return (
 					<Link to={`/board/${movies.id}`} className="mainContents" key={movies.id}>
-						<img src={movie.poster} />
+						<img className="mainListImg" src={movie.poster} />
 						<div className="mainTitle">{movie.title}</div>
 					</Link>
 				);

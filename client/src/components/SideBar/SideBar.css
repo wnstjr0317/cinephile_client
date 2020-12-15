@@ -1,11 +1,14 @@
 .sideBar {
 	/* border: 1px solid blue; */
-	padding: 70px 10px 0 0;
-	height: 1000px;
+	padding: 40px 10px 20px 0;
 	font-size: 20px;
 	position: fixed;
-	background-color: rgba(16, 13, 13, 0.954);
-	border-radius: 10px;
+	width: 20%;
+	z-index: 999;
+	opacity: 0.8;
+	margin: 60px 0 0 40px;
+	background-color: rgba(38, 36, 36, 0.954);
+	border-radius: 20px;
 }
 .sideBarToggle {
 	font-size: 30px;
@@ -87,18 +90,13 @@
 .age {
 	transform: translate(220px, 6px);
 }
-.signup__button {
-	position: relative;
-
-	transform: translate(70px, 30px);
-}
 
 .sideBarList {
 	color: rgb(198, 210, 199);
 	width: 90%;
 	height: 50px;
 	margin-top: 20px;
-	/* margin-left: 30px; */
+	margin-left: 20px;
 	cursor: pointer;
 	display: flex;
 	font-weight: 400;
@@ -113,7 +111,7 @@
 }
 .sideBarList:hover {
 	background-color: white;
-	width: 100%;
+	width: 90%;
 	border-radius: 10px;
 	color: rgba(36, 33, 33, 0.708);
 }
@@ -147,6 +145,7 @@
 	color: rgb(27, 34, 40);
 	background-color: rgb(187, 177, 173);
 	padding: 10px;
+	margin-left: 20px;
 	border-radius: 100%;
 }
 .signUpButton {

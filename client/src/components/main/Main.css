@@ -1,29 +1,61 @@
 .movie__list {
 	display: grid;
 	justify-content: center;
-	grid-template-columns: repeat(4, 14rem);
-	grid-template-rows: repeat(5, 15rem);
+	grid-template-columns: repeat(5, 12rem);
+	grid-template-rows: repeat(1, 15rem);
 	row-gap: 8rem;
-	margin-left: 2em;
+	margin: 20em 0 0 2em;
 	/* row의 간격을 10px로 */
-	column-gap: 2em;
+	column-gap: 3em;
 	/* column의 간격을 20px로 */
 
 	/* border: 1px solid black; */
 }
+.mainListImg {
+	border-radius: 10px;
+}
+.slideController {
+	/* border: 1px solid blue; */
+	color: white;
+	width: 2em;
+	user-select: none;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	float: left;
+	font-size: 2em;
+	font-weight: 200;
+	position: relative;
+	left: 50%;
+}
+.slideLeft {
+	position: relative;
+	margin-top: -7em;
+	margin-left: -18.5em;
+}
+.slideRight {
+	position: relative;
+	margin-top: -7.3em;
+	margin-left: 17.5em;
+}
+
 .mainContents {
 	transition: all 1s;
 }
+.main {
+	width: 100%;
+}
 
 .mainContents:hover {
-	transform: scale(1.15);
+	transform: scale(1.08);
 	z-index: 100;
 	position: relative;
+	font-size: 1.3em;
 }
 .mainTitle {
-	color: rgb(31, 30, 30);
-	font-size: 15px;
-	font-weight: 400;
+	color: rgb(255, 255, 255);
+	font-size: 0.7em;
+	font-weight: 300;
 	margin-top: 10px;
 }
 .mainContents {
@@ -31,63 +63,51 @@
 	text-align: center;
 }
 .slide {
-	display: flex;
-	box-sizing: border-box;
-}
-.slideController {
-	font-size: 100px;
-	font-weight: 300;
-	height: 100%;
-	opacity: 0.2;
-	text-shadow: -5px 5px 10px rgb(106, 106, 145);
-	/* margin-left: 20px; */
-
-	align-items: center;
-	color: rgb(90, 91, 83);
+	top: 12%;
 	position: relative;
-	top: 120px;
-	user-select: none;
-	opacity: 0.5;
-}
-.slideRight {
-	left: 9.5%;
-}
-.slideLeft {
-	right: 72%;
+	width: 100%;
+	display: block;
 }
 .slideElement {
-	width: 750px;
-	height: 400px;
-	position: relative;
-	left: 18%;
-	display: flex;
-	box-shadow: 10px 10px 20px rgb(61, 64, 65);
-	justify-content: center;
-	align-items: center;
-	border: 1px solid rgb(155, 155, 177);
-	font-size: 80px;
-	font-weight: 100;
+	width: 80%;
+	height: 28em;
+	margin-left: 11%;
 	border-radius: 10px;
-	color: thistle;
-	margin-bottom: 130px;
-	/* transition: all 1s; */
+	border: 1px solid rgb(46, 46, 48);
+	box-shadow: 5px 5px 50px rgb(57, 57, 58);
 }
 .slideNav {
-	width: 100%;
 	display: flex;
-	justify-content: center;
-	margin: 30px 0 40px 30px;
-	top: 20%;
-	position: absolute;
+	margin-left: 46%;
+	margin-top: 2%;
+	cursor: pointer;
 }
 .slideNavElement {
-	user-select: none;
-
-	margin-left: 5px;
-	/* left: -50%; */
-	font-size: 15px;
-	opacity: 0.5;
-	position: relative;
-	color: rgb(67, 64, 64);
-	/* transform: translate(88px, 40px); */
+	margin-left: 0.5em;
+}
+.footer {
+	width: 100%;
+	height: 13%;
+	border-top: 0.5px solid rgb(126, 126, 138);
+	display: flex;
+	box-sizing: border-box;
+	margin: 8% 0;
+}
+.developerInfo {
+	width: 25%;
+	/* border: 1px solid rgb(209, 209, 213); */
+	background-color: rgb(2, 2, 2);
+	color: rgb(222, 211, 211);
+	height: 100%;
+	/* padding: 10px; */
+	font-size: 1em;
+	font-weight: 100;
+	text-align: center;
+	line-height: 35px;
+	opacity: 0.9;
+}
+.devName {
+	color: rgb(244, 242, 242);
+	font-weight: 400;
+	font-size: 1em;
 }

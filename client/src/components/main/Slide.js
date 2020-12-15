@@ -50,12 +50,6 @@ const slide = () => {
 				</div>
 			))}
 
-			<div className="slideController slideLeft" onClick={slideLeft}>
-				{'<'}
-			</div>
-			<div className="slideController slideRight" onClick={slideRight}>
-				{'>'}
-			</div>
 			<div className="slideNav">
 				{a.map((el, idx) => (
 					<div

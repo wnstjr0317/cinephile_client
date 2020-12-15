@@ -7,9 +7,8 @@ import MovieContents from './containers/MovieContents';
 import Board from './containers/Board';
 import Write from './containers/Write';
 
-import UserInfo from './containers/userInfo';
+import UserInfo from './containers/UserInfo';
 import Chat from './containers/Chat';
-
 
 function App() {
 	return (

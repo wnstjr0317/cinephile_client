@@ -1,21 +1,35 @@
+.searchPage {
+    margin-top: 15%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40vw;
+    height: 71vh;
+    ;
+}
 .searchIntro {
-    margin-left: 0.3rem;
+    margin-top: 21%;
     font-style: italic;
     font-size: large;
+    color: rgb(255, 255, 255);
 }
+.searchIntro > span {
+    color: #66d9e8;
+    font-weight: bold;
+}
+
 .inputTitle {
     border: 1px solid black;
     border-radius: 3px;
-    margin: 0.3rem;
     width: 15rem;
     height: 1.5rem;
     font-size: 0.8rem;
 }
 
 .goSearch {
-    border: 1px solid black;
+    border: 1.5px solid #66d9e8;
     border-radius: 3px;
-    background-color: white;
+    background-color: black;
+    color: white;
     margin: 0.3rem;
     width: 4rem;
     height: 1.7rem;
@@ -27,15 +41,28 @@
     justify-content: center;
     grid-template-columns: repeat(4, 1fr);
     column-gap: 0.8rem;
+    row-gap: 1.5rem;
 }
 
-.movie__result > img {
-    transition: all 0.7s;
+.movie__result {
+    transition: all 1s;
     cursor: pointer;
-    box-shadow: 7px 5px 5px lightgray;
+    display: block;
+    text-align: center;
 }
-.movie__result > img:hover {
+.movie__result:hover  {
     transform: scale(1.05);
 	z-index: 100;
 	position: relative;
+}
+
+.movie__result > img {
+    border-radius: 5px;
+    box-shadow: 7px 5px 5px rgb(29, 29, 29);
+}
+.movie__result > .url {
+    color: rgb(255, 255, 255);
+    font-size: 0.7em;
+    font-weight: 300;
+    margin-top: 10px;
 }

@@ -3,25 +3,32 @@ import io from "socket.io-client";
 import './ChatBoard.css';
 
 const socketURL = "http://localhost:3000"
+let socket;
 
 const ChatBoard = ({ userInfo, history }) => {
   const [messageList, setMessageList] = useState([]);
   const [value, setValue] = useState('');
-  const socket = io(socketURL);
   console.log('chatboard USERINFO!!', userInfo);
+  useEffect(() => {
+    socket = io(socketURL);
+
+  }, [socketURL]);
+  
+  useEffect(() => {
+   socket.on('receive message', ({ name, message }) => {
+     console.log('message :', message)
+     setMessageList(messageList => messageList.concat({ name, message }));
+   })
+ }, [messageList]);
 
   const submit = (e) => {
     e.preventDefault();
     console.log('submit!!!!!!',userInfo.nickname);
-    socket.emit('send message', { name: userInfo.nickname, message: value });
+    if(value) {
+      socket.emit('send message', { name: userInfo.nickname, message: value }, setValue(""));
+    }
    };
 
-   useEffect(() => {
-    socket.on('receive message', ({ name, message }) => {
-      console.log('message :', message)
-      setMessageList(messageList => messageList.concat({ name, message }));
-    })
-  }, [messageList]);
 
   return (
     <div className="chat">

@@ -1,23 +1,25 @@
 import React, { useState, useEffect } from 'react'
-// import io from "socket.io-client";
+import io from "socket.io-client";
 import './ChatBoard.css';
 
-// const socketURL = "http://localhost:4000";
+const socketURL = "http://localhost:3000"
 
 const ChatBoard = ({ userInfo, history }) => {
   const [messageList, setMessageList] = useState([]);
   const [value, setValue] = useState('');
-//   const socket = io(socketURL);
+  const socket = io(socketURL);
+
   const submit = (e) => {
-//     e.preventDefault();
-//     console.log(userInfo)
-//     socket.emit('send message', { name: userInfo.nickname, message: value });
+    e.preventDefault();
+    console.log(userInfo)
+    socket.emit('send message', { name: 'hw', message: value });
    };
+
    useEffect(() => {
-//     socket.on('receive message', ({ name, message }) => {
-//       console.log('message :', message)
-//       setMessageList(messageList => messageList.concat({ name, message }));
-//     })
+    socket.on('receive message', ({ name, message }) => {
+      console.log('message :', message)
+      setMessageList(messageList => messageList.concat({ name, message }));
+    })
   }, [messageList]);
 
   return (

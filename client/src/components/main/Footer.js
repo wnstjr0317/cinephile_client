@@ -2,10 +2,10 @@ import React from 'react';
 import './Main.css';
 const footer = () => {
 	let developInfo = [
-		{ name: '이형우 (front-end)', position: '팀장' },
-		{ name: '조성국 (back-end)', position: '팀원' },
-		{ name: '장수민 (back-end)', position: '팀원' },
-		{ name: '최치원 (front-end)', position: '팀원' },
+		{ name: '이형우', position: 'front-end' },
+		{ name: '조성국', position: 'back-end' },
+		{ name: '장수민', position: 'back-end' },
+		{ name: '최치원', position: 'front-end' },
 	];
 	return (
 		<div className="footer">

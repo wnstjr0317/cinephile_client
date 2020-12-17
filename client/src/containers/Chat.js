@@ -6,7 +6,7 @@ const Chat = ({ history }) => {
     const { userInfo } = useSelector((state) => ({
         userInfo: state.SignIn.userInfo,
       }));
-
+      console.log(userInfo, "con User")
     return (
         <div className="main">
             <ChatBoard userInfo={userInfo} history={history} />

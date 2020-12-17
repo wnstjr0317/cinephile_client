@@ -76,6 +76,7 @@ import React, { Component } from "react";
 import ReactQuill, { Quill } from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
+import './CreateText.css';
 // #1 import quill-image-uploader
 import ImageUploader from "quill-image-uploader";
 // #2 register module
@@ -170,7 +171,7 @@ class CreateText extends Component {
           return (
             <div style={{ maxWidth: "700px", margin: "2rem auto" }}>
               <div style={{ textAlign: "center" }}>
-                <h1>게시글 작성하기</h1>
+                <div className="writeIntro">영화에 대한 당신의 <span>생각</span>을 들려주세요.</div>
               </div>
               <form onSubmit={this.onSubmit}>
                 <input
@@ -181,7 +182,8 @@ class CreateText extends Component {
                     this.setState({ title: e.target.value });
                   }}
                 />
-                <ReactQuill 
+				<ReactQuill 
+					className="quil"
                     modules={this.modules}
                     formats={CreateText.formats}
                     value={this.state.content}

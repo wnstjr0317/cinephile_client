@@ -1,18 +1,100 @@
-.movie__list {
-	display: grid;
-	justify-content: center;
-	grid-template-columns: repeat(5, 12rem);
-	grid-template-rows: repeat(1, 15rem);
-	row-gap: 8rem;
-	margin: 20em 0 0 2em;
-	/* row의 간격을 10px로 */
-	column-gap: 3em;
-	/* column의 간격을 20px로 */
-
-	/* border: 1px solid black; */
+.video__intro {
+	position: relative;
+	height: 45rem;
 }
-.mainListImg {
-	border-radius: 10px;
+.video__intro > .video {
+	position: relative;
+	margin-top: 10%;
+	width: 100%;
+	left: 50%;
+	top: 10%;
+	/* height: 90%; */
+	object-fit: cover;
+	transform: translate(-50%, -50%);
+	opacity: 0.9;
+}
+
+.introduction {
+	position: absolute;
+	
+	top: 75%; 
+	left: 45%;
+	color: white;
+	/* margin: auto; */
+	font-size: 3rem;
+	font-weight: bolder;
+	transform: translate(-50%, -50%);
+}
+.introduction > span {
+	color: #22b8cf;
+	font-size: 3.5rem;
+}
+.introduction > .brand {
+	font-size: 4.5rem;
+	color: #22b8cf;
+}
+
+.slide {
+	/* top: 10%; */
+	margin-top: 12rem;
+	position: relative;
+	width: 100%;
+	display: block;
+	background-color: black;
+	box-sizing: border-box;
+}
+.boxOffice {
+	margin-top: 3rem;
+	position: relative;
+	text-align: center;
+	color: white;
+	font-size: 3rem;
+	
+}
+.slideElement {
+	width: 100%;
+	margin-top: 4rem;
+	position: relative;
+	
+}
+.img__container {
+	width: 100%;
+	display: inline-block;
+	vertical-align: middle;
+	box-sizing: border-box;
+}
+
+.slideImage {
+	width: 15%;
+	/* height: 28em; */
+	margin-left: 25%;
+	float: left;
+	/* border-radius: 10px; */
+	border: 1px solid rgb(46, 46, 48);
+	box-shadow: 5px 5px 50px rgb(57, 57, 58);
+	vertical-align: top;
+}
+.info__container {
+	position: absolute;
+	vertical-align: middle;
+	text-align: left;
+	color: white;
+	box-sizing: border-box;
+	transform: translate(-50%, -50%);
+	left: 65%;
+	top: 45%;
+}
+.slideTitle {
+	font-size: 3rem;
+}
+.slideNav {
+	display: flex;
+	margin-left: 46%;
+	margin-top: 2%;
+	cursor: pointer;
+}
+.slideNavElement {
+	margin-left: 0.5em;
 }
 .slideController {
 	/* border: 1px solid rgb(157, 148, 148); */
@@ -48,6 +130,23 @@
 	margin-left: 12.5em;
 }
 
+.movie__list {
+	display: grid;
+	justify-content: center;
+	grid-template-columns: repeat(5, 12rem);
+	grid-template-rows: repeat(1, 15rem);
+	row-gap: 8rem;
+	margin: 20em 0 0 2em;
+	/* row의 간격을 10px로 */
+	column-gap: 3em;
+	/* column의 간격을 20px로 */
+
+	/* border: 1px solid black; */
+}
+.mainListImg {
+	border-radius: 10px;
+}
+
 .mainContents {
 	transition: all 1s;
 }
@@ -71,29 +170,7 @@
 	display: block;
 	text-align: center;
 }
-.slide {
-	top: 12%;
-	position: relative;
-	width: 100%;
-	display: block;
-}
-.slideElement {
-	width: 80%;
-	height: 28em;
-	margin-left: 11%;
-	border-radius: 10px;
-	border: 1px solid rgb(46, 46, 48);
-	box-shadow: 5px 5px 50px rgb(57, 57, 58);
-}
-.slideNav {
-	display: flex;
-	margin-left: 46%;
-	margin-top: 2%;
-	cursor: pointer;
-}
-.slideNavElement {
-	margin-left: 0.5em;
-}
+
 .footer {
 	width: 100%;
 	height: 13%;

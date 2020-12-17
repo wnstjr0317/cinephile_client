@@ -8,11 +8,12 @@ const ChatBoard = ({ userInfo, history }) => {
   const [messageList, setMessageList] = useState([]);
   const [value, setValue] = useState('');
   const socket = io(socketURL);
+  console.log('chatboard USERINFO!!', userInfo);
 
   const submit = (e) => {
     e.preventDefault();
-    console.log(userInfo)
-    socket.emit('send message', { name: 'hw', message: value });
+    console.log('submit!!!!!!',userInfo.nickname);
+    socket.emit('send message', { name: userInfo.nickname, message: value });
    };
 
    useEffect(() => {
@@ -35,7 +36,7 @@ const ChatBoard = ({ userInfo, history }) => {
       <form className="chat-form"
         onSubmit={(e) => submit(e)}>
         <div className="chat-inputs">
-        <div className="nickname">닉네임</div>
+        <div className="nickname">{userInfo.nickname}</div>
           <input
             type="text"
             autoComplete="off"

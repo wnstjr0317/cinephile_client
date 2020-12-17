@@ -8,6 +8,7 @@ const Write = ({ history }) => {
   const { userInfo } = useSelector((state) => ({
     userInfo: state.SignIn.userInfo,
   }));
+  console.log('USERINFO!!!', userInfo);
 
   return (
     <div className="main">

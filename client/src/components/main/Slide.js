@@ -4,6 +4,7 @@ import "./Main.css";
 import joker from "./video/joker.mp4";
 
 const slide = () => {
+
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [array, setArray] = useState([
     { display: "block", color: "rgb(215, 199, 196)" },
@@ -12,6 +13,7 @@ const slide = () => {
     { display: "none", color: "rgb(67, 64, 64)" },
     { display: "none", color: "rgb(67, 64, 64)" },
   ]);
+
 
   const slideLeft = () => {
     setArray([...array.slice(1, 5), array[0]]);
@@ -86,6 +88,7 @@ const slide = () => {
           </div>
         ))}
 
+
         <div className="slideNav">
           {a.map((el, idx) => (
             <div
@@ -109,6 +112,7 @@ const slide = () => {
       </div>
     </div>
   );
+
 };
 
 export default slide;

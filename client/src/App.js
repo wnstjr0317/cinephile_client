@@ -1,6 +1,5 @@
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
-import SideBar from './containers/SideBar';
 import Main from './containers/Main';
 import Header from './containers/Header';
 import MovieContents from './containers/MovieContents';
@@ -19,8 +18,7 @@ function App() {
 				render={({ history, match }) => {
 					return (
 						<div className="wrapper">
-							<Header />
-							<SideBar />
+							<Header match={match} />
 							<Main history={history} match={match} />
 						</div>
 					);
@@ -33,7 +31,6 @@ function App() {
 					return (
 						<div className="wrapper">
 							<Header match={match} />
-							<SideBar />
 							<Write history={history} match={match} />
 						</div>
 					);
@@ -45,8 +42,7 @@ function App() {
 				render={({ history, match }) => {
 					return (
 						<div className="wrapper">
-							<Header />
-							<SideBar />
+							<Header match={match} />
 							<Board history={history} match={match} />
 						</div>
 					);
@@ -58,8 +54,7 @@ function App() {
 				render={({ history, match }) => {
 					return (
 						<div className="wrapper">
-							<Header />
-							<SideBar />
+							<Header match={match} />
 							<MovieContents history={history} match={match} />
 						</div>
 					);
@@ -71,8 +66,7 @@ function App() {
 				render={({ history, match }) => {
 					return (
 						<div className="wrapper">
-							<Header />
-							<SideBar />
+							<Header match={match} />
 							<UserInfo history={history} match={match} />
 						</div>
 					);
@@ -84,8 +78,7 @@ function App() {
 				render={({ history, match }) => {
 					return (
 						<div className="wrapper">
-							<Header />
-							<SideBar />
+							<Header match={match} />
 							<Chat history={history} match={match} />
 						</div>
 					);

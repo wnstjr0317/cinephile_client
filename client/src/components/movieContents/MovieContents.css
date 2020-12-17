@@ -1,9 +1,68 @@
+.movieInfoMain {
+	/* border: 1px solid blue; */
+	min-width: 700px;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 12% 0;
+	color: white;
+	display: flex;
+}
+.movieInfoSlide {
+	box-sizing: border-box;
+	margin-left: 5%;
+	position: fixed;
+	display: flex;
+	background-color: black;
+	opacity: 0.8;
+}
+
 .movieInfo {
 	width: 100%;
-	border: 1px solid rgb(195, 195, 218);
+	/* border: 1px solid rgb(195, 195, 218); */
+	height: 100%;
+	box-sizing: border-box;
+	display: flex;
 
+	margin-bottom: 30px;
 	/* height: 300px; */
 }
+.poster img {
+	width: 23em;
+}
+.movieDetail {
+	margin-top: 15px;
+	line-height: 40px;
+}
+.userTextTitle {
+	font-size: 2em;
+	color: rgb(6, 5, 5);
+	display: flex;
+	width: 100%;
+	/* padding: 10%; */
+	justify-content: center;
+	align-items: center;
+	/* border-bottom: 1px solid rgb(208, 208, 225); */
+	height: 2em;
+}
+.texts {
+	margin: 2em;
+}
+.texts img {
+	width: 700px;
+	margin-top: 3em;
+	display: block;
+}
+/* .texts p {
+	display: block;
+} */
+.userText {
+	min-width: 700px;
+	min-height: 600px;
+}
+.userTextImg {
+	max-width: 700px;
+}
+
 .comment {
 	width: 100%;
 	border: 1px solid blue;
@@ -11,10 +70,14 @@
 	box-sizing: border-box;
 }
 .writingHeader {
-	width: 100%;
+	max-width: 1000px;
 	box-sizing: border-box;
-	border: 1px solid rgb(161, 161, 181);
-	height: 300px;
+	border-left: 1px solid rgb(228, 228, 228);
+	margin-right: 5%;
+	display: flex;
+	justify-content: center;
+	background-color: rgb(244, 244, 244);
+	/* height: 300px; */
 }
 .commentUser {
 	border-bottom: 1px solid rgb(188, 188, 196);
@@ -27,14 +90,15 @@
 .comment__box {
 	border: 1px solid rgb(177, 177, 201);
 	margin-top: 10px;
-	width: 90%;
+	width: 70%;
 	min-height: 140px;
 	padding: 0 20px;
 	background-color: rgb(255, 255, 255);
 	border-radius: 10px;
-	box-shadow: 10px 5px 10px rgb(237, 237, 237);
+	box-shadow: 10px 5px 10px rgb(114, 111, 111);
 }
 .commentText {
+	color: black;
 }
 
 .user__comment {

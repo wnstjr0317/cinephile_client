@@ -1,11 +1,11 @@
-
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState } from 'react';
+import axios from 'axios';
 import CreateText from './CreateText';
-import renderHTML from "react-render-html";
-import "./SearchMovie.css";
+import renderHTML from 'react-render-html';
+import './SearchMovie.css';
 
 const SearchMovie = ({ userInfo, history }) => {
+
   const [keyword, setKeyword] = useState("");
   const [result, setResult] = useState([]);
   const [catchUrl, setCatchUrl] = useState("");
@@ -59,6 +59,7 @@ const SearchMovie = ({ userInfo, history }) => {
       </div> )}
       </div>
   );
+
 
 };
 

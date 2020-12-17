@@ -19,6 +19,7 @@
 	text-align: center;
 	display: flex;
 	box-sizing: border-box;
+	padding: 1% 0;
 	/* left: 22%; */
 	background-color: rgb(87, 87, 87);
 	
@@ -26,11 +27,11 @@
 
 .logo {
 	/* border: 1px solid blue; */
-	width: 80%;
-	margin-left: 13%;
+	width: 25%;
+	/* margin-left: 13%; */
 	background: url(./Main_Logo.png) no-repeat;
 	background-size: 300px 200px;
-	height: 80%;
+	/* height: 80%; */
 
 	background-position: center;
 }
@@ -39,14 +40,16 @@
 	color: black;
 	border: 1px solid rgb(188, 188, 202);
 	border-radius: 30px;
-	width: 70px;
+	width: 5%;
+	/* left: 50%; */
 	font-size: 13px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	position: relative;
-	top: 70px;
-	height: 30px;
+	top: 40%;
+	left: 26%;
+	height: 20%;
 }
 a {
 	text-decoration: none;

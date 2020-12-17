@@ -2,25 +2,20 @@ import React, { useEffect } from 'react';
 import './MovieContents.css';
 const movieInfo = ({ contentsList, movie, history }) => {
 	// eslint-disable-next-line react-hooks/rules-of-hooks
-	useEffect(() => {
-		return () => {};
-	});
+	console.log(movie.poster.split('?')[0]);
 	return movie ? (
 		<div className="movieWrapper">
 			<div className="movieInfo" key={contentsList.id}>
-				<div className="poster">
-					<img src={movie.poster} alt="" />
-				</div>
+				<div className="poster">{movie.poster && <img src={movie.poster.split('?')[0]} alt="" />}</div>
 				<div className="movieDetail">
-					<div className="title">{movie.title}</div>
-					<div className="subTitle">{movie.sub_title}</div>
-					<div className="director">{movie.director}</div>
-					<div className="story">{movie.story1}</div>
+					<div className="title">Title: {`${movie.title} (${movie.sub_title})`}</div>
+					<div className="director">Director: {movie.director}</div>
+					<div className="story">Story: {movie.story1 ? movie.story1 : '줄거리가 없습니다.'}</div>
 					<div className="story">{movie.story2}</div>
-					<div className="actor">{movie.actor}</div>
-					<div className="genre">{movie.genre}</div>
-					<div className="nation">{movie.nation}</div>
-					<div className="runtime">{movie.runtime}</div>
+					<div className="actor">Actor: {movie.actor}</div>
+					<div className="genre">Genre: {movie.genre}</div>
+					<div className="nation">Nation: {movie.nation}</div>
+					<div className="runtime">Runtime: {movie.runtime}</div>
 				</div>
 			</div>
 		</div>

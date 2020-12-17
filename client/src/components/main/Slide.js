@@ -4,7 +4,7 @@ import './Main.css';
 const slide = () => {
 	// eslint-disable-next-line react-hooks/rules-of-hooks
 	const [array, setArray] = useState([
-		{ display: 'flex', color: 'rgb(215, 199, 196)' },
+		{ display: 'flex', color: 'rgb(255, 255, 255)' },
 		{ display: 'none', color: 'rgb(67, 64, 64)' },
 		{ display: 'none', color: 'rgb(67, 64, 64)' },
 		{ display: 'none', color: 'rgb(67, 64, 64)' },
@@ -50,6 +50,12 @@ const slide = () => {
 				</div>
 			))}
 
+			<div className="slideController slideLeft" onClick={slideLeft}>
+				{'<'}
+			</div>
+			<div className="slideController slideRight" onClick={slideRight}>
+				{'>'}
+			</div>
 			<div className="slideNav">
 				{a.map((el, idx) => (
 					<div
@@ -61,7 +67,7 @@ const slide = () => {
 							setArray(() => {
 								let arr = array.map(() => Object.assign({}, { display: 'none', color: 'rgb(67, 64, 64)' }));
 								// eslint-disable-next-line no-unused-vars
-								let remove = arr.splice(e.target.id, 1, Object.assign({}, { display: 'flex', color: 'rgb(215, 199, 196)' }));
+								let remove = arr.splice(e.target.id, 1, Object.assign({}, { display: 'flex', color: 'rgb(255, 255, 255)' }));
 								return arr;
 							});
 						}}

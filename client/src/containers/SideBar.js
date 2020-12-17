@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import SideBar from '../components/sideBar/index';
-import { toggleSwitchAction, loginSwitchAction, signUpSwitchAction } from '../modules/SideBar';
+import { loginSwitchAction, signUpSwitchAction } from '../modules/SideBar';
 import { loginEmailAction, signInAjaxAction, signOutAjaxAction, loginPasswordAction, cookieLoginAction } from '../modules/SignIn';
 import { signUpAjaxAction, signUpPasswordAction, signUpEmailAction, signUpUsernameAction, signUpSexAction, signUpAgeAction } from '../modules/SignUp';
 
@@ -10,10 +10,9 @@ import { defalutUserInfoAction, modifyUserInfoAjaxAction } from '../modules/User
 import SignIn from '../components/sideBar/SignIn';
 import SignUp from '../components/sideBar/SignUp';
 
-const containerSideBar = () => {
+const containerSideBar = ({ match }) => {
 	// eslint-disable-next-line react-hooks/rules-of-hooks
 	const { toggleSwitch, signUpSex, userInfo, loginSwitch, signUpSwitch, loginEmail, loginPassword, signUpUsername, signUpPassword, signUpEmail, signUpAge } = useSelector((state) => ({
-		toggleSwitch: state.SideBar.toggleSwitch,
 		loginSwitch: state.SideBar.loginSwitch,
 		signUpSwitch: state.SideBar.signUpSwitch,
 		loginEmail: state.SignIn.loginEmail,
@@ -35,11 +34,6 @@ const containerSideBar = () => {
 
 	// eslint-disable-next-line react-hooks/rules-of-hooks
 	const dispatch = useDispatch();
-
-	// eslint-disable-next-line react-hooks/rules-of-hooks
-	const toggle = useCallback(() => {
-		dispatch(toggleSwitchAction());
-	}, [dispatch]);
 
 	// eslint-disable-next-line react-hooks/rules-of-hooks
 	const loginModal = useCallback(() => {
@@ -151,11 +145,11 @@ const containerSideBar = () => {
 	return (
 		<>
 			<SideBar
+				match={match}
 				modifyUserInfoPost={modifyUserInfoPost}
 				defaultUserInfo={defaultUserInfo}
 				autoCookieLogin={autoCookieLogin}
 				userInfo={userInfo}
-				toggle={toggle}
 				signOutAjax={signOutAjax}
 				toggleSwitch={toggleSwitch}
 				signUpSwitch={signUpSwitch}

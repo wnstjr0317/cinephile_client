@@ -4,11 +4,7 @@ import { Link } from 'react-router-dom';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const SideBar = ({ modifyUserInfoPost, defaultUserInfo, signInAjax, autoCookieLogin, userInfo, signOutAjax, toggleSwitch, signUpSwitch, loginSwitch, toggle, loginModal, signUpModal }) => {
-	const toggleEventHandler = () => {
-		return toggleSwitch ? { display: 'none' } : { display: 'block' };
-	};
-
+const SideBar = ({ modifyUserInfoPost, defaultUserInfo, signInAjax, autoCookieLogin, signOutAjax, signUpSwitch, loginSwitch, loginModal, signUpModal }) => {
 	const cookie = document.cookie.split('; ').some((cookie) => cookie.includes('token') || cookie.includes('cookie') || cookie.includes('oauth_id'));
 	const authenticate = JSON.parse(sessionStorage.getItem('userInfo'));
 	useEffect(() => {
@@ -31,52 +27,55 @@ const SideBar = ({ modifyUserInfoPost, defaultUserInfo, signInAjax, autoCookieLo
 
 	return (
 		<>
-			<div className="sideBarToggle" onClick={toggle}>
-				≡
-			</div>
 			{authenticate ? (
-				<div className="sideBar" style={toggleEventHandler()}>
-					{
-						<ul>
-							<FontAwesomeIcon icon={faUser} className="userIcon" />
-							<span className="nickName"> {authenticate.nickname} 님</span>
-							<Link to="/userInfo" className="sideBarList" id="firstLi">
-								My Info
-							</Link>
-							<Link className="sideBarList" to="/board">
-								Board
-							</Link>
-							<Link className="sideBarList" to="/chat">
-								Chatting Room
-							</Link>
-							<li
-								className="sideBarList"
-								onClick={() => {
-									signOutAjax();
-									window.location.href = 'http://localhost:3001/';
-								}}
-							>
-								LogOut
-							</li>
-						</ul>
-					}
-				</div>
-			) : (
-				<div className="sideBar" style={toggleEventHandler()}>
-					<ul>
+				<>
+					<div className="loginAppear">
 						<FontAwesomeIcon icon={faUser} className="userIcon" />
-						<span className="nickName">로그인을 해주세요.</span>
-						<li className="sideBarList" onClick={() => !signUpSwitch && loginSwitch === false && loginModal()}>
+						<span className="nickName"> {authenticate.nickname} 님</span>
+					</div>
+
+					<ul className="navUl">
+						<Link to="/userInfo" className="sideBarList">
+							My Info
+						</Link>
+						<Link className="sideBarList" to="/board">
+							Board
+						</Link>
+						<Link className="sideBarList" to="/chat">
+							Chatting
+						</Link>
+						<Link
+							to="/"
+							className="sideBarList"
+							onClick={() => {
+								signOutAjax();
+							}}
+						>
+							LogOut
+						</Link>
+					</ul>
+				</>
+			) : (
+				<>
+					<div className="loginAppear">
+						<FontAwesomeIcon icon={faUser} className="userIcon" />
+						<span className="nickName" onClick={() => !signUpSwitch && loginSwitch === false && loginModal()}>
+							로그인을 해주세요.
+						</span>
+					</div>
+
+					<ul className="navUl">
+						<Link className="sideBarList" onClick={() => !signUpSwitch && loginSwitch === false && loginModal()}>
 							로그인
-						</li>
-						<li className="sideBarList" onClick={() => !loginSwitch && signUpSwitch === false && signUpModal()}>
+						</Link>
+						<Link className="sideBarList" onClick={() => !loginSwitch && signUpSwitch === false && signUpModal()}>
 							회원가입
-						</li>
+						</Link>
 						<Link className="sideBarList" to="/board">
 							Board
 						</Link>
 					</ul>
-				</div>
+				</>
 			)}
 		</>
 	);

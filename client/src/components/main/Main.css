@@ -15,28 +15,37 @@
 	border-radius: 10px;
 }
 .slideController {
-	/* border: 1px solid blue; */
-	color: white;
-	width: 2em;
+	/* border: 1px solid rgb(157, 148, 148); */
+	border-radius: 100px;
+	color: rgb(2, 2, 2);
+	width: 1.7em;
+	height: 1.5em;
+	background-color: rgba(69, 74, 74, 0.598);
+	padding-bottom: 0.4%;
 	user-select: none;
 	cursor: pointer;
 	display: flex;
 	justify-content: center;
+	align-items: center;
 	float: left;
-	font-size: 2em;
+	font-size: 2.3em;
 	font-weight: 200;
 	position: relative;
+	opacity: 0.7;
 	left: 50%;
+}
+.slideController:hover {
+	background-color: white;
 }
 .slideLeft {
 	position: relative;
-	margin-top: -7em;
-	margin-left: -18.5em;
+	margin-top: -7.3em;
+	margin-left: -13.5em;
 }
 .slideRight {
 	position: relative;
-	margin-top: -7.3em;
-	margin-left: 17.5em;
+	margin-top: -7.4em;
+	margin-left: 12.5em;
 }
 
 .mainContents {

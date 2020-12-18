@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 // import io from "socket.io-client";
-// import './ChatBoard.css';
+import './ChatBoard.css';
 
-// const socketURL = "http://localhost:3000"
-// let socket;
+const socketURL = "http://localhost:3000"
+let socket;
 
 const ChatBoard = ({ userInfo, history }) => {
 //   const [messageList, setMessageList] = useState([]);

@@ -11,11 +11,11 @@ import UserInfo from './containers/UserInfo';
 import Chat from './containers/Chat';
 
 function App() {
-	const [wheel, setWheel] = useState({ visibility: 'hidden' });
+	const [wheel, setWheel] = useState({ opacity: 0 });
 	const wheelEventHandler = (e) => {
-		e.pageY > 800 ? setWheel(Object.assign({}, wheel, { visibility: 'visible' })) : setWheel(Object.assign({}, wheel, { visibility: 'visible' }));
 
-		//console.log(e.pageY);
+		e.pageY > 500 ? setWheel(Object.assign({}, wheel, { opacity: 1, transition: 'all 1.5s' })) : setWheel(Object.assign({}, wheel, { opacity: 0, transition: 'all 1.5s' }));
+		console.log(e.pageY);
 	};
 
 	return (
@@ -28,6 +28,7 @@ function App() {
 						<div className="wrapper" onWheel={wheelEventHandler}>
 							<Header match={match} wheel={wheel} />
 							<Main history={history} match={match} />
+							<Chat history={history} match={match} />
 						</div>
 					);
 				}}
@@ -40,6 +41,7 @@ function App() {
 						<div className="wrapper">
 							<Header match={match} />
 							<Write history={history} match={match} />
+							<Chat history={history} match={match} />
 						</div>
 					);
 				}}
@@ -52,6 +54,7 @@ function App() {
 						<div className="wrapper">
 							<Header match={match} />
 							<Board history={history} match={match} />
+							<Chat history={history} match={match} />
 						</div>
 					);
 				}}
@@ -64,6 +67,7 @@ function App() {
 						<div className="wrapper">
 							<Header match={match} />
 							<MovieContents history={history} match={match} />
+							<Chat history={history} match={match} />
 						</div>
 					);
 				}}
@@ -76,17 +80,6 @@ function App() {
 						<div className="wrapper">
 							<Header match={match} />
 							<UserInfo history={history} match={match} />
-						</div>
-					);
-				}}
-			/>
-			<Route
-				exact
-				path="/chat"
-				render={({ history, match }) => {
-					return (
-						<div className="wrapper">
-							<Header match={match} />
 							<Chat history={history} match={match} />
 						</div>
 					);

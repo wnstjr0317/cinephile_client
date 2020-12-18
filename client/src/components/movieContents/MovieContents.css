@@ -6,33 +6,36 @@
 	padding: 12% 0;
 	color: white;
 	display: flex;
+	background-color: white;
 }
 .commentTitleIcon {
-	background-color: rgb(199, 192, 192);
+	background-color: rgb(198, 197, 197);
 	padding: 0.8em;
 	border-radius: 10px;
 	margin-right: 0.5em;
+	color: #727c7e;
 }
 #movieInfoToggle {
-	width: 1.5%;
+	width: 3em;
 	position: fixed;
-	top: 58%;
+	top: 40%;
+	flex-direction: column;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 0.3%;
 	/* margin-left: 0.5%; */
-	border-radius: 15px;
-	height: 20%;
+	border-radius: 10px;
+	height: 10%;
 	font-size: 15px;
 	font-weight: 300;
 	opacity: 0.7;
 	background-color: rgb(55, 55, 55);
-	color: rgb(223, 223, 223);
+	color: rgb(255, 255, 255);
 	outline: none;
 
 	cursor: pointer;
 }
+
 .title {
 	font-size: 30px;
 }
@@ -107,6 +110,8 @@
 	min-width: 60em;
 	position: relative;
 	/* left: 100%; */
+	padding: 0 3em;
+	/* box-shadow: 13px 5px 10px rgb(69, 66, 66); */
 
 	background-color: rgb(244, 244, 244);
 	/* height: 300px; */
@@ -119,12 +124,14 @@
 	padding: 5%;
 	border-bottom: 1px solid rgb(48, 48, 52);
 }
-#usetTextNickname {
+#userTextNickname {
 	font-weight: 600;
 }
 .userTextData {
+	position: relative;
 	color: rgb(33, 31, 31);
 	font-size: 15px;
+	bottom: 2.2em;
 	line-height: 30px;
 	font-weight: 400;
 	text-align: end;
@@ -132,6 +139,7 @@
 .texts p {
 	color: black;
 }
+
 .texts img {
 	width: 700px;
 	margin-top: 3em;
@@ -143,8 +151,8 @@
 }
 .user__comment {
 	width: 70%;
-	margin: 3em 2em 2em 0;
-	min-height: 130px;
+	margin: 4em 3em 3em 0;
+	height: 8em;
 	resize: none;
 	border-radius: 10px;
 	outline: none;
@@ -153,7 +161,7 @@
 .commentForm {
 	/* border: 1px solid blue; */
 	display: flex;
-	background-color: rgba(0, 0, 0, 0.598);
+	/* background-color: rgba(0, 0, 0, 0.598); */
 	justify-content: center;
 	align-items: center;
 	/* max-width: 75%; */
@@ -162,42 +170,26 @@
 }
 .commentButton {
 	width: 10%;
-	height: 5em;
+	height: 8em;
 	border-radius: 10px;
 	border: 1px solid rgb(0, 0, 0);
 	background-color: rgb(249, 249, 249);
 	color: rgb(0, 0, 0);
 }
 .comment__box {
-	/* border-top: 1px solid rgb(177, 177, 201); */
-	/* margin-top: 10px; */
-	/* width: 70%; */
+	border-bottom: 1px solid rgb(146, 146, 148);
+	margin: 2% 0 0 4.5%;
+	width: 90%;
 	/* min-height: 140px; */
 	/* max-width: 75%; */
 	padding: 0.7em;
 	height: 10%;
-	background-color: rgb(255, 255, 255);
-	/* border-radius: 10px; */
-	/* box-shadow: 10px 5px 10px rgb(114, 111, 111); */
+	background-color: rgb(222, 220, 220);
+
+	border-radius: 10px;
+	box-shadow: 3px -2px 1px rgb(184, 178, 178);
 }
-.commentUser:hover {
-	/* border-top: 1px solid rgb(177, 177, 201); */
-	/* margin-top: 10px; */
-	/* width: 70%; */
-	/* min-height: 140px; */
-	background-color: rgba(237, 235, 234, 0.479);
-	/* border-radius: 10px; */
-	/* box-shadow: 10px 5px 10px rgb(114, 111, 111); */
-}
-.commentText:hover {
-	/* border-top: 1px solid rgb(177, 177, 201); */
-	/* margin-top: 10px; */
-	/* width: 70%; */
-	/* min-height: 140px; */
-	background-color: rgba(242, 242, 242, 0.447);
-	/* border-radius: 10px; */
-	/* box-shadow: 10px 5px 10px rgb(114, 111, 111); */
-}
+
 .commentUser {
 	/* border-bottom: 1px solid rgb(188, 188, 196); */
 	/* margin: 10px 0; */
@@ -206,22 +198,23 @@
 	/* align-items: center; */
 	font-size: 17px;
 	font-weight: 700;
-	color: rgb(99, 108, 108);
+	color: #42aeba;
 }
 .commentText {
-	color: black;
-	font-size: 15px;
-	font-weight: 300;
+	/* border-bottom: 1px solid rgb(188, 188, 196); */
+	color: rgb(54, 47, 47);
+	font-size: 17px;
+	font-weight: 400;
 	position: relative;
 	display: block;
 	bottom: 1.2em;
 	width: 80%;
 	/* padding: 1em 0; */
-	margin-left: 4em;
+	margin-left: 3em;
 }
 .commentTime {
 	margin-left: 0.5em;
-	color: black;
+	color: rgb(82, 78, 78);
 	font-size: 15px;
 	font-weight: 300;
 }
@@ -231,11 +224,11 @@
 	text-align: end;
 	position: relative;
 	bottom: 2em;
-	color: rgb(40, 39, 39);
+	color: rgb(94, 88, 88);
 }
 
 .likeButton {
 	user-select: none;
 	margin: 0 0.5em;
-	color: rgb(100, 89, 87);
+	color: rgb(116, 111, 110);
 }

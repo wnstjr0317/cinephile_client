@@ -5,6 +5,7 @@
 .boardContents {
 	border: 1px solid rgb(200, 200, 220);
 	display: flex;
+	color: white;
 	margin-bottom: 10px;
 }
 .boardTitle {
@@ -13,4 +14,5 @@
 .boardText {
 	border-left: 1px solid rgb(202, 202, 218);
 	padding-left: 10px;
+	/* color: white; */
 }

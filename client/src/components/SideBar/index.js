@@ -41,9 +41,6 @@ const SideBar = ({ modifyUserInfoPost, defaultUserInfo, signInAjax, autoCookieLo
 						<Link className="sideBarList" to="/board">
 							Board
 						</Link>
-						<Link className="sideBarList" to="/chat">
-							Chatting
-						</Link>
 						<Link
 							to="/"
 							className="sideBarList"

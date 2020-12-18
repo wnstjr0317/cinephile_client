@@ -54,7 +54,7 @@ const SignIn = ({ signInAjax, loginSwitch, modalSwitch, loginModal, loginPasswor
 					type="password"
 					placeholder="password"
 					onChange={(e) => {
-						if (e.target.value.length > 8) {
+						if (e.target.value.length > 6) {
 							setCertificate(Object.assign({}, certificate, { password: '74b816' }));
 						}
 						loginPasswordInput(e.target.value);

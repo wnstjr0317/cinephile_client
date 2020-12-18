@@ -17,8 +17,7 @@
 .introduction {
 	position: absolute;
 
-	
-	top: 80%; 
+	top: 80%;
 
 	left: 45%;
 	color: white;
@@ -42,36 +41,81 @@
 	color: #22b8cf;
 }
 @media (max-width: 1920px) {
-	.video__intro {height: 36rem;}
-	.introduction { top: 60%; font-size: 2.5rem;}
-	.introduction > span {font-size: 3rem;}
-	.introduction > .brand {font-size: 4rem;}
-  }
-@media (max-width: 1365px) {
-	.video__intro {height: 32rem;}
-	.introduction { top: 67%; font-size: 2rem;}
-	.introduction > span {font-size: 2.5rem;}
-	.introduction > .brand {font-size: 3.5rem;}
-  }
-@media (max-width: 1024px) {
-	.video__intro {height: 24rem;}
-	.introduction { top: 73%; font-size: 2rem;}
-	.introduction > span {font-size: 2.5rem;}
-	.introduction > .brand {font-size: 3.2rem;}
-  }
-  
-@media (max-width: 768px) {
-	.video__intro {height: 18rem;}
-	.introduction { top: 75%; font-size: 1rem;}
-	.introduction > span {font-size: 1.5rem;}
-	.introduction > .brand {font-size: 2rem;}
+	.video__intro {
+		height: 36rem;
+	}
+	.introduction {
+		top: 60%;
+		font-size: 2.5rem;
+	}
+	.introduction > span {
+		font-size: 3rem;
+	}
+	.introduction > .brand {
+		font-size: 4rem;
+	}
 }
-  
+@media (max-width: 1365px) {
+	.video__intro {
+		height: 32rem;
+	}
+	.introduction {
+		top: 67%;
+		font-size: 2rem;
+	}
+	.introduction > span {
+		font-size: 2.5rem;
+	}
+	.introduction > .brand {
+		font-size: 3.5rem;
+	}
+}
+@media (max-width: 1024px) {
+	.video__intro {
+		height: 24rem;
+	}
+	.introduction {
+		top: 73%;
+		font-size: 2rem;
+	}
+	.introduction > span {
+		font-size: 2.5rem;
+	}
+	.introduction > .brand {
+		font-size: 3.2rem;
+	}
+}
+
+@media (max-width: 768px) {
+	.video__intro {
+		height: 18rem;
+	}
+	.introduction {
+		top: 75%;
+		font-size: 1rem;
+	}
+	.introduction > span {
+		font-size: 1.5rem;
+	}
+	.introduction > .brand {
+		font-size: 2rem;
+	}
+}
+
 @media (max-width: 639px) {
-	.video__intro {height: 14rem;}
-	.introduction { top: 52%; font-size: 0.8rem;}
-	.introduction > span {font-size: 1.1rem;}
-	.introduction > .brand {font-size: 1.4rem;}
+	.video__intro {
+		height: 14rem;
+	}
+	.introduction {
+		top: 52%;
+		font-size: 0.8rem;
+	}
+	.introduction > span {
+		font-size: 1.1rem;
+	}
+	.introduction > .brand {
+		font-size: 1.4rem;
+	}
 }
 .slide {
 	/* top: 10%; */
@@ -134,27 +178,49 @@
 	margin-top: 0.3rem;
 }
 @media (max-width: 1920px) {
-	.slide { margin-top: 0.2rem;}
-	.boxOffice { font-size: 2.5rem; }
-	
-  }
-@media (max-width: 1365px) {
-	.boxOffice { font-size: 2rem; padding-top: 1rem;}
-	.slideTitle { font-size: 2.5rem; }
-	.slideActors { font-size: 1.8rem; }
-  }
-@media (max-width: 1024px) {
-	.boxOffice { font-size: 2rem; padding-top: 0.5rem;}
-	.slideTitle { font-size: 2.1rem; }
-	.slideActors { font-size: 1.5rem; }
-  }
-  
-@media (max-width: 768px) {
-	.boxOffice { font-size: 1.8rem; padding-top: 0.5rem;}
+	.slide {
+		margin-top: 0.2rem;
+	}
+	.boxOffice {
+		font-size: 2.5rem;
+	}
 }
-  
+@media (max-width: 1365px) {
+	.boxOffice {
+		font-size: 2rem;
+		padding-top: 1rem;
+	}
+	.slideTitle {
+		font-size: 2.5rem;
+	}
+	.slideActors {
+		font-size: 1.8rem;
+	}
+}
+@media (max-width: 1024px) {
+	.boxOffice {
+		font-size: 2rem;
+		padding-top: 0.5rem;
+	}
+	.slideTitle {
+		font-size: 2.1rem;
+	}
+	.slideActors {
+		font-size: 1.5rem;
+	}
+}
+
+@media (max-width: 768px) {
+	.boxOffice {
+		font-size: 1.8rem;
+		padding-top: 0.5rem;
+	}
+}
+
 @media (max-width: 639px) {
-	.boxOffice { font-size: 1.5rem;}
+	.boxOffice {
+		font-size: 1.5rem;
+	}
 }
 .slideNav {
 	display: flex;
@@ -217,7 +283,7 @@
 }
 
 .mainContents {
-	transition: all 1s;
+	transition: all 1.5s;
 }
 .main {
 	width: 100%;
@@ -225,7 +291,7 @@
 
 .mainContents:hover {
 	transform: scale(1.08);
-	z-index: 100;
+
 	position: relative;
 	font-size: 1.3em;
 }

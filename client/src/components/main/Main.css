@@ -16,8 +16,10 @@
 
 .introduction {
 	position: absolute;
+
 	
 	top: 80%; 
+
 	left: 45%;
 	color: white;
 	/* margin: auto; */
@@ -26,8 +28,14 @@
 	transform: translate(-50%, -50%);
 }
 .introduction > span {
+	background: linear-gradient(to right, rgb(0, 0, 0, 0) 50%, #e8ebeb 51%);
+	background-size: 200%;
+	transition: all 0.5s;
 	color: #22b8cf;
 	font-size: 3.5rem;
+}
+.introduction > span:hover {
+	background-position: -98.5% 0;
 }
 .introduction > .brand {
 	font-size: 4.5rem;
@@ -81,13 +89,11 @@
 	text-align: center;
 	color: white;
 	font-size: 3rem;
-	
 }
 .slideElement {
 	width: 100%;
 	margin-top: 4rem;
 	position: relative;
-	
 }
 .img__container {
 	width: 100%;

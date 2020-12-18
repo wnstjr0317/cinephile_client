@@ -1,20 +1,17 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React, { useEffect, useState, useRef } from "react";
-import "./Main.css";
-import joker from "./video/joker.mp4";
+import React, { useEffect, useState, useRef } from 'react';
+import './Main.css';
+import joker from './video/joker.mp4';
 
 const slide = () => {
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [array, setArray] = useState([
-    { display: "block", color: "rgb(215, 199, 196)" },
-    { display: "none", color: "rgb(67, 64, 64)" },
-    { display: "none", color: "rgb(67, 64, 64)" },
-    { display: "none", color: "rgb(67, 64, 64)" },
-    { display: "none", color: "rgb(67, 64, 64)" },
-  ]);
-
-
+	// eslint-disable-next-line react-hooks/rules-of-hooks
+	const [array, setArray] = useState([
+		{ display: 'block', color: 'rgb(215, 199, 196)' },
+		{ display: 'none', color: 'rgb(67, 64, 64)' },
+		{ display: 'none', color: 'rgb(67, 64, 64)' },
+		{ display: 'none', color: 'rgb(67, 64, 64)' },
+		{ display: 'none', color: 'rgb(67, 64, 64)' },
+	]);
   const slideLeft = () => {
     setArray([...array.slice(1, 5), array[0]]);
   };
@@ -88,31 +85,29 @@ const slide = () => {
           </div>
         ))}
 
-
-        <div className="slideNav">
-          {a.map((el, idx) => (
-            <div
-              className="slideNavElement"
-              style={{ color: `${array[idx].color}` }}
-              key={idx}
-              id={idx}
-              onClick={(e) => {
-                setArray(() => {
-                  let arr = array.map(() => Object.assign({}, { display: "none", color: "rgb(67, 64, 64)" }));
-                  // eslint-disable-next-line no-unused-vars
-                  let remove = arr.splice(e.target.id, 1, Object.assign({}, { display: "flex", color: "rgb(215, 199, 196)" }));
-                  return arr;
-                });
-              }}
-            >
-              ●
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-
+				<div className="slideNav">
+					{a.map((el, idx) => (
+						<div
+							className="slideNavElement"
+							style={{ color: `${array[idx].color}` }}
+							key={idx}
+							id={idx}
+							onClick={(e) => {
+								setArray(() => {
+									let arr = array.map(() => Object.assign({}, { display: 'none', color: 'rgb(67, 64, 64)' }));
+									// eslint-disable-next-line no-unused-vars
+									let remove = arr.splice(e.target.id, 1, Object.assign({}, { display: 'flex', color: 'rgb(215, 199, 196)' }));
+									return arr;
+								});
+							}}
+						>
+							●
+						</div>
+					))}
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default slide;

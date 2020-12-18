@@ -34,7 +34,7 @@ const slide = () => {
 	{ image: "https://t1.daumcdn.net/movie/99a4d42206a028764e86c5bff8cf0021db985223", 
 	  title: "도굴", actors: "이제훈, 조우진", 
 	  story: "고물인 줄 알았는데 보물이었다?! 땅 파서 장사하는 도굴꾼들의 팔수록 판이 커지는 급이 다른 삽질이 시작된다!"},
-	{ image: "https://lh3.googleusercontent.com/proxy/YQrlNA6REcjsibyVYWD61CATsStynrXDgg31WMt-k_tLMvSeFuDg_55R67-zFe1SucTOFrofIfkSIwzLNhY3-HIPSBvSQkurgz2-y4HsHyhmCQ", 
+	{ image: "https://www.metaflix.com/wp-content/uploads/2020/10/The-Midnight-Sky-Movie-Poster.jpg", 
 	  title: "Midnight Sky", actors: "George Clooney", 
 	  story: "원인 불명의 재앙으로 종말을 맞이한 지구, 북극에 남겨진 과학자 오거스틴과 탐사를 마치고 지구로 귀환하던 우주 비행사 설리가 짧은 교신에 성공하는데…"},
 	{ image: "https://www.joblo.com/assets/images/joblo/posters/2020/02/Run-poster-1.jpg", 
@@ -81,8 +81,8 @@ const slide = () => {
               <img className="slideImage" src={el.image}></img>
             </div>
             <div className="info__container">
-              <h1 className="slideTitle">{el.title}</h1>
-              <h1 className="slideActors">{el.actors}</h1>
+              <p className="slideTitle">{el.title}</p>
+              <p className="slideActors">{el.actors}</p>
               <p className="slideStory">{el.story}</p>
             </div>
           </div>

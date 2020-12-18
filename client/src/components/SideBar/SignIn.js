@@ -1,19 +1,17 @@
-import React from 'react';
-
+import React, { useState } from 'react';
+import { FaChevronCircleDown } from 'react-icons/fa';
 require('dotenv').config();
 
 const SignIn = ({ signInAjax, loginSwitch, modalSwitch, loginModal, loginPassword, loginEmail, loginEmailInput, loginPasswordInput }) => {
 	const inputReset = () => {
 		loginModal();
 	};
-	// const [certificate, setCertificate] = useState({
-	// 	email: '#ff8787',
-	// 	password: '#ff8787',
-	// });
+	// eslint-disable-next-line no-undef
+	const [certificate, setCertificate] = useState({
+		email: '#f06595',
+		password: '#f06595',
+	});
 
-	// useEffect(() => {
-	// 	console.log(certificate);
-	// }, [certificate.email, certificate.password, isLogin]);
 	const singInHandler = (e) => {
 		e.preventDefault();
 		if (loginEmail.length < 1) {
@@ -42,15 +40,13 @@ const SignIn = ({ signInAjax, loginSwitch, modalSwitch, loginModal, loginPasswor
 					type="email"
 					placeholder="email"
 					onChange={(e) => {
-						// if (e.target.value.length < 12) {
-						// 	setCertificate(Object.assign({}, certificate, { email: 'ff8787' }));
-						// } else {
-						// 	setCertificate(Object.assign({}, certificate, { email: 'black' }));
-						// }
+						if (e.target.value.length > 12) {
+							setCertificate(Object.assign({}, certificate, { email: '74b816' }));
+						}
 						loginEmailInput(e.target.value);
 					}}
 				/>
-
+				<FaChevronCircleDown className="checker" style={{ color: certificate.email }} />
 				<input
 					className="sideBarInput"
 					required="required"
@@ -58,16 +54,13 @@ const SignIn = ({ signInAjax, loginSwitch, modalSwitch, loginModal, loginPasswor
 					type="password"
 					placeholder="password"
 					onChange={(e) => {
-						// if (e.target.value.length < 8) {
-						// 	setCertificate(Object.assign({}, certificate, { password: 'ff8787' }));
-						// } else {
-						// 	setCertificate(Object.assign({}, certificate, { password: 'black' }));
-						// }
+						if (e.target.value.length > 8) {
+							setCertificate(Object.assign({}, certificate, { password: '74b816' }));
+						}
 						loginPasswordInput(e.target.value);
 					}}
 				/>
-				{/* <FontAwesomeIcon icon={faUser} style={{ color: certificate.password }} /> */}
-
+				<FaChevronCircleDown className="checker" style={{ color: certificate.password }} />
 				<button className="sideBarButton" type="submit">
 					SignIn
 				</button>
@@ -91,11 +84,6 @@ const SignIn = ({ signInAjax, loginSwitch, modalSwitch, loginModal, loginPasswor
 			<button className="sideBarButton">
 				<a className="sotialLoginButton" href={`https://www.facebook.com/v9.0/dialog/oauth?client_id=${process.env.REACT_APP_APP_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI_FA}&state=test`}>
 					페이스북 로그인
-				</a>
-			</button>
-			<button className="sideBarButton">
-				<a className="sotialLoginButton" href={`http://localhost:3000/users/kakao/unlink`}>
-					연결 끊기
 				</a>
 			</button>
 		</div>

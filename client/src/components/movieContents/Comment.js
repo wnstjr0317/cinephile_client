@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './MovieContents.css';
 import axios from 'axios';
+import { FaRegThumbsUp, FaUserAlt } from 'react-icons/fa';
 
 const comment = ({ comments, contentsList, contentsGetAjax, userInfo, loginModal }) => {
 	// eslint-disable-next-line react-hooks/rules-of-hooks
@@ -11,6 +12,16 @@ const comment = ({ comments, contentsList, contentsGetAjax, userInfo, loginModal
 		comment: '',
 		sign: false,
 	});
+	const time = (comment) => {
+		let result = Number(comment.createdAt.split('T')[1].slice(0, 2));
+		if (result >= 15) {
+			result -= 15;
+		} else {
+			result += 9;
+		}
+
+		return result >= 0 < 12 ? String(result) + comment.createdAt.split('T')[1].slice(2, 5) + ' PM' : String(result) + comment.createdAt.split('T')[1].slice(2, 5) + ' AM';
+	};
 	const { like, comment, sign } = data;
 	// 댓글 등록 함수
 	// eslint-disable-next-line react-hooks/rules-of-hooks
@@ -54,7 +65,7 @@ const comment = ({ comments, contentsList, contentsGetAjax, userInfo, loginModal
 				<form type="submit" className="commentForm" onSubmit={cmmtSubmitHandler}>
 					<textarea ref={ref} className="user__comment" type="text" value={comment} onChange={(e) => setData(Object.assign({}, data, { comment: e.target.value }))}></textarea>
 					<button className="commentButton" type="submit">
-						Submit
+						댓글 쓰기
 					</button>
 				</form>
 			) : (
@@ -65,19 +76,23 @@ const comment = ({ comments, contentsList, contentsGetAjax, userInfo, loginModal
 					return (
 						comment && (
 							<div className="comment__box" key={idx} id={comment.id}>
-								<div className="commentUser">{comment.user.nickname}</div>
-								<div className="commentText">{Object.assign({}, comment).text}</div>
-
-								<div
-									className="likeButton"
-									onClick={(e) => {
-										console.log('comment:', comment.id);
-										userInfo && likeClickHandler(comment.id);
-									}}
-								>
-									🤍 좋아요
+								<div className="commentUser">
+									<FaUserAlt className="commentTitleIcon"></FaUserAlt>
+									{comment.user.nickname}
+									<span className="commentTime">{time(comment)}</span>
 								</div>
-								<div className="likeCount"> 💛 {Object.assign({}, comment).likecount}</div>
+								<div className="likeCount">
+									<FaRegThumbsUp
+										className="likeButton"
+										onClick={(e) => {
+											console.log('comment:', comment.id);
+											userInfo && likeClickHandler(comment.id);
+										}}
+									/>
+									{Object.assign({}, comment).likecount}
+								</div>
+
+								<div className="commentText">{Object.assign({}, comment).text}</div>
 							</div>
 						)
 					);

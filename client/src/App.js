@@ -1,4 +1,5 @@
 import './App.css';
+import React, { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Main from './containers/Main';
 import Header from './containers/Header';
@@ -10,6 +11,13 @@ import UserInfo from './containers/UserInfo';
 import Chat from './containers/Chat';
 
 function App() {
+	const [wheel, setWheel] = useState({ visibility: 'hidden' });
+	const wheelEventHandler = (e) => {
+		e.pageY > 800 ? setWheel(Object.assign({}, wheel, { visibility: 'visible' })) : setWheel(Object.assign({}, wheel, { visibility: 'hidden' }));
+
+		console.log(e.pageY);
+	};
+
 	return (
 		<Switch>
 			<Route
@@ -17,8 +25,8 @@ function App() {
 				path="/"
 				render={({ history, match }) => {
 					return (
-						<div className="wrapper">
-							<Header match={match} />
+						<div className="wrapper" onWheel={wheelEventHandler}>
+							<Header match={match} wheel={wheel} />
 							<Main history={history} match={match} />
 						</div>
 					);

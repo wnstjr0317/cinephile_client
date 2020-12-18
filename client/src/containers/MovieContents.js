@@ -5,6 +5,7 @@ import UserText from '../components/movieContents/UserText';
 import Comment from '../components/movieContents/Comment';
 import { toggleSwitchAction, loginSwitchAction } from '../modules/SideBar';
 import { contentsGetAjaxAction } from '../modules/MovieContents';
+import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 
 const movieContent = ({ match, history }) => {
 	// eslint-disable-next-line react-hooks/rules-of-hooks
@@ -34,7 +35,7 @@ const movieContent = ({ match, history }) => {
 		contentsGetAjax(match.params.id);
 	}, [contentsGetAjax, match.params.id]);
 	const toggleEventHandler = () => {
-		return toggleSwitch ? { display: 'block', color: 'white' } : { display: 'none', color: 'white' };
+		return toggleSwitch ? { display: 'none', color: 'white' } : { display: 'block', color: 'white' };
 	};
 	// eslint-disable-next-line react-hooks/rules-of-hooks
 	const toggle = useCallback(() => {
@@ -43,15 +44,17 @@ const movieContent = ({ match, history }) => {
 
 	return (
 		Number(match.params.id) === contentsList.id && (
-			<div className="movieInfoMain">
-				<div id="sideBarToggle" onClick={toggle} style={toggleSwitch ? { color: 'white' } : { color: 'black' }}>
-					{'>'}
-					<div className="sidebarToggleHover">Movie Info</div>
-				</div>
+			<div className="movieInfoMain" style={toggleSwitch ? { backgroundColor: 'black' } : { backgroundColor: '#141618' }}>
+				<button id="movieInfoToggle" onClick={toggle}>
+					{toggleSwitch ? <FaArrowRight /> : <FaArrowLeft />}
+				</button>
 				<div className="movieInfoSlide" style={toggleEventHandler()}>
+					<div className="exitMovieInfo" onClick={toggle}>
+						X
+					</div>
 					<MovieInfo contentsList={contentsList} movie={movie} history={history} />
 				</div>
-				<div className="userContents">
+				<div className="userContents" style={toggleSwitch ? { visibility: 'visible' } : { visibility: 'hidden' }}>
 					<UserText contentsList={contentsList} />
 					<Comment contentsList={contentsList} comments={comments} contentsGetAjax={contentsGetAjax} loginModal={loginModal} userInfo={userInfo} />
 				</div>

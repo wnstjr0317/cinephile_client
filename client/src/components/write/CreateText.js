@@ -177,7 +177,7 @@ class CreateText extends Component {
                 <input
                   type="text"
                   value={this.state.title}
-                  placeholder="제목"
+                  placeholder="&nbsp;&nbsp;제목"
                   onChange={(e) => {
                     this.setState({ title: e.target.value });
                   }}

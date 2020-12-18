@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
 import './ChatBoard.css';
@@ -53,5 +54,6 @@ const ChatBoard = ({ userInfo, toggleSwitch, history }) => {
 		<div />
 	);
 };
+
 
 export default ChatBoard;

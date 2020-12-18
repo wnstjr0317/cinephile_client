@@ -262,8 +262,20 @@
 	opacity: 0.9;
 }
 .devName {
-	color: rgb(244, 242, 242);
+	color: #00E5FF;
 	padding-top: 1em;
-	font-weight: 500;
+	font-weight: bold;
 	font-size: 1.2em;
+}
+.devPosition {
+	color: #00E5FF;
+	font-weight: bold;
+}
+.blog > a {
+	color: rgb(222, 211, 211);
+	text-decoration: none;
+}
+.github > a {
+	color: rgb(222, 211, 211);
+	text-decoration: none;
 }

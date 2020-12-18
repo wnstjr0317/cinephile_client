@@ -13,9 +13,9 @@ import Chat from './containers/Chat';
 function App() {
 	const [wheel, setWheel] = useState({ visibility: 'hidden' });
 	const wheelEventHandler = (e) => {
-		e.pageY > 800 ? setWheel(Object.assign({}, wheel, { visibility: 'visible' })) : setWheel(Object.assign({}, wheel, { visibility: 'hidden' }));
+		e.pageY > 800 ? setWheel(Object.assign({}, wheel, { visibility: 'visible' })) : setWheel(Object.assign({}, wheel, { visibility: 'visible' }));
 
-		console.log(e.pageY);
+		//console.log(e.pageY);
 	};
 
 	return (

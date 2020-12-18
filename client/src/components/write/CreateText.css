@@ -17,7 +17,7 @@ input {
   margin-top: 1rem;
   border: 1px solid black;
   border-radius: 3px;
-  width: 15rem;
+  width: 18rem;
   height: 1.5rem;
   font-size: 0.8rem;
 }
@@ -37,4 +37,15 @@ input {
   margin-top: 0.6rem;
   width: 5rem;
   height: 1.7rem;
+}
+
+/* @media (max-width: 1365px) {
+  .writeIntro {padding-top: 0rem;}
+} */
+@media (max-width: 1024px) {
+  .writeIntro {padding-top: 2rem;}
+}
+
+@media (max-width: 768px) {
+  .writeIntro {padding-top: 5rem;}
 }

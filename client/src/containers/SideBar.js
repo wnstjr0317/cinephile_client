@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import SideBar from '../components/SideBar/index';
+import SideBar from '../components/sideBar/index';
 import { loginSwitchAction, signUpSwitchAction } from '../modules/SideBar';
 
 import { loginEmailAction, signInAjaxAction, signOutAjaxAction, loginPasswordAction, cookieLoginAction } from '../modules/SignIn';

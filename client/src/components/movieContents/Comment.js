@@ -3,7 +3,7 @@ import './MovieContents.css';
 import axios from 'axios';
 import { FaRegThumbsUp, FaUserAlt } from 'react-icons/fa';
 
-const comment = ({ comments, contentsList, contentsGetAjax, userInfo, loginModal }) => {
+const comment = ({ comments, contentsList, contentsGetAjax, loginModal }) => {
 	// eslint-disable-next-line react-hooks/rules-of-hooks
 	const ref = useRef(null);
 	// eslint-disable-next-line react-hooks/rules-of-hooks
@@ -13,14 +13,24 @@ const comment = ({ comments, contentsList, contentsGetAjax, userInfo, loginModal
 		sign: false,
 	});
 	const time = (comment) => {
-		let result = Number(comment.createdAt.split('T')[1].slice(0, 2));
-		if (result >= 15) {
-			result -= 15;
-		} else {
-			result += 9;
-		}
+		let date = new Date().getDate();
+		let nowDate = comment.createdAt.split('T')[0].slice(-2);
 
-		return result >= 0 < 12 ? String(result) + comment.createdAt.split('T')[1].slice(2, 5) + ' PM' : String(result) + comment.createdAt.split('T')[1].slice(2, 5) + ' AM';
+		if (Number(nowDate) === date) {
+			let result = Number(comment.createdAt.split('T')[1].slice(0, 2));
+			if (result >= 15) {
+				result -= 15;
+			} else {
+				result += 9;
+			}
+			return result >= 0 < 12 ? String(result) + comment.createdAt.split('T')[1].slice(2, 5) + ' PM' : String(result) + comment.createdAt.split('T')[1].slice(2, 5) + ' AM';
+		} else {
+			if (date - nowDate <= 7) {
+				return `${date - nowDate} day ago `;
+			} else {
+				return comment.createdAt.split('T')[0];
+			}
+		}
 	};
 	const { like, comment, sign } = data;
 	// 댓글 등록 함수
@@ -36,7 +46,7 @@ const comment = ({ comments, contentsList, contentsGetAjax, userInfo, loginModal
 		axios
 			.post(`http://localhost:3000/board/comment`, {
 				text: comment,
-				user: userInfo.id,
+				user: contentsList.user.id,
 				article: contentsList.id,
 			})
 			.then((res) => {
@@ -47,9 +57,10 @@ const comment = ({ comments, contentsList, contentsGetAjax, userInfo, loginModal
 	};
 	// console.log('userid:', userInfo.id);
 	const likeClickHandler = (commentId) => {
+		console.log(contentsList.user);
 		axios
 			.post(`http://localhost:3000/board/like`, {
-				user: userInfo.id,
+				user: contentsList.user.id,
 				comment: commentId,
 			})
 			.then((res) => {
@@ -61,7 +72,7 @@ const comment = ({ comments, contentsList, contentsGetAjax, userInfo, loginModal
 
 	return (
 		<div className="movie__detail">
-			{userInfo ? (
+			{contentsList.user ? (
 				<form type="submit" className="commentForm" onSubmit={cmmtSubmitHandler}>
 					<textarea ref={ref} className="user__comment" type="text" value={comment} onChange={(e) => setData(Object.assign({}, data, { comment: e.target.value }))}></textarea>
 					<button className="commentButton" type="submit">
@@ -86,7 +97,7 @@ const comment = ({ comments, contentsList, contentsGetAjax, userInfo, loginModal
 										className="likeButton"
 										onClick={(e) => {
 											console.log('comment:', comment.id);
-											userInfo && likeClickHandler(comment.id);
+											contentsList.user && likeClickHandler(comment.id);
 										}}
 									/>
 									{Object.assign({}, comment).likecount}

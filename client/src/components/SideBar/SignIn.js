@@ -53,6 +53,7 @@ const SignIn = ({ signInAjax, loginSwitch, modalSwitch, loginModal, loginPasswor
 					value={loginPassword}
 					type="password"
 					placeholder="password"
+					id="lastLoginInput"
 					onChange={(e) => {
 						if (e.target.value.length > 6) {
 							setCertificate(Object.assign({}, certificate, { password: '74b816' }));
@@ -61,30 +62,28 @@ const SignIn = ({ signInAjax, loginSwitch, modalSwitch, loginModal, loginPasswor
 					}}
 				/>
 				<FaChevronCircleDown className="checker" style={{ color: certificate.password }} />
-				<button className="sideBarButton" type="submit">
+				<button className="sideBarButton" type="submit" id="generalLogin">
 					SignIn
 				</button>
 			</form>
-			<button className="sideBarButton">
-				<a
-					className="sotialLoginButton"
-					href={`https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.REACT_APP_REST_API_KEY}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI_KA}`}
-				>
-					카카오톡 로그인
-				</a>
-			</button>
-			<button className="sideBarButton">
+
+			<button className="sideBarButton" id="naver">
 				<a
 					className="sotialLoginButton"
 					href={`https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI_NA}&state=test`}
-				>
-					네이버 로그인
-				</a>
+				></a>
 			</button>
-			<button className="sideBarButton">
-				<a className="sotialLoginButton" href={`https://www.facebook.com/v9.0/dialog/oauth?client_id=${process.env.REACT_APP_APP_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI_FA}&state=test`}>
-					페이스북 로그인
-				</a>
+			<button className="sideBarButton" id="facebook">
+				<a
+					className="sotialLoginButton"
+					href={`https://www.facebook.com/v9.0/dialog/oauth?client_id=${process.env.REACT_APP_APP_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI_FA}&state=test`}
+				></a>
+			</button>
+			<button className="sideBarButton" id="kakao">
+				<a
+					className="sotialLoginButton"
+					href={`https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.REACT_APP_REST_API_KEY}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI_KA}`}
+				></a>
 			</button>
 		</div>
 	);

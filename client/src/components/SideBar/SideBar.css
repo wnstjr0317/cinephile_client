@@ -21,6 +21,7 @@
 	color: rgb(4, 4, 4);
 	transition: color 2s;
 }
+
 #sideBarToggle:hover {
 	color: white;
 }
@@ -57,15 +58,54 @@
 }
 .sideBarButton {
 	position: relative;
-	width: 300px;
-	height: 50px;
+	width: 15em;
+	height: 3.3em;
+
 	outline: none;
 	background-color: rgb(43, 40, 40);
 	text-decoration: none;
 	color: cornsilk;
 	display: block;
-	margin-bottom: 5px;
-	transform: translate(95px, 5px);
+
+	/* padding: 1em; */
+	margin: 0 11em 1em 12em;
+	/* transform: translate(95px, 5px); */
+}
+#generalLogin {
+	border-radius: 20px;
+	width: 20em;
+	margin-left: 10em;
+}
+#naver {
+	background: url(../../네이버\ 아이디로\ 로그인_완성형_White.PNG) no-repeat;
+	background-size: contain;
+	border: none;
+
+	/* margin-left: 4em; */
+	/* font-size: 10px; */
+}
+#kakao {
+	background: url(../../kakao_login_medium_narrow.png) no-repeat;
+	/* margin-left: 12em; */
+	position: relative;
+	left: 0.8em;
+	bottom: 1em;
+	/* border-radius: 10px; */
+	/* margin-bottom: 0.5em; */
+	border: none;
+	/* font-size: 10px; */
+	/* border-radius: 1em; */
+	background-size: contain;
+}
+#facebook {
+	background: url(../../17639236_1785253958471956_282550797298827264_n.png) no-repeat;
+
+	/* margin-top: 2em; */
+	/* margin-left: 4.1em; */
+	border: none;
+	/* font-size: 10px; */
+	/* border-radius: 1em; */
+	background-size: contain;
 }
 /* a {
 	width: 100%;
@@ -80,10 +120,12 @@
 	border-radius: 10px;
 	outline: none;
 	position: relative;
-	transform: translate(-80px, 0px);
-	margin: 5px;
+	transform: translate(-60px, 0px);
+	margin: 1em;
 }
-
+#lastLoginInput {
+	margin-bottom: 3em;
+}
 .sidiBarSelect {
 	width: 100px;
 	height: 30px;

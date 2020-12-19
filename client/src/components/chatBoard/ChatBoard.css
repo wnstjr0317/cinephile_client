@@ -7,8 +7,8 @@
   /* display: flex; */
   border: 2px solid rgb(118, 118, 118);
   border-radius: 5px;
-  background-color: rgb(238, 238, 238);
-  overflow: auto;
+  background-color: rgb(223, 223, 223);
+  
 }
 .chat__form {
   position: absolute;
@@ -71,7 +71,7 @@
     background-color: black;
   }
   
-  .chat-list {
+  .chat__list {
     padding: 0 10px;
     /* box-sizing: border-box; */
     /* flex: 5; */

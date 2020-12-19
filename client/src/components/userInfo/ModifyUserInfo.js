@@ -94,11 +94,13 @@ const modifyUserInfoFunc = ({
 	return (
 		loginUserInfo && (
 			<div className="modifyUserInfo">
-				<p><span className="loginUser">{loginUserInfo.nickname}</span>
-					<span> 님의 마이페이지입니다.</span></p>
-				<p>개인 정보를 수정하시려면 아래 수정 버튼을 클릭해 주세요.</p>
+				<p className="loginUserIntro">
+					<span className="loginUser">{loginUserInfo.nickname}</span>
+					<span> 님의 마이페이지입니다.</span>
+				</p>
+				<p className="loginUserIntro">개인 정보를 수정하시려면 아래 수정 버튼을 클릭해 주세요.</p>
 				<form action="" className="modifyTable">
-					<label htmlFor="nickname" className="nickname" >
+					<label htmlFor="nickname" className="nickname">
 						Nickname :
 						{modifySwitch.nicknameModify ? (
 							<input type="text" className="modifyNicknameText" value={modifyNickname} onChange={(e) => nickNameChangeInput(e.target.value)} />

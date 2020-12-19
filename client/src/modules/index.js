@@ -6,6 +6,7 @@ import MovieList from './MovieList';
 import BoardList from './BoardList';
 import MovieContents from './MovieContents';
 import UserInfo from './UserInfo';
+import Chat from './Chat';
 
 const reducer = combineReducers({
 	SideBar,
@@ -15,6 +16,7 @@ const reducer = combineReducers({
 	MovieContents,
 	BoardList,
 	UserInfo,
+	Chat,
 });
 
 export default reducer;

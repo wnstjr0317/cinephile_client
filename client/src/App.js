@@ -13,7 +13,9 @@ import Chat from './containers/Chat';
 function App() {
 	const [wheel, setWheel] = useState({ opacity: 0 });
 	const wheelEventHandler = (e) => {
+
 		e.pageY > 300 ? setWheel(Object.assign({}, wheel, { opacity: 1, transition: 'all 1.5s' })) : setWheel(Object.assign({}, wheel, { opacity: 0, transition: 'all 1.5s' }));
+
 		console.log(e.pageY);
 	};
 

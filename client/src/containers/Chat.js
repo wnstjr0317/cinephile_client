@@ -1,24 +1,24 @@
 import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ChatBoard from '../components/chatBoard/ChatBoard';
-import { toggleSwitchAction } from '../modules/SideBar';
+import { chatToggleSwitchAction } from '../modules/Chat';
 const Chat = ({ history }) => {
-	const { userInfo, toggleSwitch } = useSelector((state) => ({
+	const { userInfo, chatToggleSwitch } = useSelector((state) => ({
 		userInfo: state.SignIn.userInfo,
-		toggleSwitch: state.SideBar.toggleSwitch,
+		chatToggleSwitch: state.Chat.chatToggleSwitch,
 	}));
 	const dispatch = useDispatch();
 	console.log(userInfo, 'con User');
 	// eslint-disable-next-line no-undef
-	const toggle = useCallback(() => {
+	const chatToggle = useCallback(() => {
 		// eslint-disable-next-line no-undef
-		dispatch(toggleSwitchAction());
+		dispatch(chatToggleSwitchAction());
 	}, [dispatch]);
-	console.log(toggleSwitch);
+	console.log(chatToggleSwitch);
 	return (
 		<div className="chatWrapper">
-			<div className="chatToggle" onClick={toggle}></div>
-			<ChatBoard userInfo={userInfo} toggleSwitch={toggleSwitch} history={history} />
+			<div className="chatToggle" onClick={chatToggle}></div>
+			<ChatBoard userInfo={userInfo} chatToggleSwitch={chatToggleSwitch} history={history} />
 		</div>
 	);
 };

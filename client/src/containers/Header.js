@@ -9,7 +9,7 @@ const header = ({ match, wheel }) => {
 		userInfo: state.SignIn.userInfo,
 	}));
 
-	console.log(wheel);
+	// console.log(wheel);
 	return (
 		<div className="header" style={wheel}>
 			<SideBar match={match} />

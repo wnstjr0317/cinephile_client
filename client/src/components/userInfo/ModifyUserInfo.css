@@ -1,26 +1,23 @@
 .modifyUserInfo {
-
-    position: relative;
-    /* margin-top: 13%; */
-    padding-top: 24vh;
-    background-color: rgb(0, 0, 0);
-    width: 40vw;
-    height: 76vh;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 62.5%;
-
+	position: relative;
+	/* margin-top: 13%; */
+	padding-top: 24vh;
+	background-color: rgb(0, 0, 0);
+	width: 40vw;
+	height: 76vh;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 62.5%;
 }
-p {
-	color: rgb(255, 255, 255);
+
+.loginUserIntro {
+	color: rgb(252, 252, 252);
 	font-size: 1.1rem;
 }
 p > .loginUser {
-
-    color: #66d9e8;
-    font-weight: bold;
-    font-size: 1.5rem;
-
+	color: #66d9e8;
+	font-weight: bold;
+	font-size: 1.5rem;
 }
 
 .modifyTable {
@@ -154,23 +151,45 @@ select {
 }
 
 @media (max-width: 767px) {
-
-    p { font-size: 0.8rem; }
-    p > .loginUser { font-size: 1rem;}
-    .modifyTable { height: 8rem; font-size: 0.8rem; }
-    .nickname { line-height: 2.2rem; }
-    .password { line-height: 2.2rem; }
-    .email { line-height: 2.2rem; }
-
+	p {
+		font-size: 0.8rem;
+	}
+	p > .loginUser {
+		font-size: 1rem;
+	}
+	.modifyTable {
+		height: 8rem;
+		font-size: 0.8rem;
+	}
+	.nickname {
+		line-height: 2.2rem;
+	}
+	.password {
+		line-height: 2.2rem;
+	}
+	.email {
+		line-height: 2.2rem;
+	}
 }
 
 @media (max-width: 639px) {
-
-    p { font-size: 0.6rem; }
-    p > .loginUser { font-size: 0.8rem;}
-    .modifyTable { height: 6rem; font-size: 0.7rem; }
-    .nickname { line-height: 2rem; }
-    .password { line-height: 2rem; }
-    .email { line-height: 2rem; }
+	p {
+		font-size: 0.6rem;
+	}
+	p > .loginUser {
+		font-size: 0.8rem;
+	}
+	.modifyTable {
+		height: 6rem;
+		font-size: 0.7rem;
+	}
+	.nickname {
+		line-height: 2rem;
+	}
+	.password {
+		line-height: 2rem;
+	}
+	.email {
+		line-height: 2rem;
+	}
 }
-

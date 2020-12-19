@@ -12,7 +12,7 @@ const MovieList = ({ movieList }) => {
 				return (
 					<Link to={`/board/${movies.id}`} className="mainContents" key={movies.id}>
 						<img className="mainListImg" src={movie.poster} />
-						<div className="mainTitle">{movie.title}</div>
+						<div className="mainTitle">{movie.title.replace('상영중', '')}</div>
 					</Link>
 				);
 			})}

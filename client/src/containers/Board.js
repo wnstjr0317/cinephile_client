@@ -24,7 +24,7 @@ const board = () => {
 	}, [boardListUpdate]);
 
 	return (
-		<div className="main">
+		<div className="boardWrapper">
 			<BoardList boardList={boardList} />
 		</div>
 	);

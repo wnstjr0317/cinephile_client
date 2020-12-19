@@ -2,6 +2,8 @@ import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ChatBoard from '../components/chatBoard/ChatBoard';
 import { toggleSwitchAction } from '../modules/SideBar';
+import '../App.css';
+
 const Chat = ({ history }) => {
 	const { userInfo, toggleSwitch } = useSelector((state) => ({
 		userInfo: state.SignIn.userInfo,

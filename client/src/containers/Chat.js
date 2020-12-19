@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import ChatBoard from '../components/chatBoard/ChatBoard';
 import '../App.css';
 import { chatToggleSwitchAction } from '../modules/Chat';
+import { FaRegCommentDots } from 'react-icons/fa';
 
 const Chat = ({ history }) => {
 	const { userInfo, chatToggleSwitch } = useSelector((state) => ({
@@ -19,7 +20,7 @@ const Chat = ({ history }) => {
 	console.log(chatToggleSwitch);
 	return (
 		<div className="chatWrapper">
-			<div className="chatToggle" onClick={chatToggle}></div>
+			<div className="chatToggle" onClick={chatToggle}><FaRegCommentDots /></div>
 			<ChatBoard userInfo={userInfo} chatToggleSwitch={chatToggleSwitch} history={history} />
 		</div>
 	);

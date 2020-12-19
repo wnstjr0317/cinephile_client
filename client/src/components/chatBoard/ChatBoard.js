@@ -33,9 +33,9 @@ const ChatBoard = ({ userInfo, chatToggleSwitch, history }) => {
 		}
 	};
   
-	const getRandomInt = (min, max) => { 
-		return Math.floor(Math.random() * (max - min + 1)) + min; 
-	};
+	// const getRandomInt = (min, max) => { 
+	// 	return Math.floor(Math.random() * (max - min + 1)) + min; 
+	// };
 
 	console.log('chat: ', userInfo);
 
@@ -64,24 +64,25 @@ const ChatBoard = ({ userInfo, chatToggleSwitch, history }) => {
 			</form>
 		</div>
 	) : (
-		<div className="chat" style={chatToggleSwitch ? { display: 'block' } : { display: 'none' }}>
-			<section className="chat-list">
-				{messageList.map((item, i) => (
-					<div key={i} className="message">
-						{console.log('what is item??',item)}
-						<p className="username">[Guest] {getRandomInt(1, 100)}</p>
-						<p className="message-text">{item.message}</p>
-					</div>
-				))}
-			</section>
-			<form className="chat__form" onSubmit={(e) => submit(e)}>
-					<input className="input" type="text" autoComplete="off" 
-						onChange={(e) => setValue(e.target.value)}
-						onKeyPress={(e) => (e.key === "Enter" ? submit(e) : null)} 
-						value={value} placeholder="&nbsp;&nbsp;메세지입력하기" />
-				<button className="chat__button" type="submit" >Send</button>
-			</form>
-		</div>
+		// <div className="chat" style={chatToggleSwitch ? { display: 'block' } : { display: 'none' }}>
+		// 	<section className="chat-list">
+		// 		{messageList.map((item, i) => (
+		// 			<div key={i} className="message">
+		// 				{console.log('what is item??',item)}
+		// 				<p className="username">[Guest] {getRandomInt(1, 100)}</p>
+		// 				<p className="message-text">{item.message}</p>
+		// 			</div>
+		// 		))}
+		// 	</section>
+		// 	<form className="chat__form" onSubmit={(e) => submit(e)}>
+		// 			<input className="input" type="text" autoComplete="off" 
+		// 				onChange={(e) => setValue(e.target.value)}
+		// 				onKeyPress={(e) => (e.key === "Enter" ? submit(e) : null)} 
+		// 				value={value} placeholder="&nbsp;&nbsp;메세지입력하기" />
+		// 		<button className="chat__button" type="submit" >Send</button>
+		// 	</form>
+		// </div>
+		<div />
 	);
 };
 

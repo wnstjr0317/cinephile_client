@@ -17,7 +17,7 @@ const Chat = ({ history }) => {
 	console.log(chatToggleSwitch);
 	return (
 		<div className="chatWrapper">
-			<div className="chatToggle" onClick={chatToggle}></div>
+			{userInfo && <div className="chatToggle" onClick={chatToggle}></div>}
 			<ChatBoard userInfo={userInfo} chatToggleSwitch={chatToggleSwitch} history={history} />
 		</div>
 	);

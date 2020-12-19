@@ -6,11 +6,12 @@ import './ChatBoard.css';
 const socketURL = 'http://localhost:3000';
 let socket;
 
-const ChatBoard = ({ userInfo, toggleSwitch, history }) => {
+const ChatBoard = ({ userInfo, chatToggleSwitch, history }) => {
 	const [messageList, setMessageList] = useState([]);
 	const [value, setValue] = useState('');
-	const [user, setUser] = useState(null);
-	console.log('chatboard USERINFO!!', user);
+
+	console.log('chatboard USERINFO!!', userInfo);
+
 	useEffect(() => {
 		socket = io(socketURL);
 	}, [socketURL]);
@@ -20,24 +21,26 @@ const ChatBoard = ({ userInfo, toggleSwitch, history }) => {
 			console.log('message :', message);
 			setMessageList((messageList) => messageList.concat({ name, message }));
 		});
-		setUser(JSON.parse(sessionStorage.getItem('userInfo')));
 	}, []);
 
 	const submit = (e) => {
 		e.preventDefault();
-		console.log('submit!!!!!!', user.nickname);
+		console.log('submit!!!!!!', userInfo.nickname);
 		if (value) {
-			socket.emit('send message', user.nickname, value);
+			socket.emit('send message', userInfo.nickname, value);
 			setValue('');
 		}
 	};
+  
 	const getRandomInt = (min, max) => { 
 		return Math.floor(Math.random() * (max - min + 1)) + min; 
 	};
 
 	console.log('chat: ', user);
-	return user ? (
-		<div className="chat" style={toggleSwitch ? { display: 'block' } : { display: 'none' }}>
+
+
+	return userInfo ? (
+		<div className="chat" style={chatToggleSwitch ? { display: 'block' } : { display: 'none' }}>
 			<section className="chat-list">
 				{messageList.map((item, i) => (
 					<div key={i} className="message">
@@ -47,15 +50,16 @@ const ChatBoard = ({ userInfo, toggleSwitch, history }) => {
 					</div>
 				))}
 			</section>
-			<form className="chat__form" onSubmit={(e) => submit(e)}>
+
+			<form className="chat-form" onSubmit={(e) => submit(e)}>
 				{/* <div className="chat-inputs"> */}
-					{/* <div className="nickname">{user.nickname}</div> */}
+        {/* <div className="nickname">{userInfo.nickname}</div> */}
 					<input className="input" type="text" autoComplete="off" 
-						onChange={(e) => setValue(e.target.value)}
-						onKeyPress={(e) => (e.key === "Enter" ? submit(e) : null)} 
-						value={value} placeholder="&nbsp;&nbsp;메세지입력하기" />
+            onChange={(e) => setValue(e.target.value)} 
+            onKeyPress={(e) => (e.key === "Enter" ? submit(e) : null)}
+            value={value} placeholder="메세지입력하기" />
 				{/* </div> */}
-				<button className="chat__button" type="submit" >Send</button>
+				<button type="submit">Send</button>
 			</form>
 		</div>
 	) : (

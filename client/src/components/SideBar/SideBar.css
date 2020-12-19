@@ -139,7 +139,7 @@
 	outline: none;
 }
 .age {
-	transform: translate(220px, 6px);
+	transform: translate(220px, -7px);
 }
 
 .sideBarList {

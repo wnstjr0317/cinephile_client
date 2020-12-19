@@ -3,7 +3,7 @@ import './MovieContents.css';
 import axios from 'axios';
 import { FaRegThumbsUp, FaUserAlt } from 'react-icons/fa';
 
-const comment = ({ comments, contentsList, contentsGetAjax, loginModal }) => {
+const comment = ({ userInfo, comments, contentsList, contentsGetAjax, loginModal }) => {
 	// eslint-disable-next-line react-hooks/rules-of-hooks
 	const ref = useRef(null);
 	// eslint-disable-next-line react-hooks/rules-of-hooks
@@ -46,7 +46,7 @@ const comment = ({ comments, contentsList, contentsGetAjax, loginModal }) => {
 		axios
 			.post(`http://localhost:3000/board/comment`, {
 				text: comment,
-				user: contentsList.user.id,
+				user: userInfo.id,
 				article: contentsList.id,
 			})
 			.then((res) => {
@@ -60,7 +60,7 @@ const comment = ({ comments, contentsList, contentsGetAjax, loginModal }) => {
 		console.log(contentsList.user);
 		axios
 			.post(`http://localhost:3000/board/like`, {
-				user: contentsList.user.id,
+				user: userInfo.id,
 				comment: commentId,
 			})
 			.then((res) => {
@@ -72,7 +72,7 @@ const comment = ({ comments, contentsList, contentsGetAjax, loginModal }) => {
 
 	return (
 		<div className="movie__detail">
-			{contentsList.user ? (
+			{userInfo ? (
 				<form type="submit" className="commentForm" onSubmit={cmmtSubmitHandler}>
 					<textarea ref={ref} className="user__comment" type="text" value={comment} onChange={(e) => setData(Object.assign({}, data, { comment: e.target.value }))}></textarea>
 					<button className="commentButton" type="submit">
@@ -87,6 +87,7 @@ const comment = ({ comments, contentsList, contentsGetAjax, loginModal }) => {
 					return (
 						comment && (
 							<div className="comment__box" key={idx} id={comment.id}>
+								{console.log(comment)}
 								<div className="commentUser">
 									<FaUserAlt className="commentTitleIcon"></FaUserAlt>
 									{comment.user.nickname}
@@ -97,7 +98,7 @@ const comment = ({ comments, contentsList, contentsGetAjax, loginModal }) => {
 										className="likeButton"
 										onClick={(e) => {
 											console.log('comment:', comment.id);
-											contentsList.user && likeClickHandler(comment.id);
+											userInfo && likeClickHandler(comment.id);
 										}}
 									/>
 									{Object.assign({}, comment).likecount}

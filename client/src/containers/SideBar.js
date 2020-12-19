@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import SideBar from '../components/sideBar/index';
+import SideBar from '../components/SideBar/index';
 import { loginSwitchAction, signUpSwitchAction } from '../modules/SideBar';
 
 import { loginEmailAction, signInAjaxAction, signOutAjaxAction, loginPasswordAction, cookieLoginAction } from '../modules/SignIn';
@@ -9,8 +9,8 @@ import { signUpAjaxAction, signUpPasswordAction, signUpEmailAction, signUpUserna
 
 import { defalutUserInfoAction, modifyUserInfoAjaxAction } from '../modules/UserInfo';
 
-import SignIn from '../components/sideBar/SignIn';
-import SignUp from '../components/sideBar/SignUp';
+import SignIn from '../components/SideBar/SignIn';
+import SignUp from '../components/SideBar/SignUp';
 
 const containerSideBar = ({ match }) => {
 	// eslint-disable-next-line react-hooks/rules-of-hooks

@@ -24,12 +24,20 @@
 }
 .chatWrapper {
 	position: fixed;
-	width: 50%;
+	bottom: 0.5rem;
+	right: 0.5rem;
+	/* width: 40vw;
+	height: 33vh; */
+	background-color: white;
+	border-radius: 5px;
+	display: flex;
+	z-index: 100;
 }
 
 .chatToggle {
 	position: fixed;
 	top: 50%;
+	left: 0;
 	background-color: rgb(244, 244, 244);
 	width: 100px;
 	height: 100px;

@@ -31,11 +31,11 @@ const signInPost = async (signInInfo) => {
 	if (Array.isArray(signInInfo)) {
 		console.log(Object.assign({}, { oauth_id: signInInfo[1] }));
 		console.log(signInInfo);
-		return await axios.post(`http://localhost:3000`, Object.assign({}, { user: signInInfo[1] }));
+		return await axios.post(`https://cinephile.tk/`, Object.assign({}, { user: signInInfo[1] }));
 	}
-	return await axios.post(`http://localhost:3000/users/login`, signInInfo);
+	return await axios.post(`https://cinephile.tk/users/login`, signInInfo);
 };
-const signOutPost = async () => await axios.post(`http://localhost:3000/users/logout`);
+const signOutPost = async () => await axios.post(`https://cinephile.tk/users/logout`);
 
 export const signInAjaxAction = (signInInfo) => (dispatch) => {
 	dispatch({ type: SIGNIN_POST_PENDING });

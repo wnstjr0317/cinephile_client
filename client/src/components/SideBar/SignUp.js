@@ -38,7 +38,7 @@ const SignUp = ({
 
 		if (signUpEmail.length < 12) {
 			alert('email');
-		} else if (signUpPassword.length < 8) {
+		} else if (!aouth && signUpPassword.length < 8) {
 			alert('password');
 		} else if (signUpUsername.length < 6) {
 			alert('username');
@@ -86,21 +86,24 @@ const SignUp = ({
 				/>
 				<FaChevronCircleDown className="checker" style={{ color: certificate.email }} />
 				{aouth === undefined && (
-					<input
-						required="required"
-						className="sideBarInput"
-						value={signUpPassword}
-						type="password"
-						placeholder="password"
-						onChange={(e) => {
-							if (e.target.value.length > 6) {
-								setCertificate(Object.assign({}, certificate, { password: '74b816' }));
-							}
-							signUpPasswordInput(e.target.value);
-						}}
-					/>
+					<>
+						<input
+							required="required"
+							className="sideBarInput"
+							value={signUpPassword}
+							type="password"
+							placeholder="password"
+							onChange={(e) => {
+								if (e.target.value.length > 6) {
+									setCertificate(Object.assign({}, certificate, { password: '74b816' }));
+								}
+								signUpPasswordInput(e.target.value);
+							}}
+						/>
+						<FaChevronCircleDown className="checker" style={{ color: certificate.password }} />
+					</>
 				)}
-				<FaChevronCircleDown className="checker" style={{ color: certificate.password }} />
+
 				<input
 					required="required"
 					className="sideBarInput"
@@ -115,19 +118,21 @@ const SignUp = ({
 					}}
 				/>
 				<FaChevronCircleDown className="checker" style={{ color: certificate.username }} />
-				<select className="sidiBarSelect" defaultValue={'DEFAULT'} onChange={(e) => signUpSexSelect(e.target.value)}>
-					<option value="DEFAULT">성별</option>
-					<option value="male">남성</option>
-					<option value="famale">여성</option>
-				</select>
-				<select className="sidiBarSelect age" defaultValue={'DEFAULT'} onChange={(e) => signUpAgeSelect(e.target.value)}>
-					<option value="DEFAULT">나이</option>
-					{[10, 20, 30, 40, 50, 60].map((age, id) => (
-						<option value={age} key={id}>
-							{age}대
-						</option>
-					))}
-				</select>
+				<div className="selectWrapper">
+					<select className="sidiBarSelect" defaultValue={'DEFAULT'} onChange={(e) => signUpSexSelect(e.target.value)}>
+						<option value="DEFAULT">성별</option>
+						<option value="male">남성</option>
+						<option value="famale">여성</option>
+					</select>
+					<select className="sidiBarSelect" defaultValue={'DEFAULT'} onChange={(e) => signUpAgeSelect(e.target.value)}>
+						<option value="DEFAULT">나이</option>
+						{[10, 20, 30, 40, 50, 60].map((age, id) => (
+							<option value={age} key={id}>
+								{age}대
+							</option>
+						))}
+					</select>
+				</div>
 
 				<button className="sideBarButton signUpButton">SignUp</button>
 			</form>

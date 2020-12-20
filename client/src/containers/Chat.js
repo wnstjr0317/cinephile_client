@@ -17,15 +17,15 @@ const Chat = ({ history }) => {
 		// eslint-disable-next-line no-undef
 		dispatch(chatToggleSwitchAction());
 	}, [dispatch]);
-	console.log(chatToggleSwitch);
+	console.log(userInfo);
 	return (
 		<div className="chatWrapper">
-
-			{userInfo && <div className="chatToggle" onClick={chatToggle}>
-    			<ChatBoard userInfo={userInfo} chatToggleSwitch={chatToggleSwitch} history={history} />
-    </div>}
-
-
+			{userInfo && (
+				<div className="chatToggle">
+					<FaRegCommentDots onClick={chatToggle} />
+					<ChatBoard userInfo={userInfo} chatToggleSwitch={chatToggleSwitch} history={history} />
+				</div>
+			)}
 		</div>
 	);
 };

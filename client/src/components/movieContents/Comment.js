@@ -44,7 +44,7 @@ const comment = ({ userInfo, comments, contentsList, contentsGetAjax, loginModal
 	const cmmtSubmitHandler = (e) => {
 		e.preventDefault();
 		axios
-			.post(`http://localhost:3000/board/comment`, {
+			.post(`https://cinephile.tk/board/comment`, {
 				text: comment,
 				user: userInfo.id,
 				article: contentsList.id,
@@ -59,7 +59,7 @@ const comment = ({ userInfo, comments, contentsList, contentsGetAjax, loginModal
 	const likeClickHandler = (commentId) => {
 		console.log(contentsList.user);
 		axios
-			.post(`http://localhost:3000/board/like`, {
+			.post(`https://cinephile.tk/board/like`, {
 				user: userInfo.id,
 				comment: commentId,
 			})

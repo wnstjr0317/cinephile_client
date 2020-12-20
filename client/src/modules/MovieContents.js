@@ -15,7 +15,7 @@ const CONTENTS_GET_FAILURE = 'CONTENTS_GET_FAILURE';
 // 선택된 영화에 해당하는 댓글만 받아와야 함
 // 포스터에 걸리는 onClick 이벤트에 맞춰서 end point 수정 필요
 
-const contentsGet = async (boardNo) => boardNo && (await axios.get(`http://localhost:3000/board/article/${boardNo}`));
+const contentsGet = async (boardNo) => boardNo && (await axios.get(`https://cinephile.tk/board/article/${boardNo}`));
 
 // 액션 생성자
 

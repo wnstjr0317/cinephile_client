@@ -34,7 +34,7 @@ export const signUpAgeAction = (signUpAge) => ({
 	type: SIGNUP_AGE,
 	signUpAge,
 });
-const signUpPost = async (signUpInfo) => await axios.post(`http://localhost:3000/users/signup`, signUpInfo);
+const signUpPost = async (signUpInfo) => await axios.post(`https://cinephile.tk/users/signup`, signUpInfo);
 
 //action function
 export const signUpAjaxAction = (signUpInfo) => (dispatch) => {

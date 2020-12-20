@@ -7,9 +7,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const SideBar = ({ modifyUserInfoPost, defaultUserInfo, signInAjax, autoCookieLogin, signOutAjax, signUpSwitch, loginSwitch, loginModal, signUpModal }) => {
 	const cookie = document.cookie.split('; ').some((cookie) => cookie.includes('token') || cookie.includes('cookie') || cookie.includes('oauth_id'));
 	const authenticate = JSON.parse(sessionStorage.getItem('userInfo'));
-
+	console.log(cookie);
 	useEffect(() => {
-		if (authenticate) {
+		if (cookie) {
 			let aouth = document.cookie.split('; ').filter((string) => string.slice(0, 8) === 'oauth_id')[0];
 			let sotialKey = document.cookie.split('; ').filter((string) => string.slice(0, 4) === 'user')[0];
 			sotialKey && signInAjax(sotialKey.split('='));

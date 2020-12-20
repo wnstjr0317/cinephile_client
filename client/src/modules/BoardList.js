@@ -5,8 +5,8 @@ const BOARD_GET_PENDING = 'BOARD_GET_PENDING';
 const BOARD_GET_SUCCESS = 'BOARD_GET_SUCCESS';
 const BOARD_GET_FAILURE = 'BOARD_GET_FAILURE';
 
-const boardGet = async () => await axios.get('http://localhost:3000/board');
-console.log('boardGet :',boardGet)
+const boardGet = async () => await axios.get('https://cinephile.tk/board');
+console.log('boardGet :', boardGet);
 
 export const boardGetAjaxAction = () => (dispatch) => {
 	dispatch({ type: BOARD_GET_PENDING });

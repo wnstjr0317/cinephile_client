@@ -56,9 +56,9 @@ const modifyUserInfoPost = async (userInfo) => {
 	console.log(userInfo);
 	if (Array.isArray(userInfo)) {
 		console.log(userInfo[0]);
-		return await axios.post(`http://localhost:3000/setting/userinfo`, userInfo[0]);
+		return await axios.post(`https://cinephile.tk/setting/userinfo`, userInfo[0]);
 	} else {
-		return await axios.post(`http://localhost:3000/setting/userinfo`, userInfo);
+		return await axios.post(`https://cinephile.tk/setting/userinfo`, userInfo);
 	}
 };
 const modifyUserInfo = {

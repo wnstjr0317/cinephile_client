@@ -5,7 +5,7 @@ const MOVIE_GET_PENDING = 'MOVIE_GET_PENDING';
 const MOVIE_GET_SUCCESS = 'MOVIE_GET_SUCCESS';
 const MOVIE_GET_FAILURE = 'MOVIE_GET_FAILURE';
 
-const movieGet = async () => await axios.get('http://localhost:3000/card');
+const movieGet = async () => await axios.get('https://cinephile.tk/card');
 console.log('movieGet :', movieGet);
 export const movieGetAjaxAction = () => (dispatch) => {
 	dispatch({ type: MOVIE_GET_PENDING });

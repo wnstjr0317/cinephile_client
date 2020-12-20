@@ -34,7 +34,7 @@
 	background-color: rgb(255, 255, 255);
 	width: 500px;
 	height: 500px;
-	z-index: 9999;
+	z-index: 123;
 	position: fixed;
 	left: 50%;
 	top: 50px;
@@ -77,7 +77,7 @@
 	margin-left: 10em;
 }
 #naver {
-	background: url(../../네이버\ 아이디로\ 로그인_완성형_White.PNG) no-repeat;
+	background: url(../../naver.PNG) no-repeat;
 	background-size: contain;
 	border: none;
 
@@ -130,16 +130,13 @@
 	width: 100px;
 	height: 30px;
 	position: relative;
-	transform: translate(90px, 70px);
-	/* margin-left: 20px; */
+	transform: translate(90px, 10px);
+	margin-left: 4em;
 	font-size: 10px;
 	float: left;
 	font-weight: 100;
 	color: rgb(80, 74, 75);
 	outline: none;
-}
-.age {
-	transform: translate(220px, -7px);
 }
 
 .sideBarList {
@@ -149,13 +146,13 @@
 
 	/* margin-left: 20px; */
 	cursor: pointer;
-	/* display: flex; */
+	display: flex;
 	font-weight: 400;
 	font-size: 17px;
-	/* justify-content: center; */
+	justify-content: center;
 
 	/* border-radius: 13px; */
-	/* align-items: center; */
+	align-items: center;
 	transition: all 0.5s;
 	text-decoration: none;
 	/* border: 1px solid rgb(232, 221, 221); */
@@ -170,12 +167,10 @@
 
 	color: rgb(0, 0, 0);
 }
-#firstLi {
-	/* border-top: 1px solid rgba(85, 79, 79, 0.671); */
-	/* margin-top: 30px; */
-}
+
 .signUp {
 	/* border: 1px solid black; */
+
 	user-select: none;
 	cursor: pointer;
 }
@@ -206,8 +201,8 @@
 	border-radius: 100%;
 }
 .signUpButton {
-	top: 130px;
-	left: -90px;
+	top: 7em;
+	left: -10em;
 }
 .sotialLoginButton {
 	color: rgb(255, 255, 255);

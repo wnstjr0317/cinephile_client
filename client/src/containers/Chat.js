@@ -20,12 +20,14 @@ const Chat = ({ history }) => {
 	console.log(userInfo);
 	return (
 		<div className="chatWrapper">
+
 			{userInfo && (
 				<div className="chatToggle">
 					<FaRegCommentDots onClick={chatToggle} />
 					<ChatBoard userInfo={userInfo} chatToggleSwitch={chatToggleSwitch} history={history} />
 				</div>
 			)}
+
 		</div>
 	);
 };

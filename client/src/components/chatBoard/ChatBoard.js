@@ -9,12 +9,12 @@ const ChatBoard = ({ userInfo, chatToggleSwitch, history }) => {
 	const [messageList, setMessageList] = useState([]);
 	const [value, setValue] = useState('');
 	
-	const socketURL = 'http://localhost:3000';
+	const socketURL = 'https://cinephile.tk';
 	console.log('chatboard USERINFO!!', userInfo);
 // eslint-disable-next-line
 	useEffect(() => {
 		// eslint-disable-next-line no-undef
-		socket = io(socketURL);
+		socket = io({path : socketURL, secure : true });
 	}, [socketURL]);
 
 	useEffect(() => {

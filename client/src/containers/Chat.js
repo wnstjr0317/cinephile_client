@@ -21,7 +21,7 @@ const Chat = ({ history }) => {
 	return (
 		<div className="chatWrapper">
 
-			{userInfo && <div className="chatToggle" onClick={chatToggle}>
+			{userInfo && <div className="chatToggle" ><FaRegCommentDots onClick={chatToggle}/>
     			<ChatBoard userInfo={userInfo} chatToggleSwitch={chatToggleSwitch} history={history} />
     </div>}
 

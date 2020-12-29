@@ -14,7 +14,7 @@ const ChatBoard = ({ userInfo, chatToggleSwitch, history }) => {
 // eslint-disable-next-line
 	useEffect(() => {
 		// eslint-disable-next-line no-undef
-		socket = io({path : socketURL, secure : true });
+		socket = io.connect(socketURL, {secure : true });
 	}, [socketURL]);
 
 	useEffect(() => {
